@@ -16,6 +16,7 @@
     <meta property="og:type" content="website">
     <style>
         /* Custom style for glowing effect on the image */
+        /* Note: Most general styles are now in style.css, keeping only unique ones here */
         .coming-soon-image {
             max-width: 20%; /* Keeping max-width at 20% as requested */
             height: auto;
@@ -47,6 +48,19 @@
         .animate-butterfly-out {
             animation: butterflyOut 0.4s forwards; /* 0.4s duration, stays at end state */
         }
+
+        /* Mobile adjustments for the coming soon image specifically */
+        @media (max-width: 768px) {
+            .coming-soon-image {
+                max-width: 40%; /* Increase image size for better visibility on mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .coming-soon-image {
+                max-width: 50%; /* Make it slightly bigger on very small screens */
+            }
+        }
     </style>
 </head>
 <body>
@@ -54,6 +68,7 @@
     <header>
         <div class="header-top-bar container">
             <h1 class="site-logo"><a href="art.html" style="text-decoration: none; color: inherit;">Arts</a> & <a href="lamps.html" style="text-decoration: none; color: inherit;">Lamps</a></h1>
+            <button class="hamburger-menu" aria-label="Toggle navigation">&#9776;</button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -75,10 +90,9 @@
         <section class="page-content coming-soon-content">
             <h2 class="section-title">Exciting New Collections Are Coming Soon!</h2>
             <p class="section-description">We are passionately working on new, unique art pieces and handcrafted lamps to bring even more beauty and light into your homes.</p>
-            
+
             <div class="coming-soon-message">
                 <p>Stay tuned for updates! Follow us on social media or subscribe to our newsletter to be the first to know when our new collections arrive.</p>
-                <!-- Image element for the animation -->
                 <img id="comingSoonImage" src="images/Coming Soon/C1.jpg" alt="New Creations Coming Soon" class="coming-soon-image" onerror="this.onerror=null; this.src='https://placehold.co/600x400/F5F7F0/4F6B4F?text=Image+Load+Error'; this.alt='Image failed to load';">
             </div>
 
@@ -103,7 +117,7 @@
         </div>
     </footer>
 
-    <script>
+    <script src="script.js"></script> <script>
         document.addEventListener('DOMContentLoaded', () => {
             const comingSoonImage = document.getElementById('comingSoonImage');
 

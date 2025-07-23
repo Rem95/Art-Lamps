@@ -4,178 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - Arts & Lamps</title>
-    <link rel="stylesheet" href="style.css"> 
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
-    
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
     <meta name="description" content="Get in touch with Anastasia and Remus at Arts & Lamps. We're here to answer your questions about our unique art and handmade lamps.">
     <meta name="keywords" content="contact, Arts & Lamps contact, email, custom orders, art inquiry, lamp inquiry">
     <meta name="author" content="Anastasia & Remus">
-    
+
     <meta property="og:title" content="Contact Us - Arts & Lamps">
     <meta property="og:description" content="Have a question? Reach out to Anastasia and Remus for inquiries about art, lamps, or custom orders.">
-    <meta property="og:image" content="https://www.yourwebsite.com/images/contact-us.jpg"> 
-    <meta property="og:url" content="https://www.yourwebsite.com/contact.html"> 
+    <meta property="og:image" content="https://www.yourwebsite.com/images/contact-us.jpg">
+    <meta property="og:url" content="https://www.yourwebsite.com/contact.html">
     <meta property="og:type" content="website">
     <style>
-        /* General form styling */
-        .contact-form-section {
-            padding: 40px 0;
-            max-width: 800px;
-            margin: 0 auto;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-        }
-
-        .form-header {
-            text-align: left;
-            margin-bottom: 30px;
-        }
-
-        .form-header h2 {
-            font-size: 2.5em;
-            color: #333;
-            margin-bottom: 10px;
-        }
-
-        .form-header p {
-            font-size: 1.1em;
-            color: #555;
-            display: flex;
-            align-items: center;
-        }
-
-        .form-header p svg {
-            margin-right: 10px;
-            fill: #555;
-        }
-
-        .customer-type-selection {
-            display: flex;
-            margin-bottom: 20px;
-        }
-
-        .customer-type-selection label {
-            margin-right: 20px;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .customer-type-selection input[type="radio"] {
-            margin-right: 5px;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            position: relative;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-            color: #333;
-        }
-
-        .form-group input[type="text"],
-        .form-group input[type="email"],
-        .form-group input[type="tel"],
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 15px;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            font-size: 1em;
-            box-sizing: border-box; /* Include padding in width */
-            transition: border-color 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            border-color: #4CAF50;
-            outline: none;
-            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-group .required-star {
-            color: red;
-            margin-left: 5px;
-        }
-
-        .phone-group {
-            display: flex;
-            gap: 10px;
-        }
-
-        .phone-group select {
-            flex-shrink: 0;
-            width: 100px; /* Adjust as needed for country code */
-        }
-
-        .phone-group input {
-            flex-grow: 1;
-        }
-
-        .privacy-policy-text {
-            font-size: 0.9em;
-            color: #777;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .privacy-policy-text a {
-            color: #4CAF50;
-            text-decoration: none;
-        }
-
-        .privacy-policy-text a:hover {
-            text-decoration: underline;
-        }
-
-        .submit-button-container {
-            text-align: center;
-        }
-
-        .submit-button {
-            background-color: #333;
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
-        .submit-button:hover {
-            background-color: #555;
-            transform: translateY(-2px);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .form-grid {
-                grid-template-columns: 1fr;
-            }
-            .contact-form-section {
-                margin: 20px;
-                padding: 20px;
-            }
-        }
+        /* General form styling - Most of these were moved to style.css for consistency */
+        /* Keeping specific modal styles here as they are unique to this page for now */
 
         /* Custom Modal Styles */
         .modal {
@@ -278,6 +121,7 @@
     <header>
         <div class="header-top-bar container">
             <h1 class="site-logo"><a href="art.html" style="text-decoration: none; color: inherit;">Arts</a> & <a href="lamps.html" style="text-decoration: none; color: inherit;">Lamps</a></h1>
+            <button class="hamburger-menu" aria-label="Toggle navigation">&#9776;</button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -308,7 +152,6 @@
                 </p>
             </div>
 
-            <!-- Formspree integration: action points to your unique Formspree endpoint -->
             <form id="contactForm" action="https://formspree.io/f/xeozerjv" method="POST">
                 <div class="customer-type-selection">
                     <label>
@@ -337,12 +180,7 @@
 
                 <div class="form-group phone-group">
                     <select id="countryCode" name="countryCode">
-                        <option value="+353">+353</option> <!-- Ireland -->
-                        <option value="+1">+1</option>   <!-- USA/Canada -->
-                        <option value="+44">+44</option> <!-- UK -->
-                        <option value="+49">+49</option> <!-- Germany -->
-                        <!-- Add more country codes as needed -->
-                    </select>
+                        <option value="+353">+353</option> <option value="+1">+1</option>   <option value="+44">+44</option> <option value="+49">+49</option> </select>
                     <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone number">
                 </div>
 
@@ -370,7 +208,6 @@
                 <div class="submit-button-container">
                     <button type="submit" class="submit-button">Submit</button>
                 </div>
-                <!-- Feedback message area -->
                 <div id="formFeedback" class="form-feedback-message"></div>
             </form>
         </section>
@@ -392,13 +229,11 @@
         </div>
     </footer>
 
-    <!-- Custom Thank You Modal -->
     <div id="thankYouModal" class="modal">
         <div class="modal-content">
             <span class="close-button" id="closeModalBtn">&times;</span>
             <div class="modal-body">
                 <div class="animal-images">
-                    <!-- Updated image source to your provided image -->
                     <img src="images/b.jpg" alt="Bear eating honey" class="animal-image">
                     <img src="images/m.jpg" alt="Bunny waving" class="animal-image">
                 </div>
@@ -407,84 +242,81 @@
         </div>
     </div>
 
-    <script>
+    <script src="script.js"></script> <script>
+        // Moved the contact form specific JavaScript from here to script.js for better organization.
+        // Keeping a small listener for the modal if you prefer to keep it separate.
         document.addEventListener('DOMContentLoaded', () => {
             const contactForm = document.getElementById('contactForm');
             const thankYouModal = document.getElementById('thankYouModal');
             const closeModalBtn = document.getElementById('closeModalBtn');
-            const formFeedback = document.getElementById('formFeedback'); // Get feedback element
+            const formFeedback = document.getElementById('formFeedback');
 
-            // Function to open the modal
             function openModal() {
-                thankYouModal.style.display = 'flex'; // Use flex to center content
+                thankYouModal.style.display = 'flex';
+                document.body.style.overflow = 'hidden'; // Prevent scrolling background
             }
 
-            // Function to close the modal
             function closeModal() {
                 thankYouModal.style.display = 'none';
+                document.body.style.overflow = ''; // Restore scrolling
             }
 
-            // Function to display feedback messages
             function showFeedback(message, type) {
                 formFeedback.textContent = message;
-                formFeedback.className = 'form-feedback-message ' + type; // Set class for styling (success/error)
-                formFeedback.classList.add('show'); // Make it visible with transition
+                formFeedback.className = 'form-feedback-message ' + type;
+                formFeedback.classList.add('show');
                 setTimeout(() => {
-                    formFeedback.classList.remove('show'); // Hide after 5 seconds
+                    formFeedback.classList.remove('show');
                 }, 5000);
             }
 
-            // Close modal when clicking the close button
-            closeModalBtn.addEventListener('click', closeModal);
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeModal);
+            }
 
-            // Close modal when clicking outside the modal content
             window.addEventListener('click', (event) => {
                 if (event.target == thankYouModal) {
                     closeModal();
                 }
             });
 
-            // Handle form submission
-            contactForm.addEventListener('submit', async function(event) {
-                event.preventDefault(); // Prevent default form submission
+            if (contactForm) {
+                contactForm.addEventListener('submit', async function(event) {
+                    event.preventDefault();
+                    const form = event.target;
+                    const formData = new FormData(form);
 
-                const form = event.target;
-                const formData = new FormData(form); // Use FormData for easier submission to Formspree
-
-                // You can still log the data to console for debugging
-                const formObject = {};
-                formData.forEach((value, key) => {
-                    formObject[key] = value;
-                });
-                console.log('Form Submitted:', formObject);
-
-                try {
-                    // Submit form data to Formspree
-                    const response = await fetch(form.action, {
-                        method: form.method,
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json' // Important for Formspree to return JSON
-                        }
+                    const formObject = {};
+                    formData.forEach((value, key) => {
+                        formObject[key] = value;
                     });
+                    console.log('Form Submitted:', formObject);
 
-                    if (response.ok) {
-                        openModal(); // Show the custom thank you modal on success
-                        form.reset(); // Clear the form after successful submission
-                        // Optional: show a small success message below form too
-                        // showFeedback('Your message has been sent successfully!', 'success');
-                    } else {
-                        // Handle errors from Formspree, e.g., display an error message
-                        const data = await response.json(); // Try to parse error response
-                        console.error('Formspree Error:', data);
-                        console.error('Formspree raw response status:', response.status, response.statusText); // Added for debugging
-                        showFeedback('Oops! There was a problem sending your message. Please try again.', 'error');
+                    try {
+                        const response = await fetch(form.action, {
+                            method: form.method,
+                            body: formData,
+                            headers: {
+                                'Accept': 'application/json'
+                            }
+                        });
+
+                        if (response.ok) {
+                            openModal();
+                            form.reset();
+                            // showFeedback('Your message has been sent successfully!', 'success');
+                        } else {
+                            const data = await response.json();
+                            console.error('Formspree Error:', data);
+                            console.error('Formspree raw response status:', response.status, response.statusText);
+                            showFeedback('Oops! There was a problem sending your message. Please try again.', 'error');
+                        }
+                    } catch (error) {
+                        console.error('Network or submission error:', error);
+                        showFeedback('A network error occurred. Please check your internet connection and try again.', 'error');
                     }
-                } catch (error) {
-                    console.error('Network or submission error:', error);
-                    showFeedback('A network error occurred. Please check your internet connection and try again.', 'error');
-                }
-            });
+                });
+            }
         });
     </script>
 

@@ -5,23 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title id="galleryTitle">Art Gallery - Arts & Lamps</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
-    
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
     <meta name="description" content="Explore a collection of original art pieces. Each artwork is unique and created with passion.">
     <meta name="keywords" content="art, gallery, original paintings, unique art">
     <meta name="author" content="Anastasia">
-    
+
     <meta property="og:title" content="Art Gallery - Arts & Lamps">
     <meta property="og:description" content="Browse specific art pieces from our unique collection.">
     <meta property="og:image" content="https://www.yourwebsite.com/images/Art/default-gallery-og.jpg">
     <meta property="og:url" content="https://www.yourwebsite.com/gallery.html">
     <meta property="og:type" content="website">
+    <style>
+        /* This style block was originally from the Tailwind example, but is now integrated into style.css
+           or replaced by more specific responsive rules. Keeping it minimal here for unique overrides if any. */
+    </style>
 </head>
 <body>
 
     <header>
         <div class="header-top-bar container">
             <h1 class="site-logo"><a href="art.html" style="text-decoration: none; color: inherit;">Arts</a> & <a href="lamps.html" style="text-decoration: none; color: inherit;">Lamps</a></h1>
+            <button class="hamburger-menu" aria-label="Toggle navigation">&#9776;</button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -32,21 +37,21 @@
         </div>
         <div class="header-categories container">
             <a href="art.html" class="category-link">Art Collection</a>
-            <a href="art.html" class="category-link">Art Video </a>
+            <a href="ArtVideos.html" class="category-link">Art Video </a>
             <a href="lamps.html" class="category-link">Lamps & Lighting</a>
             <a href="LampVideos.html" class="category-link">Lamps & Lighting Video </a>
-            <a href="ComingSoon.html" class="category-link">Comig Soon</a>
+            <a href="ComingSoon.html" class="category-link">Coming Soon</a>
         </div>
     </header>
 
     <main class="container">
         <section class="page-content category-page-content">
-            <h2 class="section-title" id="galleryCategoryTitle"></h2> 
+            <h2 class="section-title" id="galleryCategoryTitle"></h2>
             <p class="section-description" id="galleryCategoryDescription"></p>
-            
+
             <div class="artwork-grid" id="individualArtGallery">
                 </div>
-            
+
             <div class="explore-category-button" style="margin-top: 50px;">
                 <a href="art.html" class="button-explore">Back to Art Categories</a>
             </div>
@@ -72,206 +77,10 @@
     <div id="lightbox" class="lightbox">
         <span class="close-button">&times;</span>
         <img class="lightbox-content" id="lightbox-img">
-        <a class="prev-button">&#10094;</a> <a class="next-button">&#10095;</a> 
-        </div>
-
-    <script src="script.js"></script>
-
-</body>
-</html>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image Gallery - Arts & Lamps</title>
-    <!-- Tailwind CSS CDN for easy styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* Custom styles for the modal overlay and content */
-        .modal-overlay {
-            background-color: rgba(0, 0, 0, 0.7); /* Dark semi-transparent background */
-        }
-        .modal-content {
-            max-width: 90vw; /* Max width of the image in the modal */
-            max-height: 90vh; /* Max height of the image in the modal */
-            object-fit: contain; /* Ensure the image fits within the bounds without cropping */
-        }
-    </style>
-</head>
-<body class="font-sans bg-gray-100 text-gray-800">
-
-    <!-- Header Section (Optional - you can integrate your existing header) -->
-    <header class="bg-white shadow-md py-4 px-6">
-        <nav class="container mx-auto flex justify-between items-center">
-            <a href="index.html" class="text-2xl font-bold text-gray-900">Arts & Lamps</a>
-            <ul class="flex space-x-6">
-                <li><a href="index.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Home</a></li>
-                <li><a href="gallery.html" class="text-blue-600 font-semibold">Gallery</a></li>
-                <li><a href="art.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Art</a></li>
-                <li><a href="lamps.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Lamps</a></li>
-                <li><a href="about-us.html" class="text-gray-700 hover:text-blue-600 transition duration-300">About Us</a></li>
-                <li><a href="contact.html" class="text-gray-700 hover:text-blue-600 transition duration-300">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <main class="container mx-auto py-8 px-4">
-        <h1 class="text-4xl font-extrabold text-center mb-10 text-gray-900">Our Gallery</h1>
-
-        <!-- Image Gallery Grid -->
-        <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            <!-- Bamboolamp Images -->
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/bamboolamp/bamboolamp (1).jpg', 'Bamboolamp 1')">
-                <img src="images/lamp/bamboolamp/bamboolamp (1).jpg" alt="Bamboolamp 1" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/bamboolamp/bamboolamp (2).jpg', 'Bamboolamp 2')">
-                <img src="images/lamp/bamboolamp/bamboolamp (2).jpg" alt="Bamboolamp 2" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/bamboolamp/bamboolamp (3).jpg', 'Bamboolamp 3')">
-                <img src="images/lamp/bamboolamp/bamboolamp (3).jpg" alt="Bamboolamp 3" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/bamboolamp/bamboolamp (4).jpg', 'Bamboolamp 4')">
-                <img src="images/lamp/bamboolamp/bamboolamp (4).jpg" alt="Bamboolamp 4" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/bamboolamp/bamboolamp (5).jpg', 'Bamboolamp 5')">
-                <img src="images/lamp/bamboolamp/bamboolamp (5).jpg" alt="Bamboolamp 5" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/bamboolamp/bamboolamp (6).jpg', 'Bamboolamp 6')">
-                <img src="images/lamp/bamboolamp/bamboolamp (6).jpg" alt="Bamboolamp 6" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/bamboolamp/bamboolamp (7).jpg', 'Bamboolamp 7')">
-                <img src="images/lamp/bamboolamp/bamboolamp (7).jpg" alt="Bamboolamp 7" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/bamboolamp/bamboolamp (8).jpg', 'Bamboolamp 8')">
-                <img src="images/lamp/bamboolamp/bamboolamp (8).jpg" alt="Bamboolamp 8" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/bamboolamp/bamboolamp (9).jpg', 'Bamboolamp 9')">
-                <img src="images/lamp/bamboolamp/bamboolamp (9).jpg" alt="Bamboolamp 9" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/bamboolamp/bamboolamp (10).jpg', 'Bamboolamp 10')">
-                <img src="images/lamp/bamboolamp/bamboolamp (10).jpg" alt="Bamboolamp 10" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-
-            <!-- Minibar Images -->
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/minibar/minibar (1).jpg', 'Minibar 1')">
-                <img src="images/lamp/minibar/minibar (1).jpg" alt="Minibar 1" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/minibar/minibar (2).jpg', 'Minibar 2')">
-                <img src="images/lamp/minibar/minibar (2).jpg" alt="Minibar 2" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/minibar/minibar (3).jpg', 'Minibar 3')">
-                <img src="images/lamp/minibar/minibar (3).jpg" alt="Minibar 3" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-            <div class="group relative overflow-hidden rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer" onclick="openModal('images/lamp/minibar/minibar (4).jpg', 'Minibar 4')">
-                <img src="images/lamp/minibar/minibar (4).jpg" alt="Minibar 4" class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-lg" onerror="this.onerror=null; this.src='https://placehold.co/300x200/cccccc/333333?text=Image+Load+Error'; this.alt='Image failed to load';">
-                <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg">
-                    <p class="text-white text-lg font-semibold">View Details</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!-- Image Modal/Lightbox -->
-    <div id="imageModal" class="fixed inset-0 flex items-center justify-center z-50 hidden modal-overlay p-4">
-        <div class="relative bg-white rounded-lg shadow-2xl p-4 max-w-full max-h-full flex flex-col items-center">
-            <button class="absolute top-2 right-2 text-gray-700 hover:text-gray-900 text-3xl font-bold p-2 rounded-full bg-white bg-opacity-75 hover:bg-opacity-100 transition-colors duration-300" onclick="closeModal()">
-                &times;
-            </button>
-            <img id="modalImage" src="" alt="Full size image" class="modal-content rounded-lg mb-4">
-            <p id="modalCaption" class="text-lg font-semibold text-gray-800 text-center"></p>
-        </div>
+        <a class="prev-button">&#10094;</a> <a class="next-button">&#10095;</a>
     </div>
 
-    <script>
-        // Get references to the modal elements
-        const imageModal = document.getElementById('imageModal');
-        const modalImage = document.getElementById('modalImage');
-        const modalCaption = document.getElementById('modalCaption');
-
-        /**
-         * Opens the image modal with the specified image source and caption.
-         * @param {string} imgSrc - The source URL of the image to display.
-         * @param {string} captionText - The caption text for the image.
-         */
-        function openModal(imgSrc, captionText) {
-            modalImage.src = imgSrc; // Set the image source
-            modalCaption.textContent = captionText; // Set the image caption
-            imageModal.classList.remove('hidden'); // Show the modal
-            document.body.style.overflow = 'hidden'; // Prevent scrolling on the body
-        }
-
-        /**
-         * Closes the image modal.
-         */
-        function closeModal() {
-            imageModal.classList.add('hidden'); // Hide the modal
-            document.body.style.overflow = ''; // Re-enable scrolling on the body
-        }
-
-        // Close modal when clicking outside the image content
-        imageModal.addEventListener('click', function(event) {
-            // Check if the click occurred directly on the overlay, not on the modal content itself
-            if (event.target === imageModal) {
-                closeModal();
-            }
-        });
-
-        // Close modal when the Escape key is pressed
-        document.addEventListener('keydown', function(event) {
-            if (event.key === 'Escape' && !imageModal.classList.contains('hidden')) {
-                closeModal();
-            }
-        });
-
-        // Fallback for image loading errors (e.g., if an image path is incorrect) for the modal image
-        modalImage.onerror = function() {
-            console.error("Failed to load modal image:", modalImage.src);
-            modalCaption.textContent = "Image could not be loaded.";
-            // Optionally, display a placeholder image
-            modalImage.src = "https://placehold.co/600x400/cccccc/333333?text=Image+Not+Found";
-        };
-    </script>
+    <script src="script.js"></script>
 
 </body>
 </html>

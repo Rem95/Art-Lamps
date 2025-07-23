@@ -11,6 +11,7 @@
     <header>
         <div class="header-top-bar container">
             <h1 class="site-logo"><a href="art.html" style="text-decoration: none; color: inherit;">Arts</a> & <a href="lamps.html" style="text-decoration: none; color: inherit;">Lamps</a></h1>
+            <button class="hamburger-menu" aria-label="Toggle navigation">&#9776;</button>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
@@ -22,21 +23,19 @@
         <div class="header-categories container">
             <a href="art.html" class="category-link">Art Collection</a>
             <a href="ArtVideos.html" class="category-link">Art Video </a>
-            <a href="lamps.html" class="category-link">Lamps & Lighting</a> 
+            <a href="lamps.html" class="category-link">Lamps & Lighting</a>
             <a href="LampVideos.html" class="category-link"> Lamps & Lighting Video </a>
             <a href="ComingSoon.html" class="category-link">Coming Soon</a>
         </div>
     </header>
 
-    
-
     <main class="container">
         <section class="art-collections-section">
-            <h2>Our Original Art Collections</h2>
-            <p>Dive into our unique categories of original art. Click a collection to explore its masterpieces.</p>
+            <h2 class="section-title">Our Original Art Collections</h2>
+            <p class="section-description">Dive into our unique categories of original art. Click a collection to explore its masterpieces.</p>
 
             <div class="collections-grid">
-                <a href="collection-details.html?name=Ballerina" class="collection-card" data-collection-name="Ballerina">
+                <a href="collection-details.html?name=Ballerina&type=art" class="collection-card" data-collection-name="Ballerina">
                     <div class="slideshow-container">
                         <img src="images/Art/Ballerina/Ballerina (1).jpg" alt="Ballerina Collection 1" class="slideshow-image active">
                         <img src="images/Art/Ballerina/Ballerina (2).jpg" alt="Ballerina Collection 2" class="slideshow-image">
@@ -47,7 +46,7 @@
                     <p class="price-range">Starting from €250</p>
                 </a>
 
-                <a href="collection-details.html?name=Disney princess" class="collection-card" data-collection-name="disney princess">
+                <a href="collection-details.html?name=Disney princess&type=art" class="collection-card" data-collection-name="disney princess">
                     <div class="slideshow-container">
                         <img src="images/Art/Disney princess/Disney princess (1).jpg" alt="Disney Princess Collection 1" class="slideshow-image active">
                         <img src="images/Art/Disney princess/Disney princess (2).jpg" alt="Disney Princess Collection 2" class="slideshow-image">
@@ -58,7 +57,7 @@
                     <p class="price-range">Starting from €200</p>
                 </a>
 
-                <a href="collection-details.html?name=Halloween" class="collection-card" data-collection-name="halloween">
+                <a href="collection-details.html?name=Halloween&type=art" class="collection-card" data-collection-name="halloween">
                     <div class="slideshow-container">
                         <img src="images/Art/Halloween/Halloween (1).jpg" alt="Halloween Collection 1" class="slideshow-image active">
                         <img src="images/Art/Halloween/Halloween (2).jpg" alt="Halloween Collection 2" class="slideshow-image">
@@ -67,7 +66,7 @@
                     <p class="price-range">Starting from €180</p>
                 </a>
 
-                <a href="collection-details.html?name=Ischia" class="collection-card" data-collection-name="ischia">
+                <a href="collection-details.html?name=Ischia&type=art" class="collection-card" data-collection-name="ischia">
                     <div class="slideshow-container">
                         <img src="images/Art/Ischia/Ischia (1).jpg" alt="Ischia Collection 1" class="slideshow-image active">
                         <img src="images/Art/Ischia/Ischia (2).jpg" alt="Ischia Collection 2" class="slideshow-image">
@@ -78,7 +77,7 @@
                     <p class="price-range">Starting from €300</p>
                 </a>
 
-                <a href="collection-details.html?name=Koi Fish" class="collection-card" data-collection-name="koi fish">
+                <a href="collection-details.html?name=Koi Fish&type=art" class="collection-card" data-collection-name="koi fish">
                     <div class="slideshow-container">
                         <img src="images/Art/Koi Fish/Koi Fish (1).jpg" alt="Koi Fish Collection 1" class="slideshow-image active">
                         <img src="images/Art/Koi Fish/Koi Fish (2).jpg" alt="Koi Fish Collection 2" class="slideshow-image">
@@ -86,8 +85,8 @@
                     <h3>Koi Fish</h3>
                     <p class="price-range">Starting from €220</p>
                 </a>
-                
-                <a href="collection-details.html?name=Landscape" class="collection-card" data-collection-name="landscape">
+
+                <a href="collection-details.html?name=Landscape&type=art" class="collection-card" data-collection-name="landscape">
                     <div class="slideshow-container">
                         <img src="images/Art/Landscape/Landscape (1).jpg" alt="Landscape Collection 1" class="slideshow-image active">
                         <img src="images/Art/Landscape/Landscape (2).jpg" alt="Landscape Collection 2" class="slideshow-image">
@@ -95,8 +94,8 @@
                     <h3>Landscape</h3>
                     <p class="price-range">Starting from €280</p>
                 </a>
-                
-                <a href="collection-details.html?name=Little Mermaid" class="collection-card" data-collection-name="little mermaid">
+
+                <a href="collection-details.html?name=Little Mermaid&type=art" class="collection-card" data-collection-name="little mermaid">
                     <div class="slideshow-container">
                         <img src="images/Art/Little Mermaid/Little Mermaid (1).jpg" alt="Little Mermaid Collection 1" class="slideshow-image active">
                         <img src="images/Art/Little Mermaid/Little Mermaid (2).jpg" alt="Little Mermaid Collection 2" class="slideshow-image">
@@ -104,16 +103,16 @@
                     <h3>Little Mermaid</h3>
                     <p class="price-range">Starting from €190</p>
                 </a>
-                
-                <a href="collection-details.html?name=Love at first sight" class="collection-card" data-collection-name="love at first sight">
+
+                <a href="collection-details.html?name=Love at first sight&type=art" class="collection-card" data-collection-name="love at first sight">
                     <div class="slideshow-container">
                         <img src="images/Art/Love at first sight/Love at first sight (1).jpg" alt="Love at first sight Collection 1" class="slideshow-image active">
                     </div>
                     <h3>Love at first sight</h3>
                     <p class="price-range">Starting from €270</p>
                 </a>
-                
-                <a href="collection-details.html?name=Love bound" class="collection-card" data-collection-name="love bound">
+
+                <a href="collection-details.html?name=Love bound&type=art" class="collection-card" data-collection-name="love bound">
                     <div class="slideshow-container">
                         <img src="images/Art/Love bound/Love bound (1).jpg" alt="Love bound Collection 1" class="slideshow-image active">
                         <img src="images/Art/Love bound/Love bound (2).jpg" alt="Love bound Collection 2" class="slideshow-image">
@@ -121,8 +120,8 @@
                     <h3>Love bound</h3>
                     <p class="price-range">Starting from €230</p>
                 </a>
-                
-                <a href="collection-details.html?name=Love in Paris" class="collection-card" data-collection-name="love in paris">
+
+                <a href="collection-details.html?name=Love in Paris&type=art" class="collection-card" data-collection-name="love in paris">
                     <div class="slideshow-container">
                         <img src="images/Art/Love in Paris/Love in Paris (1).jpg" alt="Love in Paris Collection 1" class="slideshow-image active">
                         <img src="images/Art/Love in Paris/Love in Paris (2).jpg" alt="Love in Paris Collection 2" class="slideshow-image">
@@ -130,8 +129,8 @@
                     <h3>Love in Paris</h3>
                     <p class="price-range">Starting from €260</p>
                 </a>
-                
-                <a href="collection-details.html?name=Magic Koi" class="collection-card" data-collection-name="magic koi">
+
+                <a href="collection-details.html?name=Magic Koi&type=art" class="collection-card" data-collection-name="magic koi">
                     <div class="slideshow-container">
                         <img src="images/Art/Magic Koi/Magic Koi (1).jpg" alt="Magic Koi Collection 1" class="slideshow-image active">
                         <img src="images/Art/Magic Koi/Magic Koi (2).jpg" alt="Magic Koi Collection 2" class="slideshow-image">
@@ -141,8 +140,8 @@
                     <h3>Magic Koi</h3>
                     <p class="price-range">Starting from €240</p>
                 </a>
-                
-                <a href="collection-details.html?name=Maleficent" class="collection-card" data-collection-name="maleficent">
+
+                <a href="collection-details.html?name=Maleficent&type=art" class="collection-card" data-collection-name="maleficent">
                     <div class="slideshow-container">
                         <img src="images/Art/Maleficent/Maleficent (1).jpg" alt="Maleficent Collection 1" class="slideshow-image active">
                         <img src="images/Art/Maleficent/Maleficent (2).jpg" alt="Maleficent Collection 2" class="slideshow-image">
@@ -150,16 +149,16 @@
                     <h3>Maleficent</h3>
                     <p class="price-range">Starting from €210</p>
                 </a>
-                
-                <a href="collection-details.html?name=Night Out" class="collection-card" data-collection-name="night out">
+
+                <a href="collection-details.html?name=Night Out&type=art" class="collection-card" data-collection-name="night out">
                     <div class="slideshow-container">
                         <img src="images/Art/Night Out/Night Out (1).jpg" alt="Night Out Collection 1" class="slideshow-image active">
                     </div>
                     <h3>Night Out</h3>
                     <p class="price-range">Starting from €290</p>
                 </a>
-                
-                <a href="collection-details.html?name=Sunflower" class="collection-card" data-collection-name="sunflower">
+
+                <a href="collection-details.html?name=Sunflower&type=art" class="collection-card" data-collection-name="sunflower">
                     <div class="slideshow-container">
                         <img src="images/Art/Sunflower/Sunflower (1).jpg" alt="Sunflower Collection 1" class="slideshow-image active">
                         <img src="images/Art/Sunflower/Sunflower (2).jpg" alt="Sunflower Collection 2" class="slideshow-image">
@@ -167,8 +166,8 @@
                     <h3>Sunflower</h3>
                     <p class="price-range">Starting from €200</p>
                 </a>
-                
-                <a href="collection-details.html?name=Tea Time" class="collection-card" data-collection-name="tea time">
+
+                <a href="collection-details.html?name=Tea Time&type=art" class="collection-card" data-collection-name="tea time">
                     <div class="slideshow-container">
                         <img src="images/Art/Tea Time/Tea Time (1).jpg" alt="Tea Time Collection 1" class="slideshow-image active">
                         <img src="images/Art/Tea Time/Tea Time (2).jpg" alt="Tea Time Collection 2" class="slideshow-image">
@@ -177,8 +176,8 @@
                     <h3>Tea Time</h3>
                     <p class="price-range">Starting from €170</p>
                 </a>
-                
-                <a href="collection-details.html?name=Under the sea" class="collection-card" data-collection-name="under the sea">
+
+                <a href="collection-details.html?name=Under the sea&type=art" class="collection-card" data-collection-name="under the sea">
                     <div class="slideshow-container">
                         <img src="images/Art/Under the sea/Under the sea (1).jpg" alt="Under the sea Collection 1" class="slideshow-image active">
                     </div>
