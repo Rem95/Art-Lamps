@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collection Details - Arts & Lamps</title>
+    <base href="/Art-Lamps/">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-top-bar container">
+            <h1 class="site-logo"><a href="art.html" style="text-decoration: none; color: inherit;">Arts</a> & <a href="lamps.html" style="text-decoration: none; color: inherit;">Lamps</a></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-categories container">
+            <a href="art.html" class="category-link">Art Collection</a>
+            <a href="ArtVideos.html" class="category-link">Art Video 
+            </a>
+            <a href="lamps.html" class="category-link">Lamps & Lighting</a>
+            <a href="LampVideos.html" class="category-link"> Lamps & Lighting Video </a>
+            <a href="ComingSoon.html" class="category-link"> Coming Soon</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <h2 class="gallery-title" id="collectionTitle"></h2>
+        <div class="artwork-grid" id="imageGallery">
+            </div>
+        <p style="text-align: center; margin-top: 30px;">
+            <a href="art.html" class="button-explore">Back to Collections</a> 
+        </p>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 Arts & Lamps. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="shipping-returns.html">Shipping & Returns</a>
+            </div>
+            <div class="social-media">
+                <a href="#" target="_blank" aria-label="Facebook"><img src="https://via.placeholder.com/24x24?text=FB" alt="Facebook Icon"></a>
+                <a href="#" target="_blank" aria-label="Instagram"><img src="https://via.placeholder.com/24x24?text=IG" alt="Instagram Icon"></a>
+                <a href="#" target="_blank" aria-label="Pinterest"><img src="https://via.placeholder.com/24x24?text=PT" alt="Pinterest Icon"></a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="lightbox" class="lightbox">
+        <span class="close-button">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <a class="prev-button">&#10094;</a> 
+        <a class="next-button">&#10095;</a> 
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

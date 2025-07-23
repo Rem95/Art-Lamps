@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Art Videos - Arts & Lamps</title>
+    <link rel="stylesheet" href="style.css"> <!-- Your existing stylesheet -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    
+    <meta name="description" content="Watch captivating videos showcasing our art creation processes and featured pieces.">
+    <meta name="keywords" content="art videos, art process, painting videos, creative videos, unique art">
+    <meta name="author" content="Anastasia & Remus">
+    
+    <meta property="og:title" content="Art Videos - Arts & Lamps">
+    <meta property="og:description" content="Watch captivating videos showcasing our art creation processes and featured pieces.">
+    <meta property="og:image" content="https://www.yourwebsite.com/images/art-video-og.jpg"> 
+    <meta property="og:url" content="https://www.yourwebsite.com/ArtVideos.html"> 
+    <meta property="og:type" content="website">
+
+    <style>
+        /* Custom styles for the lightbox and video player */
+        .lightbox {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+            overflow: hidden; /* Prevent scrollbars on lightbox itself */
+        }
+
+        .lightbox-content {
+            margin: auto;
+            display: block;
+            max-width: 90%; /* Responsive width */
+            max-height: 90vh; /* Responsive height */
+            border-radius: 0.75rem; /* Rounded corners */
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Smooth transition for opening */
+            transform: scale(0.8); /* Start smaller for pop-in effect */
+            opacity: 0; /* Start invisible */
+        }
+
+        .lightbox.active .lightbox-content {
+            transform: scale(1); /* Scale to full size */
+            opacity: 1; /* Fade in */
+        }
+
+        /* Video element inside lightbox */
+        .lightbox-content video {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: 0.75rem; /* Rounded corners */
+            object-fit: contain; /* Ensure video fits within its container */
+        }
+
+        /* The Close Button */
+        .close-button {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+            z-index: 1001; /* Above the video */
+        }
+
+        .close-button:hover,
+        .close-button:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
+
+        /* Navigation Buttons (Prev/Next) */
+        .prev-button, .next-button {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+            background-color: rgba(0,0,0,0.5);
+            border-radius: 50%; /* Circular buttons */
+            width: 50px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1; /* For vertical centering of text */
+            z-index: 1001; /* Above the video */
+        }
+
+        .prev-button {
+            left: 20px;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .next-button {
+            right: 20px;
+            border-radius: 3px 0 0 3px;
+        }
+
+        .prev-button:hover, .next-button:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
+
+        /* Your existing video-item styles might need adjustments if they conflict */
+        .video-item {
+            position: relative;
+            cursor: pointer;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease-in-out;
+            text-align: center; /* Center content within the item */
+        }
+
+        .video-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 150px; /* Fixed width for circular shape */
+            height: 150px; /* Fixed height for circular shape */
+            border-radius: 50%; /* Make it circular */
+            overflow: hidden; /* Hide anything outside the circle */
+            margin: 0 auto 15px auto; /* Center the circle and add bottom margin */
+            background-color: #000; /* Fallback background */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
+        }
+
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cover the circular area */
+            border-radius: 50%; /* Ensure video itself is circular */
+        }
+
+        .play-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 3em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 50%; /* Ensure overlay is circular */
+        }
+
+        /* Hide the play overlay when video is actually playing in the grid */
+        .video-item.playing .play-overlay {
+            display: none;
+        }
+
+        .video-item:hover .play-overlay {
+            background-color: rgba(0,0,0,0.7);
+        }
+
+        /* We no longer need to hide default controls or pointer events from main page videos */
+        /* as they are now intended to autoplay and have a play overlay */
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top-bar container">
+            <h1 class="site-logo"><a href="art.html" style="text-decoration: none; color: inherit;">Arts</a> & <a href="lamps.html" style="text-decoration: none; color: inherit;">Lamps</a></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-categories container">
+           <a href="art.html" class="category-link">Art Collection</a>
+            <a href="ArtVideos.html" class="category-link">Art Video </a>
+            <a href="lamps.html" class="category-link">Lamps & Lighting</a>
+            <a href="LampVideos.html" class="category-link"> Lamps & Lighting Video </a>
+            <a href="ComingSoon.html" class="category-link">Coming Soon</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="page-content video-page-content">
+            <h2 class="section-title">Our Art Videos</h2>
+            <p class="section-description">Dive into the dynamic world of our art through these captivating videos. See the creation process, explore details, and get inspired!</p>
+            
+            <div class="video-grid" id="videoGallery">
+                
+                <div class="video-item">
+                    <h3>Ballerina Art Process</h3>
+                    <div class="video-wrapper">
+                        <video loop autoplay muted playsinline data-video-src="images/ArtVideos/Balerina.mp4" poster="images/Art/Ballerina/Ballerina (1).jpg">
+                            <source src="images/ArtVideos/Balerina.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="play-overlay">&#9658;</div> 
+                    </div>
+                    <p>Experience the flow and grace in the creation of our 'Ballerina' piece.</p>
+                </div>
+
+                <div class="video-item">
+                    <h3>Ischia Landscape Journey</h3>
+                    <div class="video-wrapper">
+                        <video loop autoplay muted playsinline data-video-src="images/ArtVideos/Ischia.mp4" poster="images/Art/Ischia/Ischia (1).jpg">
+                            <source src="images/ArtVideos/Ischia.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="play-overlay">&#9658;</div>
+                    </div>
+                    <p>A visual journey through the vibrant landscapes of 'Ischia'.</p>
+                </div>
+
+                <div class="video-item">
+                    <h3>Koi Fish Reflection</h3>
+                    <div class="video-wrapper">
+                        <video loop autoplay muted playsinline data-video-src="images/ArtVideos/KoiFish.mp4" poster="images/Art/Koi Fish/Koi Fish (1).jpg">
+                            <source src="images/ArtVideos/KoiFish.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="play-overlay">&#9658;</div>
+                    </div>
+                    <p>Watch the serene beauty of the 'Koi Fish' art come to life.</p>
+                </div>
+
+                <div class="video-item">
+                    <h3>Landscape Unveiled</h3>
+                    <div class="video-wrapper">
+                        <video loop autoplay muted playsinline data-video-src="images/ArtVideos/Landscape.mp4" poster="images/Art/Landscape/Landscape (1).jpg">
+                            <source src="images/ArtVideos/Landscape.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="play-overlay">&#9658;</div>
+                    </div>
+                    <p>Discover the layers and details in our captivating 'Landscape' artwork.</p>
+                </div>
+
+                <div class="video-item">
+                    <h3>Love Bound Creation</h3>
+                    <div class="video-wrapper">
+                        <video loop autoplay muted playsinline data-video-src="images/ArtVideos/LoveBound.mp4" poster="images/Art/Love bound/Love bound (1).jpg">
+                            <source src="images/ArtVideos/LoveBound.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="play-overlay">&#9658;</div>
+                    </div>
+                    <p>The intricate process behind the emotional 'Love Bound' piece.</p>
+                </div>
+
+                <div class="video-item">
+                    <h3>Night Out Perspective</h3>
+                    <div class="video-wrapper">
+                        <video loop autoplay muted playsinline data-video-src="images/ArtVideos/NightOut.mp4" poster="images/Art/Night Out/Night Out (1).jpg">
+                            <source src="images/ArtVideos/NightOut.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="play-overlay">&#9658;</div>
+                    </div>
+                    <p>A unique perspective on our 'Night Out' artwork.</p>
+                </div>
+
+            </div>
+            
+            <div class="explore-category-button" style="margin-top: 50px;">
+                <a href="art.html" class="button-explore">Back to Art Collections</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 Arts & Lamps. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="shipping-returns.html">Shipping & Returns</a>
+            </div>
+            <div class="social-media">
+                <a href="#" target="_blank" aria-label="Facebook"><img src="https://via.placeholder.com/24x24?text=FB" alt="Facebook Icon"></a>
+                <a href="#" target="_blank" aria-label="Instagram"><img src="https://via.placeholder.com/24x24?text=IG" alt="Instagram Icon"></a>
+                <a href="#" target="_blank" aria-label="Pinterest"><img src="https://via.placeholder.com/24x24?text=PT" alt="Pinterest Icon"></a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="videoLightbox" class="lightbox">
+        <span class="close-button">&times;</span>
+        <video class="lightbox-content" id="lightbox-video"  loop playsinline muted></video>
+        <a class="prev-button">&#10094;</a> <!-- Left arrow -->
+        <a class="next-button">&#10095;</a> <!-- Right arrow -->
+    </div>
+
+    <script>
+        const videoLightbox = document.getElementById("videoLightbox");
+        const lightboxVideo = document.getElementById("lightbox-video");
+        const closeButton = videoLightbox.querySelector(".close-button");
+        const prevButton = videoLightbox.querySelector(".prev-button");
+        const nextButton = videoLightbox.querySelector(".next-button");
+        const videoItems = document.querySelectorAll(".video-item");
+        let currentVideoIndex = 0;
+        let videos = []; // To store video data for carousel
+
+        // Populate videos array from existing video items
+        videoItems.forEach((item, index) => {
+            const videoElement = item.querySelector("video");
+            videos.push({
+                src: videoElement.getAttribute("data-video-src"),
+                poster: videoElement.getAttribute("poster")
+            });
+
+            // Add an event listener to the actual video element in the grid
+            // This allows us to add a 'playing' class to hide the overlay
+            videoElement.addEventListener('play', function() {
+                item.classList.add('playing');
+            });
+            videoElement.addEventListener('pause', function() {
+                item.classList.remove('playing');
+            });
+            videoElement.addEventListener('ended', function() {
+                item.classList.remove('playing');
+                this.currentTime = 0; // Reset to start
+                this.play(); // Loop playback if desired for grid videos
+            });
+
+            // Add click listener to the entire video item to open lightbox
+            item.addEventListener("click", () => {
+                currentVideoIndex = index;
+                openLightbox(videos[currentVideoIndex].src);
+            });
+        });
+
+        // Function to open the lightbox and play the video
+        function openLightbox(videoSrc) {
+            // Pause all grid videos before opening lightbox
+            document.querySelectorAll('.video-wrapper video').forEach(video => {
+                video.pause();
+            });
+
+            lightboxVideo.src = videoSrc;
+            videoLightbox.style.display = "flex"; // Show the lightbox
+            // Add a class to trigger the transition
+            setTimeout(() => {
+                videoLightbox.classList.add("active");
+                lightboxVideo.play(); // Autoplay the video in lightbox
+            }, 10); // Small delay to allow display:flex to apply
+        }
+
+        // Function to close the lightbox
+        function closeLightbox() {
+            videoLightbox.classList.remove("active"); // Remove active class for transition out
+            setTimeout(() => {
+                videoLightbox.style.display = "none"; // Hide after transition
+                lightboxVideo.pause(); // Pause the video
+                lightboxVideo.currentTime = 0; // Reset video to start
+                lightboxVideo.src = ""; // Clear video source
+
+                // Resume playing the grid videos if they were playing before
+                document.querySelectorAll('.video-wrapper video').forEach(video => {
+                    // Only resume if they were marked as 'playing' or if you want them all to auto-resume
+                    // For true auto-resume based on prior state, you'd need to store their playing state.
+                    // For simplicity, this will just attempt to play them again.
+                    video.play().catch(e => console.log("Autoplay prevented:", e)); // Add catch for autoplay policy
+                });
+
+            }, 300); // Match CSS transition duration
+        }
+
+        // Function to show a specific video in the lightbox
+        function showVideo(index) {
+            lightboxVideo.pause(); // Pause current video before changing source
+            
+            if (index < 0) {
+                currentVideoIndex = videos.length - 1; // Loop to last video
+            } else if (index >= videos.length) {
+                currentVideoIndex = 0; // Loop to first video
+            } else {
+                currentVideoIndex = index;
+            }
+            lightboxVideo.src = videos[currentVideoIndex].src;
+            lightboxVideo.play();
+        }
+
+        // Event listeners for close button
+        closeButton.addEventListener("click", closeLightbox);
+
+        // Event listeners for prev/next buttons
+        prevButton.addEventListener("click", () => showVideo(currentVideoIndex - 1));
+        nextButton.addEventListener("click", () => showVideo(currentVideoIndex + 1));
+
+        // Click on video itself or lightbox background to go to next video
+        videoLightbox.addEventListener("click", (event) => {
+            // Check if the click was directly on the video element
+            if (event.target === lightboxVideo) {
+                showVideo(currentVideoIndex + 1); // Go to next video
+            } 
+            // Check if the click was on the lightbox background (but not on controls)
+            else if (event.target === videoLightbox) {
+                closeLightbox(); // Close the lightbox
+            }
+            // Do nothing if click is on control buttons, as they have their own handlers
+            else if (event.target === closeButton || event.target === prevButton || event.target === nextButton) {
+                event.stopPropagation(); // Prevent this click from bubbling up to the lightbox handler
+            }
+        });
+
+
+        // Keyboard navigation (Escape to close, arrow keys for prev/next)
+        document.addEventListener("keydown", (event) => {
+            if (videoLightbox.style.display === "flex") {
+                if (event.key === "Escape") {
+                    closeLightbox();
+                } else if (event.key === "ArrowLeft") {
+                    showVideo(currentVideoIndex - 1);
+                } else if (event.key === "ArrowRight") {
+                    showVideo(currentVideoIndex + 1);
+                }
+            }
+        });
+
+        // Initial setup for grid videos: ensure autoplay on load
+        // This relies on browser autoplay policies. Muted autoplay is generally allowed.
+        document.querySelectorAll('.video-wrapper video').forEach(video => {
+            video.play().catch(e => console.log("Autoplay on grid prevented:", e));
+        });
+
+    </script>
+
+</body>
+</html>

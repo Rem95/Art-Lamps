@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Arts & Lamps</title>
+    <link rel="stylesheet" href="style.css"> 
+    <link rel="icon" href="favicon.ico" type="image/x-icon"> 
+    
+    <meta name="description" content="Get in touch with Anastasia and Remus at Arts & Lamps. We're here to answer your questions about our unique art and handmade lamps.">
+    <meta name="keywords" content="contact, Arts & Lamps contact, email, custom orders, art inquiry, lamp inquiry">
+    <meta name="author" content="Anastasia & Remus">
+    
+    <meta property="og:title" content="Contact Us - Arts & Lamps">
+    <meta property="og:description" content="Have a question? Reach out to Anastasia and Remus for inquiries about art, lamps, or custom orders.">
+    <meta property="og:image" content="https://www.yourwebsite.com/images/contact-us.jpg"> 
+    <meta property="og:url" content="https://www.yourwebsite.com/contact.html"> 
+    <meta property="og:type" content="website">
+    <style>
+        /* General form styling */
+        .contact-form-section {
+            padding: 40px 0;
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .form-header {
+            text-align: left;
+            margin-bottom: 30px;
+        }
+
+        .form-header h2 {
+            font-size: 2.5em;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .form-header p {
+            font-size: 1.1em;
+            color: #555;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-header p svg {
+            margin-right: 10px;
+            fill: #555;
+        }
+
+        .customer-type-selection {
+            display: flex;
+            margin-bottom: 20px;
+        }
+
+        .customer-type-selection label {
+            margin-right: 20px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .customer-type-selection input[type="radio"] {
+            margin-right: 5px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group input[type="tel"],
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            box-sizing: border-box; /* Include padding in width */
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #4CAF50;
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-group .required-star {
+            color: red;
+            margin-left: 5px;
+        }
+
+        .phone-group {
+            display: flex;
+            gap: 10px;
+        }
+
+        .phone-group select {
+            flex-shrink: 0;
+            width: 100px; /* Adjust as needed for country code */
+        }
+
+        .phone-group input {
+            flex-grow: 1;
+        }
+
+        .privacy-policy-text {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .privacy-policy-text a {
+            color: #4CAF50;
+            text-decoration: none;
+        }
+
+        .privacy-policy-text a:hover {
+            text-decoration: underline;
+        }
+
+        .submit-button-container {
+            text-align: center;
+        }
+
+        .submit-button {
+            background-color: #333;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        .submit-button:hover {
+            background-color: #555;
+            transform: translateY(-2px);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-form-section {
+                margin: 20px;
+                padding: 20px;
+            }
+        }
+
+        /* Custom Modal Styles */
+        .modal {
+            display: none; /* Hidden by default - THIS IS THE CRUCIAL CHANGE */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.6); /* Black w/ opacity */
+            justify-content: center; /* Use flexbox for centering */
+            align-items: center; /* Use flexbox for centering */
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: auto;
+            padding: 30px;
+            border: 1px solid #888;
+            width: 80%; /* Could be responsive */
+            max-width: 500px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            position: relative;
+            text-align: center;
+        }
+
+        .modal .close-button {
+            color: #aaa;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .modal .close-button:hover,
+        .modal .close-button:focus {
+            color: #000;
+            text-decoration: none;
+        }
+
+        .modal-body .animal-images {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-bottom: 20px;
+            gap: 20px; /* Space between images */
+        }
+
+        .modal-body .animal-image {
+            width: 200px; /* Adjusted size for images */
+            height: 200px; /* Adjusted size for images */
+            object-fit: contain;
+            border-radius: 8px; /* Slightly rounded corners for images */
+        }
+
+        .modal-body .thank-you-text {
+            font-size: 1.4em; /* Increased font size for the message */
+            color: #333;
+            line-height: 1.5;
+        }
+
+        /* Feedback Message Style */
+        .form-feedback-message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+            font-weight: bold;
+            /* Added transition for smoother appearance/disappearance */
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s ease;
+        }
+
+        .form-feedback-message.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .form-feedback-message.success {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .form-feedback-message.error {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-top-bar container">
+            <h1 class="site-logo"><a href="art.html" style="text-decoration: none; color: inherit;">Arts</a> & <a href="lamps.html" style="text-decoration: none; color: inherit;">Lamps</a></h1>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-categories container">
+            <a href="art.html" class="category-link">Art Collection</a>
+            <a href="ArtVideos.html" class="category-link">Art Video</a>
+            <a href="LampVideos.html" class="category-link">Lamps & Lighting</a>
+            <a href="LampVideos.html" class="category-link"> Lamps & Lighting Video </a>
+            <a href="ComingSoon.html" class="category-link">Coming Soon</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="contact-form-section">
+            <div class="form-header">
+                <h2>Contact us</h2>
+                <p>
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#000000">
+                        <path d="M0 0h24v24H0V0z" fill="none"/>
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V8l8 5 8-5v10zm-8-7L4 6h16l-8 5z"/>
+                    </svg>
+                    Contact form
+                </p>
+            </div>
+
+            <!-- Formspree integration: action points to your unique Formspree endpoint -->
+            <form id="contactForm" action="https://formspree.io/f/xeozerjv" method="POST">
+                <div class="customer-type-selection">
+                    <label>
+                        <input type="radio" name="customerType" value="private" checked> Private customer
+                    </label>
+                    <label>
+                        <input type="radio" name="customerType" value="company"> Company
+                    </label>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <input type="text" id="firstName" name="firstName" placeholder="First name" required>
+                        <span class="required-star">*</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="lastName" name="lastName" placeholder="Last name" required>
+                        <span class="required-star">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <input type="email" id="email" name="email" placeholder="Email address" required>
+                    <span class="required-star">*</span>
+                </div>
+
+                <div class="form-group phone-group">
+                    <select id="countryCode" name="countryCode">
+                        <option value="+353">+353</option> <!-- Ireland -->
+                        <option value="+1">+1</option>   <!-- USA/Canada -->
+                        <option value="+44">+44</option> <!-- UK -->
+                        <option value="+49">+49</option> <!-- Germany -->
+                        <!-- Add more country codes as needed -->
+                    </select>
+                    <input type="tel" id="phoneNumber" name="phoneNumber" placeholder="Phone number">
+                </div>
+
+                <div class="form-group">
+                    <select id="concern" name="concern" required>
+                        <option value="">Please select an option</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="art">Art Collection Inquiry</option>
+                        <option value="lamps">Lamps & Lighting Inquiry</option>
+                        <option value="custom">Custom Order Request</option>
+                        <option value="returns">Returns & Exchanges</option>
+                    </select>
+                    <span class="required-star">*</span>
+                </div>
+
+                <div class="form-group">
+                    <textarea id="message" name="message" placeholder="Message" required></textarea>
+                    <span class="required-star">*</span>
+                </div>
+
+                <p class="privacy-policy-text">
+                    For the data submitted via our contact form, our <a href="privacy-policy.html">privacy policy</a> applies.
+                </p>
+
+                <div class="submit-button-container">
+                    <button type="submit" class="submit-button">Submit</button>
+                </div>
+                <!-- Feedback message area -->
+                <div id="formFeedback" class="form-feedback-message"></div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <p>&copy; 2025 Arts & Lamps. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-service.html">Terms of Service</a>
+                <a href="shipping-returns.html">Shipping & Returns</a>
+            </div>
+            <div class="social-media">
+                <a href="#" target="_blank" aria-label="Facebook"><img src="https://via.placeholder.com/24x24?text=FB" alt="Facebook Icon"></a>
+                <a href="#" target="_blank" aria-label="Instagram"><img src="https://via.placeholder.com/24x24?text=IG" alt="Instagram Icon"></a>
+                <a href="#" target="_blank" aria-label="Pinterest"><img src="https://via.placeholder.com/24x24?text=PT" alt="Pinterest Icon"></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Custom Thank You Modal -->
+    <div id="thankYouModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="closeModalBtn">&times;</span>
+            <div class="modal-body">
+                <div class="animal-images">
+                    <!-- Updated image source to your provided image -->
+                    <img src="images/b.jpg" alt="Bear eating honey" class="animal-image">
+                    <img src="images/m.jpg" alt="Bunny waving" class="animal-image">
+                </div>
+                <p class="thank-you-text">Message Received! Thank you for contacting Arts & Lamps. We're busy crafting magic and will get back to you within 24-48 hours.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const contactForm = document.getElementById('contactForm');
+            const thankYouModal = document.getElementById('thankYouModal');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const formFeedback = document.getElementById('formFeedback'); // Get feedback element
+
+            // Function to open the modal
+            function openModal() {
+                thankYouModal.style.display = 'flex'; // Use flex to center content
+            }
+
+            // Function to close the modal
+            function closeModal() {
+                thankYouModal.style.display = 'none';
+            }
+
+            // Function to display feedback messages
+            function showFeedback(message, type) {
+                formFeedback.textContent = message;
+                formFeedback.className = 'form-feedback-message ' + type; // Set class for styling (success/error)
+                formFeedback.classList.add('show'); // Make it visible with transition
+                setTimeout(() => {
+                    formFeedback.classList.remove('show'); // Hide after 5 seconds
+                }, 5000);
+            }
+
+            // Close modal when clicking the close button
+            closeModalBtn.addEventListener('click', closeModal);
+
+            // Close modal when clicking outside the modal content
+            window.addEventListener('click', (event) => {
+                if (event.target == thankYouModal) {
+                    closeModal();
+                }
+            });
+
+            // Handle form submission
+            contactForm.addEventListener('submit', async function(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const form = event.target;
+                const formData = new FormData(form); // Use FormData for easier submission to Formspree
+
+                // You can still log the data to console for debugging
+                const formObject = {};
+                formData.forEach((value, key) => {
+                    formObject[key] = value;
+                });
+                console.log('Form Submitted:', formObject);
+
+                try {
+                    // Submit form data to Formspree
+                    const response = await fetch(form.action, {
+                        method: form.method,
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json' // Important for Formspree to return JSON
+                        }
+                    });
+
+                    if (response.ok) {
+                        openModal(); // Show the custom thank you modal on success
+                        form.reset(); // Clear the form after successful submission
+                        // Optional: show a small success message below form too
+                        // showFeedback('Your message has been sent successfully!', 'success');
+                    } else {
+                        // Handle errors from Formspree, e.g., display an error message
+                        const data = await response.json(); // Try to parse error response
+                        console.error('Formspree Error:', data);
+                        console.error('Formspree raw response status:', response.status, response.statusText); // Added for debugging
+                        showFeedback('Oops! There was a problem sending your message. Please try again.', 'error');
+                    }
+                } catch (error) {
+                    console.error('Network or submission error:', error);
+                    showFeedback('A network error occurred. Please check your internet connection and try again.', 'error');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
