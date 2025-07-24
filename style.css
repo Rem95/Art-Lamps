@@ -3,8 +3,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #FFFFFF; /* Changed to white */
-    color: #333; /* Dark text color for general body content on a light background */
+    background-color: #FFFFFF;
+    color: #333;
     line-height: 1.6;
 }
 
@@ -37,13 +37,15 @@ header.scrolled {
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
+    position: relative; /* Needed for z-index of nav */
+    z-index: 101; /* Ensure this is above the main-nav when it overlays */
 }
 
 .site-logo {
     font-size: 1.8em;
     color: #4F6B4F;
     margin: 0;
-    white-space: nowrap; /* Prevent logo from wrapping on small screens */
+    white-space: nowrap;
 }
 
 /* Main Navigation */
@@ -76,7 +78,7 @@ header.scrolled {
     border: none;
     font-size: 2em;
     cursor: pointer;
-    color: #4F6B4F; /* Match logo color */
+    color: #4F6B4F;
     padding: 5px;
 }
 
@@ -86,7 +88,9 @@ header.scrolled {
     justify-content: center;
     padding: 10px 20px;
     gap: 20px;
-    flex-wrap: wrap; /* Allow categories to wrap */
+    flex-wrap: wrap;
+    background-color: #a6dab4; /* Ensure background matches header */
+    border-top: 1px solid #D4E2C7; /* Consistent with header border */
 }
 
 .category-link {
@@ -96,7 +100,7 @@ header.scrolled {
     padding: 5px 10px;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    white-space: nowrap; /* Prevent individual category links from wrapping */
+    white-space: nowrap;
 }
 
 .category-link:hover {
@@ -117,7 +121,7 @@ header.scrolled {
 .hero-image-area {
     position: relative;
     width: 100%;
-    padding-top: 50%; /* Aspect ratio 2:1 (height is 50% of width) */
+    padding-top: 50%;
     background-color: #4F6B4F;
 }
 
@@ -140,20 +144,19 @@ header.scrolled {
     background-color: rgba(0, 0, 0, 0.4);
     padding: 20px 40px;
     border-radius: 10px;
-    max-width: 90%; /* Ensure overlay doesn't exceed screen width */
-    box-sizing: border-box; /* Include padding in width */
+    max-width: 90%;
+    box-sizing: border-box;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .hero-text-overlay h2 {
     font-size: 2.5em;
     margin-bottom: 10px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .hero-text-overlay p {
     font-size: 1.2em;
     margin-bottom: 20px;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
 .button-primary,
@@ -165,7 +168,7 @@ header.scrolled {
     font-weight: bold;
     margin: 0 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    white-space: nowrap; /* Prevent buttons from wrapping text */
+    white-space: nowrap;
 }
 
 .button-primary {
@@ -232,7 +235,7 @@ header.scrolled {
 /* Grid Layouts for Collections (index.html, art.html, lamps.html) */
 .collections-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Use auto-fit and minmax for responsiveness */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 25px;
     padding: 20px 0;
     justify-items: center;
@@ -241,8 +244,8 @@ header.scrolled {
 /* Individual Collection Card Styling */
 .collection-card {
     display: block;
-    width: 100%; /* Ensure it takes full column width */
-    max-width: 280px; /* Max width for consistency across larger screens */
+    width: 100%;
+    max-width: 280px;
     background-color: #ffffff;
     border-radius: 15px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -274,7 +277,7 @@ header.scrolled {
 /* Slideshow Container (for images within collection cards) */
 .slideshow-container {
     width: 100%;
-    padding-top: 75%; /* Maintain 4:3 aspect ratio */
+    padding-top: 75%;
     position: relative;
     overflow: hidden;
     border-top-left-radius: 15px;
@@ -320,7 +323,7 @@ header.scrolled {
 /* Artwork Grid Layout (for collection-details.html and gallery.html) */
 .artwork-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adaptive columns */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 25px;
     padding: 30px 0;
     max-width: 1200px;
@@ -339,7 +342,7 @@ header.scrolled {
     cursor: pointer;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     width: 100%;
-    max-width: 280px; /* Limit individual card width */
+    max-width: 280px;
 }
 
 .artwork-item:hover {
@@ -395,11 +398,11 @@ header.scrolled {
     background-color: rgba(0, 0, 0, 0.9);
     cursor: pointer;
     -webkit-overflow-scrolling: touch;
-    align-items: center; /* Center horizontally */
-    justify-content: center; /* Center vertically */
+    align-items: center;
+    justify-content: center;
 }
 
-.lightbox-content { /* Shared style for image and video lightbox content */
+.lightbox-content {
     margin: auto;
     display: block;
     max-width: 90%;
@@ -446,23 +449,23 @@ header.scrolled {
     font-weight: bold;
     font-size: 30px;
     transition: 0.6s ease;
-    border-radius: 50%; /* Make them circular */
+    border-radius: 50%;
     user-select: none;
     -webkit-user-select: none;
-    background-color: rgba(0,0,0,0.5); /* Semi-transparent background */
-    display: flex; /* For centering content */
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
     align-items: center;
     justify-content: center;
-    width: 50px; /* Fixed width for circular shape */
-    height: 50px; /* Fixed height for circular shape */
+    width: 50px;
+    height: 50px;
 }
 
 .prev-button {
-    left: 10px; /* Adjusted closer to edge */
+    left: 10px;
 }
 
 .next-button {
-    right: 10px; /* Adjusted closer to edge */
+    right: 10px;
 }
 
 .prev-button:hover, .next-button:hover {
@@ -470,7 +473,7 @@ header.scrolled {
 }
 
 #caption {
-    display: none; /* Explicitly hide the caption element */
+    display: none;
 }
 
 
@@ -492,7 +495,7 @@ footer {
 
 .footer-content p {
     margin: 5px 0;
-    flex-basis: 100%; /* Take full width on small screens */
+    flex-basis: 100%;
 }
 
 .footer-links a,
@@ -522,7 +525,7 @@ footer {
 
 .video-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid for videos */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-top: 30px;
     justify-items: center;
@@ -537,7 +540,7 @@ footer {
     padding-bottom: 20px;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     width: 100%;
-    max-width: 280px; /* Consistent card width */
+    max-width: 280px;
     cursor: pointer;
 }
 
@@ -562,21 +565,21 @@ footer {
 /* NEW: Video Wrapper for round shape and overlay */
 .video-wrapper {
     position: relative;
-    width: 180px; /* Set a fixed width for the circle */
-    height: 180px; /* Set a fixed height for the circle */
-    border-radius: 50%; /* Makes it round */
-    overflow: hidden; /* Clips content outside the circle */
-    margin: 15px auto 10px auto; /* Center it within the card */
-    background-color: #eee; /* Placeholder background */
-    display: flex; /* For centering video content */
-    align-items: center; /* For centering video content */
-    justify-content: center; /* For centering video content */
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 15px auto 10px auto;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .video-wrapper video {
-    width: 100%; /* Fill the wrapper */
-    height: 100%; /* Fill the wrapper */
-    object-fit: cover; /* Ensure video covers the circular area */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
     display: block;
     margin: 0;
     border-radius: 0;
@@ -598,7 +601,7 @@ footer {
     cursor: pointer;
     opacity: 0;
     transition: opacity 0.3s ease;
-    border-radius: 50%; /* Ensure overlay is circular */
+    border-radius: 50%;
 }
 
 .video-item:hover .play-overlay {
@@ -613,8 +616,8 @@ footer {
     gap: 20px;
 }
 
-.about-intro:nth-child(even) { /* For the second paragraph (Remus) */
-    flex-direction: row-reverse; /* Swap order for image on right */
+.about-intro:nth-child(even) {
+    flex-direction: row-reverse;
 }
 
 .creator-avatar {
@@ -622,7 +625,7 @@ footer {
     height: 150px;
     border-radius: 50%;
     object-fit: cover;
-    flex-shrink: 0; /* Prevent image from shrinking */
+    flex-shrink: 0;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
@@ -683,14 +686,14 @@ footer {
 .customer-type-selection {
     display: flex;
     margin-bottom: 20px;
-    flex-wrap: wrap; /* Allow wrapping on small screens */
+    flex-wrap: wrap;
 }
 
 .customer-type-selection label {
     margin-right: 20px;
     font-weight: bold;
     cursor: pointer;
-    margin-bottom: 10px; /* Space out radio buttons vertically if they wrap */
+    margin-bottom: 10px;
 }
 
 .customer-type-selection input[type="radio"] {
@@ -928,7 +931,7 @@ footer {
 @media (max-width: 1024px) {
     .collections-grid,
     .artwork-grid {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); /* More columns as screen size allows */
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
         gap: 20px;
     }
     .video-grid {
@@ -955,58 +958,80 @@ footer {
 /* Mobile Devices (e.g., up to 768px, portrait and landscape) */
 @media (max-width: 768px) {
     .header-top-bar {
-        flex-direction: row; /* Keep logo and hamburger on one row */
+        flex-direction: row;
         justify-content: space-between;
         align-items: center;
         padding: 10px 20px;
+        position: relative; /* Added for z-index of nav */
+        z-index: 101; /* Ensure this is above the main-nav when it overlays */
     }
 
     .site-logo {
-        flex-grow: 1; /* Allow logo to take available space */
+        flex-grow: 1;
         text-align: left;
     }
 
     .hamburger-menu {
-        display: block; /* Show hamburger menu on mobile */
+        display: block;
     }
 
     .main-nav {
+        /* Changed for slide-out/overlay menu */
+        position: absolute; /* Position relative to .header-top-bar if inside, or body/viewport if fixed */
+        top: 100%; /* Position below the header-top-bar */
+        left: 0;
         width: 100%;
-        order: 3; /* Push navigation to new line below logo/hamburger */
+        background-color: #a6dab4; /* Background for dropdown menu */
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
         max-height: 0; /* Hidden by default */
         overflow: hidden;
-        transition: max-height 0.3s ease-out;
-        flex-basis: 100%; /* Take full width */
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        z-index: 100; /* Ensure it's above content, below header-top-bar */
+        padding-top: 0;
+        padding-bottom: 0;
+        border-top: 1px solid #D4E2C7; /* Add border for separation */
     }
 
     .main-nav.active {
-        max-height: 300px; /* Adjust based on actual menu height */
-        overflow: visible; /* Allow content to be visible */
+        max-height: 300px; /* Adjust based on actual menu height to show all links */
+        padding-top: 15px;
+        padding-bottom: 15px;
+        overflow: auto; /* Allow scrolling if content overflows */
     }
 
     .main-nav ul {
-        flex-direction: column; /* Stack navigation links vertically */
-        align-items: center; /* Center links */
-        padding: 15px 0;
-        background-color: #a6dab4; /* Background for dropdown menu */
-        border-top: 1px solid #D4E2C7;
+        flex-direction: column;
+        align-items: center;
+        padding: 0; /* Removed padding here, handled by main-nav.active */
+        width: 100%;
     }
 
     .main-nav ul li {
-        margin: 10px 0; /* Vertical spacing for stacked links */
+        margin: 10px 0;
+        width: 100%; /* Make links take full width for better tapping */
+        text-align: center;
     }
 
+    .main-nav ul li a {
+        display: block; /* Make link fill list item for larger tap area */
+        padding: 5px 0;
+    }
+
+
     .header-categories {
-        flex-direction: column; /* Stack category links vertically */
+        flex-direction: column;
         align-items: center;
         gap: 10px;
-        padding-top: 0; /* Remove top padding */
-        border-top: 1px solid #D4E2C7; /* Add border for separation */
-        margin-top: 10px; /* Space from main nav if active */
+        padding-top: 10px; /* Restore some top padding */
+        border-top: 1px solid #D4E2C7;
+        margin-top: 0; /* Reset margin */
+        display: flex; /* Always display categories on mobile */
+        width: 100%;
+        background-color: #a6dab4; /* Match header color */
     }
 
     .category-link {
-        width: 90%; /* Make category links wider */
+        width: 90%;
         text-align: center;
         padding: 10px 0;
     }
@@ -1015,7 +1040,7 @@ footer {
         margin-bottom: 20px;
     }
     .hero-image-area {
-        padding-top: 65%; /* Adjust aspect ratio for better mobile view of banner */
+        padding-top: 65%;
     }
     .hero-text-overlay {
         padding: 15px 20px;
@@ -1029,9 +1054,9 @@ footer {
     }
     .button-primary,
     .button-secondary {
-        display: block; /* Stack buttons vertically */
+        display: block;
         width: 90%;
-        margin: 10px auto; /* Center stacked buttons */
+        margin: 10px auto;
         padding: 10px 15px;
     }
 
@@ -1048,7 +1073,7 @@ footer {
     .collections-grid,
     .artwork-grid,
     .video-grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
+        grid-template-columns: 1fr;
         gap: 20px;
         padding: 10px;
     }
@@ -1056,12 +1081,12 @@ footer {
     .collection-card,
     .artwork-item,
     .video-item {
-        max-width: 90%; /* Ensure cards don't stretch to full width unnecessarily */
-        margin: 0 auto; /* Center individual cards */
+        max-width: 90%;
+        margin: 0 auto;
     }
 
     .video-wrapper {
-        width: 200px; /* Slightly larger for single column */
+        width: 200px;
         height: 200px;
     }
 
@@ -1071,66 +1096,66 @@ footer {
         text-align: center;
     }
     .footer-content p {
-        flex-basis: auto; /* Revert flex-basis */
+        flex-basis: auto;
         margin-bottom: 10px;
     }
     .footer-links,
     .social-media {
         margin-top: 15px;
-        width: 100%; /* Take full width */
-        display: flex; /* For horizontal alignment of links/icons */
+        width: 100%;
+        display: flex;
         justify-content: center;
-        flex-wrap: wrap; /* Allow links/icons to wrap if many */
+        flex-wrap: wrap;
         gap: 10px;
     }
     .footer-links a,
     .social-media a {
-        margin: 5px; /* Adjust spacing */
+        margin: 5px;
     }
 
     /* About Us specific mobile adjustments */
     .about-intro {
-        flex-direction: column; /* Stack image and text vertically */
+        flex-direction: column;
         text-align: center;
         align-items: center;
     }
 
-    .about-intro:nth-child(even) { /* Reset order for the second paragraph */
+    .about-intro:nth-child(even) {
         flex-direction: column;
     }
 
     .creator-avatar {
-        margin-bottom: 15px; /* Space between image and text */
+        margin-bottom: 15px;
     }
 
     .about-intro p {
-        text-align: center; /* Center text under image */
+        text-align: center;
     }
 
     /* Contact Form specific mobile adjustments */
     .contact-form-section {
-        margin: 20px 10px; /* Adjust margin for smaller screens */
+        margin: 20px 10px;
         padding: 20px;
     }
     .form-grid {
-        grid-template-columns: 1fr; /* Single column for form fields */
+        grid-template-columns: 1fr;
     }
     .phone-group select {
-        width: 80px; /* Smaller country code dropdown */
+        width: 80px;
     }
     .modal-body .animal-images {
-        flex-direction: column; /* Stack animal images vertically in modal */
+        flex-direction: column;
         gap: 10px;
     }
     .modal-body .animal-image {
-        width: 150px; /* Smaller images in mobile modal */
+        width: 150px;
         height: 150px;
     }
     .modal-body .thank-you-text {
-        font-size: 1.1em; /* Smaller text in modal */
+        font-size: 1.1em;
     }
     .coming-soon-image {
-        max-width: 40%; /* Increase image size for better visibility on mobile */
+        max-width: 40%;
     }
 }
 
@@ -1149,7 +1174,7 @@ footer {
         font-size: 1.8em;
     }
     .main-nav.active {
-        max-height: 400px; /* Could be larger if needed */
+        max-height: 400px;
     }
     .main-nav ul li a {
         font-size: 0.95em;
@@ -1178,13 +1203,13 @@ footer {
     .collection-card,
     .artwork-item,
     .video-item {
-        max-width: 100%; /* Allow cards to take full width */
+        max-width: 100%;
     }
     .artwork-item img {
-        height: 200px; /* Smaller image height for individual artworks */
+        height: 200px;
     }
     .video-wrapper {
-        width: 150px; /* Smaller circles for very small screens */
+        width: 150px;
         height: 150px;
     }
     .footer-content {
@@ -1217,6 +1242,6 @@ footer {
         font-size: 1em;
     }
     .coming-soon-image {
-        max-width: 50%; /* Make it slightly bigger on very small screens */
+        max-width: 50%;
     }
-}
+} 
