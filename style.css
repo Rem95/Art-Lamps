@@ -3,8 +3,8 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #FFFFFF;
-    color: #333;
+    background-color: #FFFFFF; /* Changed to white */
+    color: #333; /* Dark text color for general body content on a light background */
     line-height: 1.6;
 }
 
@@ -45,7 +45,7 @@ header.scrolled {
     font-size: 1.8em;
     color: #4F6B4F;
     margin: 0;
-    white-space: nowrap;
+    white-space: nowrap; /* Prevent logo from wrapping on small screens */
 }
 
 /* Main Navigation */
@@ -78,7 +78,7 @@ header.scrolled {
     border: none;
     font-size: 2em;
     cursor: pointer;
-    color: #4F6B4F;
+    color: #4F6B4F; /* Match logo color */
     padding: 5px;
 }
 
@@ -88,7 +88,7 @@ header.scrolled {
     justify-content: center;
     padding: 10px 20px;
     gap: 20px;
-    flex-wrap: wrap;
+    flex-wrap: wrap; /* Allow categories to wrap */
     background-color: #a6dab4; /* Ensure background matches header */
     border-top: 1px solid #D4E2C7; /* Consistent with header border */
 }
@@ -100,7 +100,7 @@ header.scrolled {
     padding: 5px 10px;
     border-radius: 5px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    white-space: nowrap;
+    white-space: nowrap; /* Prevent individual category links from wrapping */
 }
 
 .category-link:hover {
@@ -121,7 +121,7 @@ header.scrolled {
 .hero-image-area {
     position: relative;
     width: 100%;
-    padding-top: 50%;
+    padding-top: 50%; /* Aspect ratio 2:1 (height is 50% of width) */
     background-color: #4F6B4F;
 }
 
@@ -144,8 +144,8 @@ header.scrolled {
     background-color: rgba(0, 0, 0, 0.4);
     padding: 20px 40px;
     border-radius: 10px;
-    max-width: 90%;
-    box-sizing: border-box;
+    max-width: 90%; /* Ensure overlay doesn't exceed screen width */
+    box-sizing: border-box; /* Include padding in width */
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
@@ -168,7 +168,7 @@ header.scrolled {
     font-weight: bold;
     margin: 0 10px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    white-space: nowrap;
+    white-space: nowrap; /* Prevent buttons from wrapping text */
 }
 
 .button-primary {
@@ -1244,4 +1244,4 @@ footer {
     .coming-soon-image {
         max-width: 50%;
     }
-} 
+}
