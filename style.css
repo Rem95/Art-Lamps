@@ -6,7 +6,14 @@ body {
     background-color: #FFFFFF; /* Changed to white */
     color: #333; /* Dark text color for general body content on a light background */
     line-height: 1.6;
+    overflow-x: hidden; /* Prevent horizontal scroll due to menu positioning */
 }
+
+/* New: Prevent body scroll when menu is open */
+body.menu-open {
+    overflow: hidden; /* This stops background scrolling */
+}
+
 
 .container {
     max-width: 1200px;
@@ -839,7 +846,7 @@ footer {
 }
 
 .modal .close-button:hover,
-.modal .close-button:focus {
+.close-button:focus {
     color: #000;
     text-decoration: none;
 }
@@ -977,57 +984,58 @@ footer {
 
     .main-nav {
         /* Changed for slide-out/overlay menu */
-        position: absolute; /* Position relative to .header-top-bar if inside, or body/viewport if fixed */
-        top: 100%; /* Position below the header-top-bar */
-        left: 0;
-        width: 100%;
-        background-color: #a6dab4; /* Background for dropdown menu */
+        position: fixed; /* KEY CHANGE: Fixed to viewport */
+        top: 0; /* Align to top of viewport */
+        left: -100%; /* Start off-screen to the left */
+        width: 100%; /* Full width */
+        height: 100%; /* Full height of viewport */
+        background-color: rgba(166, 218, 180, 0.95); /* Semi-transparent background */
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        max-height: 0; /* Hidden by default */
-        overflow: hidden;
-        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-        z-index: 100; /* Ensure it's above content, below header-top-bar */
-        padding-top: 0;
-        padding-bottom: 0;
-        border-top: 1px solid #D4E2C7; /* Add border for separation */
+        overflow: hidden; /* Hide scrollbar initially */
+        transition: left 0.3s ease-out; /* Slide in/out transition */
+        z-index: 99; /* Below header-top-bar but above content */
+        padding-top: 60px; /* Space for logo/hamburger bar */
+        display: flex; /* Use flex to vertically align content */
+        flex-direction: column;
+        align-items: center; /* Center content horizontally */
+        justify-content: flex-start; /* Align content to top */
     }
 
     .main-nav.active {
-        max-height: 300px; /* Adjust based on actual menu height to show all links */
-        padding-top: 15px;
-        padding-bottom: 15px;
-        overflow: auto; /* Allow scrolling if content overflows */
+        left: 0; /* Slide in from left */
+        overflow-y: auto; /* Allow vertical scrolling if content overflows */
     }
 
     .main-nav ul {
         flex-direction: column;
         align-items: center;
-        padding: 0; /* Removed padding here, handled by main-nav.active */
+        padding: 0;
         width: 100%;
     }
 
     .main-nav ul li {
         margin: 10px 0;
-        width: 100%; /* Make links take full width for better tapping */
+        width: 100%;
         text-align: center;
     }
 
     .main-nav ul li a {
-        display: block; /* Make link fill list item for larger tap area */
-        padding: 5px 0;
+        display: block;
+        padding: 10px 0; /* Increased padding for larger tap area */
+        color: #333; /* Darker text for readability on lighter background */
+        font-size: 1.1em; /* Slightly larger font */
     }
-
 
     .header-categories {
         flex-direction: column;
         align-items: center;
         gap: 10px;
-        padding-top: 10px; /* Restore some top padding */
+        padding-top: 10px;
         border-top: 1px solid #D4E2C7;
-        margin-top: 0; /* Reset margin */
-        display: flex; /* Always display categories on mobile */
+        margin-top: 0;
+        display: flex;
         width: 100%;
-        background-color: #a6dab4; /* Match header color */
+        background-color: #a6dab4;
     }
 
     .category-link {
@@ -1174,7 +1182,7 @@ footer {
         font-size: 1.8em;
     }
     .main-nav.active {
-        max-height: 400px;
+        max-height: 100vh; /* Ensure it covers full height */
     }
     .main-nav ul li a {
         font-size: 0.95em;
