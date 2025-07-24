@@ -1,3 +1,14 @@
+Okay, I have provided all the updated HTML files that consolidate the navigation menu (moving category links into the main hamburger menu) and remove the problematic `<base>` tags and inline styles/scripts.
+
+Now that you have all the updated HTML files, the next crucial step is to **update your `style.css` file** to properly handle the new mobile menu structure and ensure it overlays correctly and doesn't scroll with the content. This CSS update will hide the `.header-categories` div on mobile and refine the `.main-nav`'s behavior.
+
+**I will provide the complete, updated content for your `style.css` file now.** Please replace the entire content of your existing `style.css` file with the code below.
+
+-----
+
+**`style.css` (Full Updated Content - Mobile Navigation and Categories Refined):**
+
+```css
 /* General Body/Container Styling */
 body {
     font-family: Arial, sans-serif;
@@ -80,7 +91,7 @@ header.scrolled {
 
 /* Hamburger Menu Button (initially hidden) */
 .hamburger-menu {
-    display: none; /* Hidden on desktop */
+    display: none; /* Hidden by default on desktop */
     background: none;
     border: none;
     font-size: 2em;
@@ -89,9 +100,9 @@ header.scrolled {
     padding: 5px;
 }
 
-/* Header Categories */
+/* Header Categories (Hidden by default on mobile, always show on desktop) */
 .header-categories {
-    display: flex;
+    display: flex; /* Always display on desktop */
     justify-content: center;
     padding: 10px 20px;
     gap: 20px;
@@ -1026,22 +1037,9 @@ footer {
         font-size: 1.1em; /* Slightly larger font */
     }
 
+    /* Important: Hide the header-categories on mobile */
     .header-categories {
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        padding-top: 10px;
-        border-top: 1px solid #D4E2C7;
-        margin-top: 0;
-        display: flex;
-        width: 100%;
-        background-color: #a6dab4;
-    }
-
-    .category-link {
-        width: 90%;
-        text-align: center;
-        padding: 10px 0;
+        display: none; /* Hide this section on mobile */
     }
 
     .hero-main-banner {

@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Videos - Arts & Lamps</title>
-    <link rel="stylesheet" href="style.css"> <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <meta name="description" content="Watch captivating videos showcasing our art creation processes and featured pieces.">
     <meta name="keywords" content="art videos, art process, painting videos, creative videos, unique art">
@@ -15,179 +16,6 @@
     <meta property="og:image" content="https://www.yourwebsite.com/images/art-video-og.jpg">
     <meta property="og:url" content="https://www.yourwebsite.com/ArtVideos.html">
     <meta property="og:type" content="website">
-
-    <style>
-        /* Custom styles for the lightbox and video player - These are already in style.css now,
-           but keeping this block here as a reminder of where they originated or if you
-           need to override something specific to ArtVideos.html in the future.
-           For now, these styles are effectively redundant if style.css is linked last.
-        */
-        .lightbox {
-            display: none; /* Hidden by default */
-            position: fixed; /* Stay in place */
-            z-index: 1000; /* Sit on top */
-            left: 0;
-            top: 0;
-            width: 100%; /* Full width */
-            height: 100%; /* Full height */
-            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
-            justify-content: center;
-            align-items: center;
-            overflow: hidden; /* Prevent scrollbars on lightbox itself */
-        }
-
-        .lightbox-content {
-            margin: auto;
-            display: block;
-            max-width: 90%; /* Responsive width */
-            max-height: 90vh; /* Responsive height */
-            border-radius: 0.75rem; /* Rounded corners */
-            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-            transition: transform 0.3s ease-out, opacity 0.3s ease-out; /* Smooth transition for opening */
-            transform: scale(0.8); /* Start smaller for pop-in effect */
-            opacity: 0; /* Start invisible */
-        }
-
-        .lightbox.active .lightbox-content {
-            transform: scale(1); /* Scale to full size */
-            opacity: 1; /* Fade in */
-        }
-
-        /* Video element inside lightbox */
-        .lightbox-content video {
-            width: 100%;
-            height: 100%;
-            display: block;
-            border-radius: 0.75rem; /* Rounded corners */
-            object-fit: contain; /* Ensure video fits within its container */
-        }
-
-        /* The Close Button */
-        .close-button {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-            cursor: pointer;
-            z-index: 1001; /* Above the video */
-        }
-
-        .close-button:hover,
-        .close-button:focus {
-            color: #bbb;
-            text-decoration: none;
-        }
-
-        /* Navigation Buttons (Prev/Next) */
-        .prev-button, .next-button {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -50px;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            transition: 0.6s ease;
-            border-radius: 50%; /* Circular buttons */
-            user-select: none;
-            -webkit-user-select: none;
-            background-color: rgba(0,0,0,0.5);
-            width: 50px;
-            height: 50px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            line-height: 1; /* For vertical centering of text */
-            z-index: 1001; /* Above the video */
-        }
-
-        .prev-button {
-            left: 20px;
-        }
-
-        .next-button {
-            right: 20px;
-        }
-
-        .prev-button:hover, .next-button:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-
-        /* Your existing video-item styles might need adjustments if they conflict */
-        .video-item {
-            position: relative;
-            cursor: pointer;
-            border-radius: 0.75rem;
-            overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-            transition: transform 0.2s ease-in-out;
-            text-align: center; /* Center content within the item */
-        }
-
-        .video-item:hover {
-            transform: translateY(-5px);
-        }
-
-        .video-wrapper {
-            position: relative;
-            width: 150px; /* Fixed width for circular shape */
-            height: 150px; /* Fixed height for circular shape */
-            border-radius: 50%; /* Make it circular */
-            overflow: hidden; /* Hide anything outside the circle */
-            margin: 0 auto 15px auto; /* Center the circle and add bottom margin */
-            background-color: #000; /* Fallback background */
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2); /* Subtle shadow for depth */
-        }
-
-        .video-wrapper video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover; /* Cover the circular area */
-            border-radius: 50%; /* Ensure video itself is circular */
-        }
-
-        .play-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            font-size: 3em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            border-radius: 50%; /* Ensure overlay is circular */
-        }
-
-        /* Hide the play overlay when video is actually playing in the grid */
-        .video-item.playing .play-overlay {
-            display: none;
-        }
-
-        .video-item:hover .play-overlay {
-            background-color: rgba(0,0,0,0.7);
-        }
-
-        /* Adjust video grid for better circular item display */
-        .video-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust minmax for better spacing */
-            gap: 30px; /* Increased gap for circular items */
-            justify-content: center; /* Center the grid items */
-        }
-    </style>
 </head>
 <body>
 
@@ -200,17 +28,15 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="art.html">Art Collection</a></li>
+                    <li><a href="ArtVideos.html">Art Video</a></li>
+                    <li><a href="lamps.html">Lamps & Lighting</a></li>
+                    <li><a href="LampVideos.html">Lamps & Lighting Video</a></li>
+                    <li><a href="ComingSoon.html">Coming Soon</a></li>
                 </ul>
             </nav>
         </div>
-        <div class="header-categories container">
-           <a href="art.html" class="category-link">Art Collection</a>
-            <a href="ArtVideos.html" class="category-link">Art Video </a>
-            <a href="lamps.html" class="category-link">Lamps & Lighting</a>
-            <a href="LampVideos.html" class="category-link"> Lamps & Lighting Video </a>
-            <a href="ComingSoon.html" class="category-link">Coming Soon</a>
-        </div>
-    </header>
+        </header>
 
     <main class="container">
         <section class="page-content video-page-content">
@@ -318,7 +144,9 @@
     <div id="videoLightbox" class="lightbox">
         <span class="close-button">&times;</span>
         <video class="lightbox-content" id="lightbox-video"  loop playsinline muted></video>
-        <a class="prev-button">&#10094;</a> <a class="next-button">&#10095;</a> </div>
+        <a class="prev-button">&#10094;</a>
+        <a class="next-button">&#10095;</a>
+    </div>
 
     <script src="script.js"></script>
 

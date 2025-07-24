@@ -14,54 +14,6 @@
     <meta property="og:image" content="https://www.yourwebsite.com/images/coming-soon-og.jpg">
     <meta property="og:url" content="https://www.yourwebsite.com/ComingSoon.html">
     <meta property="og:type" content="website">
-    <style>
-        /* Custom style for glowing effect on the image */
-        /* Note: Most general styles are now in style.css, keeping only unique ones here */
-        .coming-soon-image {
-            max-width: 20%; /* Keeping max-width at 20% as requested */
-            height: auto;
-            border-radius: 0.75rem; /* Rounded corners */
-            box-shadow: 0 0 15px rgba(100, 149, 237, 0.7); /* Cobalt Blue glow */
-            transition: box-shadow 0.3s ease-in-out;
-            display: block; /* Ensures the image behaves as a block for centering */
-            margin: 20px auto; /* Centers the image horizontally */
-            cursor: pointer; /* Indicate it's clickable */
-        }
-
-        .coming-soon-image:hover {
-            box-shadow: 0 0 25px rgba(100, 149, 237, 1); /* More intense glow on hover */
-        }
-
-        /* Keyframes for the "butterfly" effect on click */
-        @keyframes butterflyOut {
-            0% {
-                opacity: 1;
-                transform: scale(1) rotate(0deg);
-            }
-            100% {
-                opacity: 0;
-                transform: scale(0.2) rotate(360deg); /* Shrink and rotate */
-            }
-        }
-
-        /* Class to apply the animation */
-        .animate-butterfly-out {
-            animation: butterflyOut 0.4s forwards; /* 0.4s duration, stays at end state */
-        }
-
-        /* Mobile adjustments for the coming soon image specifically */
-        @media (max-width: 768px) {
-            .coming-soon-image {
-                max-width: 40%; /* Increase image size for better visibility on mobile */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .coming-soon-image {
-                max-width: 50%; /* Make it slightly bigger on very small screens */
-            }
-        }
-    </style>
 </head>
 <body>
 
@@ -74,17 +26,15 @@
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="art.html">Art Collection</a></li>
+                    <li><a href="ArtVideos.html">Art Video</a></li>
+                    <li><a href="lamps.html">Lamps & Lighting</a></li>
+                    <li><a href="LampVideos.html">Lamps & Lighting Video</a></li>
+                    <li><a href="ComingSoon.html">Coming Soon</a></li>
                 </ul>
             </nav>
         </div>
-        <div class="header-categories container">
-            <a href="art.html" class="category-link">Art Collection</a>
-            <a href="ArtVideos.html" class="category-link">Art Video </a>
-            <a href="lamps.html" class="category-link">Lamps & Lighting</a>
-            <a href="LampVideos.html" class="category-link"> Lamps & Lighting Video </a>
-            <a href="ComingSoon.html" class="category-link">Coming Soon</a>
-        </div>
-    </header>
+        </header>
 
     <main class="container">
         <section class="page-content coming-soon-content">
@@ -106,42 +56,4 @@
             <p>&copy; 2025 Arts & Lamps. All rights reserved.</p>
             <div class="footer-links">
                 <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms-of-service.html">Terms of Service</a>
-                <a href="shipping-returns.html">Shipping & Returns</a>
-            </div>
-            <div class="social-media">
-                <a href="#" target="_blank" aria-label="Facebook"><img src="https://via.placeholder.com/24x24?text=FB" alt="Facebook Icon"></a>
-                <a href="#" target="_blank" aria-label="Instagram"><img src="https://via.placeholder.com/24x24?text=IG" alt="Instagram Icon"></a>
-                <a href="#" target="_blank" aria-label="Pinterest"><img src="https://via.placeholder.com/24x24?text=PT" alt="Pinterest Icon"></a>
-            </div>
-        </div>
-    </footer>
-
-    <script src="script.js"></script> <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const comingSoonImage = document.getElementById('comingSoonImage');
-
-            if (comingSoonImage) {
-                comingSoonImage.addEventListener('click', function(event) {
-                    event.preventDefault(); // Prevent default navigation immediately
-
-                    // Add a class to trigger the "butterfly" animation
-                    this.classList.add('animate-butterfly-out');
-
-                    // Redirect after the animation completes
-                    // The 'once: true' option ensures the event listener is removed after it fires
-                    this.addEventListener('animationend', () => {
-                        window.location.href = 'contact.html'; // Redirect to contact page
-                    }, { once: true });
-
-                    // Fallback in case animationend doesn't fire (e.g., if animation is too fast or not supported)
-                    setTimeout(() => {
-                        window.location.href = 'contact.html'; // Redirect to contact page
-                    }, 500); // Redirect after 500ms, should be slightly longer than animation duration
-                });
-            }
-        });
-    </script>
-
-</body>
-</html>
+                <a
