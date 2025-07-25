@@ -274,6 +274,7 @@ header.scrolled {
     text-decoration: none;
     color: #333;
     transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    padding-bottom: 15px; /* Added padding-bottom for the new button */
 }
 
 .collection-card:hover {
@@ -291,9 +292,43 @@ header.scrolled {
 .collection-card .price-range {
     font-size: 1em;
     color: #555;
-    margin: 5px 15px 15px 15px;
+    margin: 5px 15px 5px 15px; /* Adjusted margin-bottom */
     text-align: center;
 }
+
+/* NEW: Item Description on Collection Cards */
+.collection-card .item-description {
+    font-size: 0.9em;
+    color: #666;
+    margin: 0 15px 15px 15px; /* Added margin for description */
+    text-align: center;
+    min-height: 3em; /* Ensure consistent height for descriptions */
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* NEW: Add to Cart button for Collection Cards */
+.add-to-cart-collection-btn {
+    width: calc(100% - 30px); /* 100% width minus horizontal padding */
+    margin: 0 15px; /* Centered with 15px side margin */
+    padding: 10px 15px;
+    border: none;
+    border-radius: 20px;
+    background-color: #4F6B4F; /* Your green */
+    color: white;
+    font-size: 0.95em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.add-to-cart-collection-btn:hover {
+    background-color: #6a8c6a;
+    transform: translateY(-1px);
+}
+
 
 /* Slideshow Container (for images within collection cards) */
 .slideshow-container {
@@ -1285,6 +1320,12 @@ footer {
         min-width: 150px;
         flex-grow: 1;
         max-width: 250px;
+    }
+
+    /* Adjusted button for smaller screens */
+    .add-to-cart-collection-btn {
+        width: calc(100% - 30px); /* Adjust width for consistency */
+        margin: 0 auto 15px auto; /* Center button on card */
     }
 }
 
