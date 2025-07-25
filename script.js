@@ -1,3 +1,6 @@
+// Note: The full Snipcart script block (window.SnipcartSettings and the self-executing function)
+// is now placed directly in your HTML files, so it's removed from here to avoid duplication.
+
 document.addEventListener('DOMContentLoaded', () => {
     // --- Hamburger Menu Logic ---
     const hamburgerMenu = document.querySelector('.hamburger-menu');
@@ -7,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (hamburgerMenu && mainNav) {
         hamburgerMenu.addEventListener('click', () => {
             mainNav.classList.toggle('active');
+            document.body.classList.toggle('menu-open'); // Toggle body class to prevent scroll
             // if (headerCategories) { headerCategories.classList.toggle('active'); } // Uncomment if you toggle categories visibility
         });
 
@@ -15,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
             link.addEventListener('click', () => {
                 if (mainNav.classList.contains('active')) {
                     mainNav.classList.remove('active');
+                    document.body.classList.remove('menu-open'); // Remove body class to restore scroll
                     // if (headerCategories) { headerCategories.classList.remove('active'); } // Uncomment if you toggle categories visibility
                 }
             });
@@ -68,65 +73,231 @@ document.addEventListener('DOMContentLoaded', () => {
     const collectionType = urlParams.get('type');
     const collectionTitleElement = document.getElementById('collectionTitle');
     const imageGalleryContainer = document.getElementById('imageGallery');
+    const productDetailsBody = document.getElementById('productDetailsBody'); // For the details table
 
-    // Define art collection images data
+    // Define art collection images data and example prices/details
     const artCollectionImagesData = {
-        'Ballerina': [
-            'Ballerina (1).jpg', 'Ballerina (2).jpg', 'Ballerina (3).jpg', 'Ballerina (4).jpg',
-        ],
-        'Disney princess': [
-            'Disney princess (1).jpg', 'Disney princess (2).jpg', 'Disney princess (3).jpg', 'Disney princess (4).jpg'
-        ],
-        'Halloween': [
-            'Halloween (1).jpg', 'Halloween (2).jpg',
-        ],
-        'Ischia': [
-            'Ischia (1).jpg', 'Ischia (2).jpg', 'Ischia (3).jpg', 'Ischia (4).jpg'
-        ],
-        'Koi Fish': [
-            'Koi Fish (1).jpg', 'Koi Fish (2).jpg',
-        ],
-        'Landscape': [
-            'Landscape (1).jpg', 'Landscape (2).jpg'
-        ],
-        'Little Mermaid': [
-            'Little Mermaid (1).jpg', 'Little Mermaid (2).jpg'
-        ],
-        'Love at first sight': [
-            'Love at first sight (1).jpg',
-        ],
-        'Love bound': [
-            'Love bound (1).jpg', 'Love bound (2).jpg',
-        ],
-        'Love in Paris': [
-            'Love in Paris (1).jpg', 'Love in Paris (2).jpg'
-        ],
-        'Magic Koi': [
-            'Magic Koi (1).jpg', 'Magic Koi (2).jpg', 'Magic Koi (3).jpg', 'Magic Koi (4).jpg'
-        ],
-        'Maleficent': [
-            'Maleficent (1).jpg', 'Maleficent (2).jpg'
-        ],
-        'Night Out': [
-            'Night Out (1).jpg',
-        ],
-        'Sunflower': [
-            'Sunflower (1).jpg', 'Sunflower (2).jpg',
-        ],
-        'Tea Time': [
-            'Tea Time (1).jpg', 'Tea Time (2).jpg', 'Tea Time (3).jpg',
-        ],
-        'Under the sea': [
-            'Under the sea (1).jpg',
-        ]
+        'Ballerina': {
+            images: ['Ballerina (1).jpg', 'Ballerina (2).jpg', 'Ballerina (3).jpg', 'Ballerina (4).jpg'],
+            price: 39.00,
+            basePath: 'images/Art/Ballerina/',
+            details: { // New details for the table
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-BAL-001",
+                "Dimensions": "12x15 cm",
+                "Material": "Acrylic on Wood",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Disney princess': {
+            images: ['Disney princess (1).jpg', 'Disney princess (2).jpg', 'Disney princess (3).jpg', 'Disney princess (4).jpg'],
+            price: 100.00,
+            basePath: 'images/Art/Disney princess/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-DIS-001",
+                "Dimensions": "30x25 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Halloween': {
+            images: ['Halloween (1).jpg', 'Halloween (2).jpg'],
+            price: 90.00,
+            basePath: 'images/Art/Halloween/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-HAL-001",
+                "Dimensions": "30x25 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Ischia': {
+            images: ['Ischia (1).jpg', 'Ischia (2).jpg', 'Ischia (3).jpg', 'Ischia (4).jpg'],
+            price: 79.00,
+            basePath: 'images/Art/Ischia/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-ISC-001",
+                "Dimensions": "30x25 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Koi Fish': {
+            images: ['Koi Fish (1).jpg', 'Koi Fish (2).jpg'],
+            price: 145.00,
+            basePath: 'images/Art/Koi Fish/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-KOI-001",
+                "Dimensions": "30x25 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Landscape': {
+            images: ['Landscape (1).jpg', 'Landscape (2).jpg'],
+            price: 50.00,
+            basePath: 'images/Art/Landscape/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-LAN-001",
+                "Dimensions": "17.5x12 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "N/A (Indoor Use)"
+            }
+        },
+        'Little Mermaid': {
+            images: ['Little Mermaid (1).jpg', 'Little Mermaid (2).jpg'],
+            price: 150.00,
+            basePath: 'images/Art/Little Mermaid/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-MER-001",
+                "Dimensions": "30x25 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Love at first sight': {
+            images: ['Love at first sight (1).jpg'],
+            price: 90.00,
+            basePath: 'images/Art/Love at first sight/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-LOV-001",
+                "Dimensions": "27.5x34 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Love bound': {
+            images: ['Love bound (1).jpg', 'Love bound (2).jpg'],
+            price: 150.00,
+            basePath: 'images/Art/Love bound/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-BOU-001",
+                "Dimensions": "30x23 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Love in Paris': {
+            images: ['Love in Paris (1).jpg', 'Love in Paris (2).jpg'],
+            price: 90.00,
+            basePath: 'images/Art/Love in Paris/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-PAR-001",
+                "Dimensions": "24x18 cm",
+                "Material": "Oil on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Magic Koi': {
+            images: ['Magic Koi (1).jpg', 'Magic Koi (2).jpg', 'Magic Koi (3).jpg', 'Magic Koi (4).jpg'],
+            price: 1700.00,
+            basePath: 'images/Art/Magic Koi/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-MAG-001",
+                "Dimensions": "46x35.5 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Maleficent': {
+            images: ['Maleficent (1).jpg', 'Maleficent (2).jpg'],
+            price: 55.00,
+            basePath: 'images/Art/Maleficent/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-MAL-001",
+                "Dimensions": "20x20 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Night Out': {
+            images: ['Night Out (1).jpg'],
+            price: 220.00,
+            basePath: 'images/Art/Night Out/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-NIG-001",
+                "Dimensions": "70x70 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Sunflower': {
+            images: ['Sunflower (1).jpg', 'Sunflower (2).jpg'],
+            price:  50.00,
+            basePath: 'images/Art/Sunflower/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-SUN-001",
+                "Dimensions": "20x20 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Tea Time': {
+            images: ['Tea Time (1).jpg', 'Tea Time (2).jpg', 'Tea Time (3).jpg'],
+            price: 79.00,
+            basePath: 'images/Art/Tea Time/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-TEA-001",
+                "Dimensions": "15x15 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        },
+        'Under the sea': {
+            images: ['Under the sea (1).jpg'],
+            price: 200.00,
+            basePath: 'images/Art/Under the sea/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "ART-SEA-001",
+                "Dimensions": "60x80 cm",
+                "Material": "Acrylic on Canvas",
+                "Protection class": "(Indoor Use)"
+            }
+        }
     };
 
-    // Define lamp collection images data
+    // Define lamp collection images data and example prices/details
     const lampCollectionImagesData = {
-        'Bamboolamp': Array.from({ length: 10 }, (_, i) => `bamboolamp (${i + 1}).jpg`),
-        'MiniBar': [
-            'minibar (1).jpg', 'minibar (2).jpg', 'minibar (3).jpg', 'minibar (4).jpg'
-        ]
+        'Bamboolamp': {
+            images: Array.from({ length: 10 }, (_, i) => `bamboolamp (${i + 1}).jpg`),
+            price: 249.00,
+            basePath: 'images/lamp/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "Bamboo-001",
+                "Dimensions": "NA",
+                "Material": "Bamboo,Wood,Leaves,Bulb",
+                "Protection class": "(Indoor)",
+                "Light bulb(s)": "Bulb Inclded"
+            }
+        },
+        'MiniBar': {
+            images: ['minibar (1).jpg', 'minibar (2).jpg', 'minibar (3).jpg', 'minibar (4).jpg'],
+            price: 220.00,
+            basePath: 'images/minibar/',
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "Mini-001",
+                "Dimensions": "H: 100cm, W: 50cm",
+                "Material": "Wood, Lights",
+                "Protection class": "(Indoor)"
+            }
+        }
     };
 
 
@@ -137,27 +308,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
         collectionTitleElement.textContent = `${displayCollectionTitle} Collection`;
 
-        let imagesToLoad = [];
-        let imageBasePath = '';
+        let itemData = null; // Holds the specific product's data (images, price, path, details)
 
         if (collectionType === 'lamp') {
-            imagesToLoad = lampCollectionImagesData[collectionName];
-            if (collectionName === 'Bamboolamp') {
-                imageBasePath = `images/lamp/`;
-            } else if (collectionName === 'MiniBar') {
-                imageBasePath = `images/minibar/`;
-            } else {
-                imageBasePath = `images/lamp/${collectionName.toLowerCase()}/`;
-            }
+            itemData = lampCollectionImagesData[collectionName];
         } else { // Default to art if no type or type is 'art'
-            imagesToLoad = artCollectionImagesData[collectionName];
-            imageBasePath = `images/Art/${collectionName}/`;
+            itemData = artCollectionImagesData[collectionName];
         }
 
-        if (imagesToLoad && imagesToLoad.length > 0) {
+        if (itemData && itemData.images && itemData.images.length > 0) {
             imageGalleryContainer.innerHTML = '';
-            imagesToLoad.forEach((imageFileName, index) => {
-                const imgPath = `${imageBasePath}${imageFileName}`;
+            itemData.images.forEach((imageFileName, index) => {
+                const imgPath = `${itemData.basePath}${imageFileName}`;
                 const artworkItem = document.createElement('div');
                 artworkItem.classList.add('artwork-item');
 
@@ -178,23 +340,108 @@ document.addEventListener('DOMContentLoaded', () => {
                 imageGalleryContainer.appendChild(artworkItem);
             });
 
-            const backButton = document.querySelector('.button-explore');
-            if (backButton) {
+            // Update "Back to" button based on collection type
+            const backButtonTop = document.querySelector('.back-to-collections-top'); // Select top button
+            const backButtonBottom = document.querySelector('.back-to-collections-bottom'); // Select bottom button
+
+            if (backButtonTop) {
                 if (collectionType === 'art') {
-                    backButton.textContent = 'Back to Art Collections';
-                    backButton.href = 'art.html';
+                    backButtonTop.textContent = 'Back to Art Collections';
+                    backButtonTop.href = 'art.html';
                 } else if (collectionType === 'lamp') {
-                    backButton.textContent = 'Back to Lamp Collections';
-                    backButton.href = 'lamps.html';
+                    backButtonTop.textContent = 'Back to Lamp Collections';
+                    backButtonTop.href = 'lamps.html';
+                }
+            }
+            if (backButtonBottom) {
+                if (collectionType === 'art') {
+                    backButtonBottom.textContent = 'Back to Art Collections';
+                    backButtonBottom.href = 'art.html';
+                } else if (collectionType === 'lamp') {
+                    backButtonBottom.textContent = 'Back to Lamp Collections';
+                    backButtonBottom.href = 'lamps.html';
                 }
             }
 
+
             initializeImageLightbox();
+
+            // --- Snipcart Integration for collection-details.html ---
+            const mainProductImage = document.querySelector('#imageGallery .artwork-item img'); // Get the first image as the product image
+            const displayPriceMajor = document.getElementById('displayPriceMajor');
+            const displayPriceMinor = document.getElementById('displayPriceMinor');
+            const addToBasketBtn = document.querySelector('.add-to-basket-btn');
+            const buyNowBtn = document.querySelector('.buy-now-btn');
+
+            if (itemData.price && displayPriceMajor && displayPriceMinor && mainProductImage && addToBasketBtn && buyNowBtn) {
+                const priceString = itemData.price.toFixed(2); // e.g., 250.00
+                const [major, minor] = priceString.split('.');
+                displayPriceMajor.textContent = major;
+                displayPriceMinor.textContent = minor;
+
+                const itemId = `${collectionType}-${collectionName.replace(/\s+/g, '-')}`.toLowerCase(); // Unique ID for Snipcart
+                const itemUrl = window.location.href.split('?')[0]; // URL of the current page, without query params
+                const itemName = displayCollectionTitle; // Use the formatted name
+                const itemImage = itemData.basePath + itemData.images[0]; // Use the main image of the collection by correctly constructing the path
+
+                // Set Snipcart data attributes for both buttons
+                [addToBasketBtn, buyNowBtn].forEach(button => {
+                    button.setAttribute('data-item-id', itemId);
+                    button.setAttribute('data-item-price', itemData.price);
+                    button.setAttribute('data-item-url', itemUrl);
+                    button.setAttribute('data-item-name', itemName);
+                    button.setAttribute('data-item-image', itemImage);
+                    button.setAttribute('data-item-description', `Original ${collectionType} from ${displayCollectionTitle} collection.`); // Dynamic description
+                    button.setAttribute('data-item-quantity', '1'); // Fixed quantity to 1
+                    button.setAttribute('data-item-max-quantity', '1'); // Explicitly set max quantity here too
+                    button.setAttribute('data-item-custom1-name', "Gift note"); // Changed to "Gift note" here
+                    button.setAttribute('data-item-custom1-value', ""); // Default empty gift note
+                });
+            } else {
+                console.warn("Snipcart elements or itemData missing or incomplete on collection-details page. Hiding product details section.");
+                // Hide product details section if no data
+                const productDetailsSection = document.querySelector('.product-details-section');
+                if (productDetailsSection) {
+                    productDetailsSection.style.display = 'none';
+                }
+            }
+
+            // --- Populate Product Details Table ---
+            const productDetailsSection = document.querySelector('.product-details-section'); // Ensure this is available for hiding
+            if (productDetailsBody && itemData.details) {
+                productDetailsBody.innerHTML = ''; // Clear existing content
+                for (const key in itemData.details) {
+                    if (Object.hasOwnProperty.call(itemData.details, key)) {
+                        const value = itemData.details[key];
+                        const row = document.createElement('tr');
+                        // Use innerHTML for td to allow for HTML links (like reviews)
+                        row.innerHTML = `<th>${key}</th><td>${value}</td>`;
+                        productDetailsBody.appendChild(row);
+                    }
+                }
+                 // Make sure product details section is visible if data is found
+                if (productDetailsSection) {
+                    productDetailsSection.style.display = 'flex'; // Or 'block' depending on its default styling
+                }
+            } else {
+                console.warn("Product details data missing or productDetailsBody element not found. Hiding table.");
+                if (productDetailsSection) {
+                    productDetailsSection.style.display = 'none'; // Hide if no details
+                }
+            }
+
+
         } else if (imageGalleryContainer && window.location.pathname.includes('gallery.html')) {
             document.getElementById('galleryCategoryTitle').textContent = "Our Full Gallery";
             document.getElementById('galleryCategoryDescription').textContent = "Browse a selection of all our beautiful creations.";
         } else {
+            console.warn("Collection name not found in URL or missing item data. Hiding product details section.");
             imageGalleryContainer.innerHTML = `<p>No images found for the '${collectionName}' collection or collection not defined. Please check folder and file names and script.js data.</p>`;
+            // Hide product details section if no data
+            const productDetailsSection = document.querySelector('.product-details-section');
+            if (productDetailsSection) {
+                productDetailsSection.style.display = 'none';
+            }
         }
     }
 
@@ -222,24 +469,25 @@ document.addEventListener('DOMContentLoaded', () => {
                 const clickedFileName = img.getAttribute('data-filename');
 
                 const currentType = urlParams.get('type');
-                let dataSource = null;
+                let dataSource = null; // Will point to artCollectionImagesData or lampCollectionImagesData
                 let basePath = '';
 
+                // Determine the correct dataSource and basePath based on type and collection
                 if (currentType === 'lamp') {
                     dataSource = lampCollectionImagesData;
-                    if (collection === 'Bamboolamp') {
-                        basePath = `images/lamp/`;
-                    } else if (collection === 'MiniBar') {
-                        basePath = `images/minibar/`;
-                    } else {
-                        basePath = `images/lamp/${collection.toLowerCase()}/`;
-                    }
-                } else {
+                } else { // Default to art
                     dataSource = artCollectionImagesData;
-                    basePath = `images/Art/${collection}/`;
                 }
 
-                currentLightboxCollectionImages = dataSource[collection].map(filename => `${basePath}${filename}`);
+                // Get the base path from the itemData object
+                if (dataSource && dataSource[collection] && dataSource[collection].basePath) {
+                    basePath = dataSource[collection].basePath;
+                } else {
+                    console.error("Base path not found for collection:", collection);
+                    return; // Exit if base path is missing
+                }
+
+                currentLightboxCollectionImages = dataSource[collection].images.map(filename => `${basePath}${filename}`);
                 currentLightboxImageIndex = currentLightboxCollectionImages.findIndex(src => src.includes(clickedFileName));
 
                 showLightboxImage(currentLightboxImageIndex);
@@ -296,14 +544,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
         document.addEventListener('keydown', function(event) {
             if (lightbox.style.display === 'flex') {
-                if (event.key === 'Escape') {
-                    lightbox.style.display = 'none';
-                    document.body.style.overflow = '';
-                    currentLightboxCollectionImages = [];
-                    currentLightboxImageIndex = 0;
-                } else if (event.key === 'ArrowLeft') {
+                if (event.key === "Escape") {
+                    closeLightbox();
+                } else if (event.key === "ArrowLeft") {
                     showLightboxImage(currentLightboxImageIndex - 1);
-                } else if (event.key === 'ArrowRight') {
+                } else if (event.key === "ArrowRight") {
                     showLightboxImage(currentLightboxImageIndex + 1);
                 }
             }
@@ -411,7 +656,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        document.addEventListener("keydown", (event) => {
+        document.addEventListener('keydown', function(event) {
             if (videoLightbox.style.display === "flex") {
                 if (event.key === "Escape") {
                     closeVideoLightbox();

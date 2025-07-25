@@ -5,29 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Collections - Arts & Lamps</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
+
+    <div class="sticky-cart-wrapper">
+        <button class="snipcart-checkout cart-button sticky-cart-button" aria-label="Open shopping cart">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="snipcart-total-items"></span>
+            <span class="snipcart-total-price"></span>
+        </button>
+    </div>
 
     <header>
         <div class="header-top-bar container">
             <h1 class="site-logo"><a href="art.html" style="text-decoration: none; color: inherit;">Arts</a> & <a href="lamps.html" style="text-decoration: none; color: inherit;">Lamps</a></h1>
-            <button class="hamburger-menu" aria-label="Toggle navigation">&#9776;</button>
+            <div class="header-controls">
+                <button class="hamburger-menu" aria-label="Toggle navigation">&#9776;</button>
+            </div>
             <nav class="main-nav">
                 <ul>
                     <li><a href="index.html">Home</a></li>
                     <li><a href="about-us.html">About Us</a></li>
                     <li><a href="contact.html">Contact</a></li>
+                    <li><a href="art.html">Art Collection</a></li>
+                    <li><a href="ArtVideos.html">Art Video</a></li>
+                    <li><a href="lamps.html">Lamps & Lighting</a></li>
+                    <li><a href="LampVideos.html">Lamps & Lighting Video</a></li>
+                    <li><a href="ComingSoon.html">Coming Soon</a></li>
                 </ul>
             </nav>
         </div>
-        <div class="header-categories container">
-            <a href="art.html" class="category-link">Art Collection</a>
-            <a href="ArtVideos.html" class="category-link">Art Video </a>
-            <a href="lamps.html" class="category-link">Lamps & Lighting</a>
-            <a href="LampVideos.html" class="category-link"> Lamps & Lighting Video </a>
-            <a href="ComingSoon.html" class="category-link">Coming Soon</a>
-        </div>
-    </header>
+        </header>
 
     <main class="container">
         <section class="art-collections-section">
@@ -43,7 +53,7 @@
                         <img src="images/Art/Ballerina/Ballerina (4).jpg" alt="Ballerina Collection 4" class="slideshow-image">
                     </div>
                     <h3>Ballerina</h3>
-                    <p class="price-range">Starting from €250</p>
+                    <p class="price-range">Price 39€</p>
                 </a>
 
                 <a href="collection-details.html?name=Disney princess&type=art" class="collection-card" data-collection-name="disney princess">
@@ -54,7 +64,7 @@
                         <img src="images/Art/Disney princess/Disney princess (4).jpg" alt="Disney Princess Collection 4" class="slideshow-image">
                     </div>
                     <h3>Disney princess</h3>
-                    <p class="price-range">Starting from €200</p>
+                    <p class="price-range"> Price 100€</p>
                 </a>
 
                 <a href="collection-details.html?name=Halloween&type=art" class="collection-card" data-collection-name="halloween">
@@ -63,7 +73,7 @@
                         <img src="images/Art/Halloween/Halloween (2).jpg" alt="Halloween Collection 2" class="slideshow-image">
                     </div>
                     <h3>Halloween</h3>
-                    <p class="price-range">Starting from €180</p>
+                    <p class="price-range">Price 90€</p>
                 </a>
 
                 <a href="collection-details.html?name=Ischia&type=art" class="collection-card" data-collection-name="ischia">
@@ -74,7 +84,7 @@
                         <img src="images/Art/Ischia/Ischia (4).jpg" alt="Ischia Collection 4" class="slideshow-image">
                     </div>
                     <h3>Ischia</h3>
-                    <p class="price-range">Starting from €300</p>
+                    <p class="price-range">Price 79€</p>
                 </a>
 
                 <a href="collection-details.html?name=Koi Fish&type=art" class="collection-card" data-collection-name="koi fish">
@@ -83,7 +93,7 @@
                         <img src="images/Art/Koi Fish/Koi Fish (2).jpg" alt="Koi Fish Collection 2" class="slideshow-image">
                     </div>
                     <h3>Koi Fish</h3>
-                    <p class="price-range">Starting from €220</p>
+                    <p class="price-range">Price 145€</p>
                 </a>
 
                 <a href="collection-details.html?name=Landscape&type=art" class="collection-card" data-collection-name="landscape">
@@ -92,7 +102,7 @@
                         <img src="images/Art/Landscape/Landscape (2).jpg" alt="Landscape Collection 2" class="slideshow-image">
                     </div>
                     <h3>Landscape</h3>
-                    <p class="price-range">Starting from €280</p>
+                    <p class="price-range">Price 50€</p>
                 </a>
 
                 <a href="collection-details.html?name=Little Mermaid&type=art" class="collection-card" data-collection-name="little mermaid">
@@ -101,7 +111,7 @@
                         <img src="images/Art/Little Mermaid/Little Mermaid (2).jpg" alt="Little Mermaid Collection 2" class="slideshow-image">
                     </div>
                     <h3>Little Mermaid</h3>
-                    <p class="price-range">Starting from €190</p>
+                    <p class="price-range">Price 150€</p>
                 </a>
 
                 <a href="collection-details.html?name=Love at first sight&type=art" class="collection-card" data-collection-name="love at first sight">
@@ -109,7 +119,7 @@
                         <img src="images/Art/Love at first sight/Love at first sight (1).jpg" alt="Love at first sight Collection 1" class="slideshow-image active">
                     </div>
                     <h3>Love at first sight</h3>
-                    <p class="price-range">Starting from €270</p>
+                    <p class="price-range">Price 90€</p>
                 </a>
 
                 <a href="collection-details.html?name=Love bound&type=art" class="collection-card" data-collection-name="love bound">
@@ -118,7 +128,7 @@
                         <img src="images/Art/Love bound/Love bound (2).jpg" alt="Love bound Collection 2" class="slideshow-image">
                     </div>
                     <h3>Love bound</h3>
-                    <p class="price-range">Starting from €230</p>
+                    <p class="price-range">Price 150€</p>
                 </a>
 
                 <a href="collection-details.html?name=Love in Paris&type=art" class="collection-card" data-collection-name="love in paris">
@@ -127,7 +137,7 @@
                         <img src="images/Art/Love in Paris/Love in Paris (2).jpg" alt="Love in Paris Collection 2" class="slideshow-image">
                     </div>
                     <h3>Love in Paris</h3>
-                    <p class="price-range">Starting from €260</p>
+                    <p class="price-range">Price 90€</p>
                 </a>
 
                 <a href="collection-details.html?name=Magic Koi&type=art" class="collection-card" data-collection-name="magic koi">
@@ -138,7 +148,7 @@
                         <img src="images/Art/Magic Koi/Magic Koi (4).jpg" alt="Magic Koi Collection 4" class="slideshow-image">
                     </div>
                     <h3>Magic Koi</h3>
-                    <p class="price-range">Starting from €240</p>
+                    <p class="price-range">Price 1700€</p>
                 </a>
 
                 <a href="collection-details.html?name=Maleficent&type=art" class="collection-card" data-collection-name="maleficent">
@@ -147,7 +157,7 @@
                         <img src="images/Art/Maleficent/Maleficent (2).jpg" alt="Maleficent Collection 2" class="slideshow-image">
                     </div>
                     <h3>Maleficent</h3>
-                    <p class="price-range">Starting from €210</p>
+                    <p class="price-range">Price 55€</p>
                 </a>
 
                 <a href="collection-details.html?name=Night Out&type=art" class="collection-card" data-collection-name="night out">
@@ -155,7 +165,7 @@
                         <img src="images/Art/Night Out/Night Out (1).jpg" alt="Night Out Collection 1" class="slideshow-image active">
                     </div>
                     <h3>Night Out</h3>
-                    <p class="price-range">Starting from €290</p>
+                    <p class="price-range">Price 220€</p>
                 </a>
 
                 <a href="collection-details.html?name=Sunflower&type=art" class="collection-card" data-collection-name="sunflower">
@@ -164,7 +174,7 @@
                         <img src="images/Art/Sunflower/Sunflower (2).jpg" alt="Sunflower Collection 2" class="slideshow-image">
                     </div>
                     <h3>Sunflower</h3>
-                    <p class="price-range">Starting from €200</p>
+                    <p class="price-range">Price 50€</p>
                 </a>
 
                 <a href="collection-details.html?name=Tea Time&type=art" class="collection-card" data-collection-name="tea time">
@@ -174,7 +184,7 @@
                         <img src="images/Art/Tea Time/Tea Time (3).jpg" alt="Tea Time Collection 3" class="slideshow-image">
                     </div>
                     <h3>Tea Time</h3>
-                    <p class="price-range">Starting from €170</p>
+                    <p class="price-range">Price 79€</p>
                 </a>
 
                 <a href="collection-details.html?name=Under the sea&type=art" class="collection-card" data-collection-name="under the sea">
@@ -182,7 +192,7 @@
                         <img src="images/Art/Under the sea/Under the sea (1).jpg" alt="Under the sea Collection 1" class="slideshow-image active">
                     </div>
                     <h3>Under the sea</h3>
-                    <p class="price-range">Starting from €250</p>
+                    <p class="price-range">Price 200€</p>
                 </a>
 
             </div>
@@ -199,13 +209,25 @@
             </div>
             <div class="social-media">
                 <a href="#" target="_blank" aria-label="Facebook"><img src="https://via.placeholder.com/24x24?text=FB" alt="Facebook Icon"></a>
-                <a href="#" target="_blank" aria-label="Instagram"><img src="https://via.placeholder.com/24x24?text=IG" alt="Instagram Icon"></a>
-                <a href="#" target="_blank" aria-label="Pinterest"><img src="https://via.placeholder.com/24x24?text=PT" alt="Pinterest Icon"></a>
+                <a href="#" target="_blank" aria-label="Instagram"><img src="https://via.placeholder.co/24x24?text=IG" alt="Instagram Icon"></a>
+                <a href="#" target="_blank" aria-label="Pinterest"><img src="https://via.placeholder.co/24x24?text=PT" alt="Pinterest Icon"></a>
             </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
+    <script>
+    window.SnipcartSettings = {
+        publicApiKey: 'MzY1YjJjZGQtNmU2OS00MTY3LWIxZDYtNDQyNmNlOGI2MDNlNjM4ODg5NTE4ODM0OTE1NTc0', // Your actual API key
+        loadStrategy: 'on-user-interaction',
+        currency: 'EUR', // Setting currency to EUR for all pages
+        modalStyle: "side", // Setting modalStyle to "side" for all pages
+        // If you plan to use custom templates, you would add:
+        // templatesUrl: "/snipcart-templates.html",
+    };
+
+    // The CORRECTED Snipcart loader script from Snipcart's documentation
+    (function(){var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var m,g;(g=(m=window.SnipcartSettings).loadCSS)!=null||(m.loadCSS=!0);var y=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,f=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(f.forEach(function(t){return document.addEventListener(t,o)}),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],n=document.querySelector("#snipcart"),i=document.querySelector('src[src^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][src$="snipcart.js"]')),e=document.querySelector('link[href^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][href$="snipcart.css"]'));n||(n=document.createElement("div"),n.id="snipcart",n.setAttribute("hidden","true"),document.body.appendChild(n)),h(n),i||(i=document.createElement("script"),i.src="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.js"),i.async=!0,t.appendChild(i)),!e&&window.SnipcartSettings.loadCSS&&(e=document.createElement("link"),e.rel="stylesheet",e.type="text/css",e.href="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.css"),t.prepend(e)),f.forEach(function(v){return document.removeEventListener(v,o)})}function h(t){!y||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();</script>
 
 </body>
 </html>
