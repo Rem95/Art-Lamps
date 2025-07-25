@@ -1,0 +1,10 @@
+{
+  "id": "art-under-the-sea",
+  "name": "Under the sea",
+  "price": 200.00,
+  "url": "/products/art/under-the-sea.json",
+  "description": "Immersive artwork transporting you to the mysterious and beautiful world under the sea.",
+  "image": "/images/Art/Under the sea/Under the sea (1).jpg",
+  "maxQuantity": 1,
+  "categories": ["art", "painting", "fantasy", "marine"]
+}

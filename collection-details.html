@@ -11,7 +11,7 @@
 
     <div class="sticky-cart-wrapper">
         <button class="snipcart-checkout cart-button sticky-cart-button" aria-label="Open shopping cart">
-            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-shopping-bag"></i>
             <span class="snipcart-total-items"></span>
         </button>
     </div>
@@ -132,19 +132,10 @@
 
     <script src="script.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const addToBasketBtn = document.querySelector('.add-to-basket-btn');
-            const buyNowBtn = document.querySelector('.buy-now-btn');
-
-            if (addToBasketBtn) {
-                addToBasketBtn.setAttribute('data-item-custom1-name', 'Gift note');
-                addToBasketBtn.setAttribute('data-item-custom1-value', ''); // Default empty
-            }
-            if (buyNowBtn) {
-                buyNowBtn.setAttribute('data-item-custom1-name', 'Gift note');
-                buyNowBtn.setAttribute('data-item-custom1-value', ''); // Default empty
-            }
-        });
+        // The Snipcart data attributes on the buttons in this HTML
+        // are dynamically set by script.js based on URL parameters.
+        // The script.js file now ensures the data-item-url points to the JSON files.
+        // No inline script needed here for initial data-item attributes.
     </script>
     <script>
     window.SnipcartSettings = {
@@ -152,9 +143,7 @@
         loadStrategy: 'on-user-interaction',
         currency: 'EUR', // Setting currency to EUR for all pages
         modalStyle: "side", // Setting modalStyle to "side" for all pages
-        // DO NOT ADD 'addProductBehavior' HERE. Its omission triggers the default toast.
-        // If you plan to use custom templates, you would add:
-        // templatesUrl: "/snipcart-templates.html",
+        // templatesUrl: "/snipcart-templates.html", // Uncomment if you add custom templates later
     };
 
     // The CORRECTED Snipcart loader script from Snipcart's documentation

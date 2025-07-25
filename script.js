@@ -379,16 +379,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 displayPriceMajor.textContent = major;
                 displayPriceMinor.textContent = minor;
 
-                const itemId = `${collectionType}-${collectionName.replace(/\s+/g, '-')}`.toLowerCase(); // Unique ID for Snipcart
-                const itemUrl = window.location.href.split('?')[0]; // URL of the current page, without query params
+                const itemId = `${collectionType}-${collectionName.replace(/\s+/g, '-').toLowerCase()}`; // Unique ID for Snipcart
                 const itemName = displayCollectionTitle; // Use the formatted name
                 const itemImage = itemData.basePath + itemData.images[0]; // Use the main image of the collection by correctly constructing the path
+
+                // NEW: Determine the JSON URL for validation for collection-details page buttons
+                let itemUrlForSnipcartValidation;
+                if (collectionType === 'lamp') {
+                    itemUrlForSnipcartValidation = `/products/lamps/${collectionName.replace(/\s+/g, '-').toLowerCase()}.json`;
+                } else { // Default to art
+                    itemUrlForSnipcartValidation = `/products/art/${collectionName.replace(/\s+/g, '-').toLowerCase()}.json`;
+                }
 
                 // Set Snipcart data attributes for both buttons
                 [addToBasketBtn, buyNowBtn].forEach(button => {
                     button.setAttribute('data-item-id', itemId);
                     button.setAttribute('data-item-price', itemData.price);
-                    button.setAttribute('data-item-url', itemUrl);
+                    button.setAttribute('data-item-url', itemUrlForSnipcartValidation); // Point to the JSON file
                     button.setAttribute('data-item-name', itemName);
                     button.setAttribute('data-item-image', itemImage);
                     button.setAttribute('data-item-description', `Original ${collectionType} from ${displayCollectionTitle} collection.`); // Dynamic description

@@ -22,7 +22,7 @@
 
     <div class="sticky-cart-wrapper">
         <button class="snipcart-checkout cart-button sticky-cart-button" aria-label="Open shopping cart">
-            <i class="fas fa-shopping-cart"></i>
+            <i class="fas fa-shopping-bag"></i>
             <span class="snipcart-total-items"></span>
         </button>
     </div>
@@ -91,9 +91,7 @@
         loadStrategy: 'on-user-interaction',
         currency: 'EUR', // Setting currency to EUR for all pages
         modalStyle: "side", // Setting modalStyle to "side" for all pages
-        // DO NOT ADD 'addProductBehavior' HERE. Its omission triggers the default toast.
-        // If you plan to use custom templates, you would add:
-        // templatesUrl: "/snipcart-templates.html",
+        // templatesUrl: "/snipcart-templates.html", // Uncomment if you add custom templates later
     };
 
     // The CORRECTED Snipcart loader script from Snipcart's documentation

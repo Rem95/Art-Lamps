@@ -1,0 +1,10 @@
+{
+  "id": "art-love-bound",
+  "name": "Love bound",
+  "price": 150.00,
+  "url": "/products/art/love-bound.json",
+  "description": "Deeply emotional artwork symbolizing unbreakable bonds of love.",
+  "image": "/images/Art/Love bound/Love bound (1).jpg",
+  "maxQuantity": 1,
+  "categories": ["art", "painting", "love"]
+}
