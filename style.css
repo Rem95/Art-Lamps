@@ -75,6 +75,7 @@ header.scrolled {
     margin: 0;
     padding: 0;
     display: flex; /* Horizontal on desktop */
+    flex-wrap: nowrap; /* IMPORTANT: Prevent navigation items from wrapping on desktop */
 }
 
 .main-nav ul li {
@@ -86,6 +87,7 @@ header.scrolled {
     color: #555;
     font-weight: bold;
     transition: color 0.3s ease;
+    white-space: nowrap; /* IMPORTANT: Keep text on a single line */
 }
 
 .main-nav ul li a:hover {
@@ -302,12 +304,14 @@ header.scrolled {
     color: #666;
     margin: 0 15px 15px 15px; /* Added margin for description */
     text-align: center;
-    min-height: 3em; /* Ensure consistent height for descriptions */
+    min-height: 1.2em; /* Adjusted to approximate one line height */
     display: -webkit-box;
-    -webkit-line-clamp: 2; /* Limit to 2 lines for WebKit browsers */
+    -webkit-line-clamp: 1; /* IMPORTANT: Limit to 1 line for WebKit browsers */
     -webkit-box-orient: vertical;
     overflow: hidden;
-    line-clamp: 2; /* Standard property for line clamping */
+    line-clamp: 1; /* IMPORTANT: Standard property for line clamping to 1 line */
+    text-overflow: ellipsis; /* Add ellipsis for overflowed text */
+    white-space: nowrap; /* Ensure text stays on one line if possible */
 }
 
 /* NEW: Add to Cart button for Collection Cards */
@@ -462,9 +466,10 @@ header.scrolled {
     align-items: flex-start;
 }
 
-.product-price-delivery {
-    flex: 1 1 50%;
-    min-width: 280px;
+/* Updated styling for product-info-left */
+.product-info-left {
+    flex: 1 1 50%; /* Allows it to take up space, but can shrink */
+    min-width: 250px; /* Minimum width before wrapping */
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -493,7 +498,7 @@ header.scrolled {
     vertical-align: super;
 }
 
-.delivery-info {
+.delivery-info { /* These are now removed from HTML, but keeping styles in case needed later */
     font-size: 0.95em;
     color: #333;
     line-height: 1.4;
@@ -534,7 +539,7 @@ header.scrolled {
     text-decoration: underline;
 }
 
-.product-stock-quantity {
+.product-stock-quantity { /* These are now removed from HTML, but keeping styles in case needed later */
     flex: 1 1 30%;
     min-width: 180px;
     display: flex;
@@ -580,7 +585,7 @@ header.scrolled {
     background-size: 12px auto;
 }
 
-.product-actions {
+.product-actions { /* This was for the buy now/add to basket buttons, now streamlined for PayPal */
     display: flex;
     flex-direction: column; /* Stack buttons vertically */
     gap: 10px;
@@ -588,7 +593,35 @@ header.scrolled {
     margin-top: 0;
 }
 
-.add-to-basket-btn,
+/* NEW: Styling for the PayPal button container */
+.product-actions-paypal {
+    flex: 1 1 40%; /* Allows it to take up remaining space */
+    display: flex;
+    justify-content: flex-end; /* Aligns content to the right */
+    align-items: center; /* Vertically centers the button */
+    padding-top: 10px; /* Adjust as needed for vertical alignment with price */
+}
+
+/* Customizing the PayPal button to be small and clean */
+.product-actions-paypal paypal-add-to-cart-button {
+    /* Override default PayPal button styles to make it smaller */
+    --paypal-button-height: 30px; /* Smaller height */
+    --paypal-button-width: 100px; /* Adjust width to fit "Add to Cart" or icon */
+    min-width: 100px; /* Ensure it doesn't get too small */
+    max-width: 150px; /* Prevent it from becoming too wide */
+}
+
+/* If the PayPal button renders as an <iframe>, direct CSS might be limited.
+   In that case, you'd style the container around it. */
+.product-actions-paypal > div { /* Targeting the div that PayPal might inject */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* Ensure container fills space for vertical alignment */
+}
+
+
+.add-to-basket-btn, /* These are now removed from HTML, but keeping styles in case needed later */
 .buy-now-btn {
     width: 100%;
     padding: 12px 20px;
@@ -1238,32 +1271,8 @@ footer {
     transform: translateY(-2px);
 }
 
-.sticky-cart-button .snipcart-total-items {
-    background-color: red;
-    color: white;
-    font-size: 0.5em; /* Smaller number relative to the icon, keep it small */
-    font-weight: bold;
-    border-radius: 50%;
-    padding: 2px 5px;
-    position: absolute;
-    top: 5px; /* Adjust position relative to button */
-    right: 5px; /* Adjust position relative to button */
-    line-height: 1;
-    min-width: 16px;
-    text-align: center;
-    transform: scale(1.1); /* Slightly larger to stand out */
-    transform-origin: top right;
-}
 
-/* Style for the total price, if it's displayed in the sticky button */
-.sticky-cart-button .snipcart-total-price {
-    color: white;
-    font-size: 0.6em; /* Adjust size relative to the button */
-    font-weight: bold;
-    margin-top: 2px; /* Small margin above price */
-    line-height: 1;
-    display: block; /* Ensure it's on its own line */
-}
+
 
 
 /* Responsive Design Media Queries */
@@ -1307,31 +1316,31 @@ footer {
         text-align: center;
         gap: 25px;
     }
-    .product-price-delivery,
-    .product-stock-quantity {
+    .product-price-delivery, /* These are now removed from HTML, but keeping styles in case needed later */
+    .product-stock-quantity { /* These are now removed from HTML, but keeping styles in case needed later */
         min-width: unset;
         width: 100%;
         text-align: center;
         padding-left: 0;
         border-left: none;
     }
-    .product-stock-quantity {
+    .product-stock-quantity { /* These are now removed from HTML, but keeping styles in case needed later */
         border-top: 1px solid #eee; /* Add a top border instead */
         padding-top: 20px;
     }
-    .delivery-location {
+    .delivery-location { /* These are now removed from HTML, but keeping styles in case needed later */
         justify-content: center;
     }
     .product-price {
         justify-content: center;
     }
-    .product-actions {
+    .product-actions { /* This was for the buy now/add to basket buttons, now streamlined for PayPal */
         flex-direction: row; /* Keep buttons side-by-side if enough space */
         justify-content: center;
         gap: 20px;
     }
-    .add-to-basket-btn,
-    .buy-now-btn {
+    .add-to-basket-btn, /* These are now removed from HTML, but keeping styles in case needed later */
+    .buy-now-btn { /* These are now removed from HTML, but keeping styles in case needed later */
         width: auto;
         min-width: 150px;
         flex-grow: 1;
@@ -1407,10 +1416,11 @@ footer {
     }
 
     .main-nav ul {
-        flex-direction: column;
+        flex-direction: column; /* Allow stacking on mobile */
         align-items: center;
         padding: 0;
         width: 100%;
+        flex-wrap: wrap; /* Allow wrapping again if needed for very long menu items on mobile */
     }
 
     .main-nav ul li {
@@ -1424,6 +1434,7 @@ footer {
         padding: 10px 0;
         color: #333;
         font-size: 1.1em;
+        white-space: nowrap; /* Still keep text on one line if possible within the block */
     }
 
     .header-categories {
@@ -1562,7 +1573,7 @@ footer {
         margin-top: 30px;
         font-size: 0.9em;
     }
-    .product-actions {
+    .product-actions { /* This was for the buy now/add to basket buttons, now streamlined for PayPal */
         flex-direction: column; /* Stack buttons vertically on small mobiles */
         width: 100%;
         max-width: 250px;
@@ -1661,5 +1672,21 @@ footer {
     }
     .coming-soon-image {
         max-width: 50%;
+    }
+
+    /* Product Details Section - Mobile adjustments */
+    .product-info-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .product-details-table {
+        margin-top: 30px;
+        font-size: 0.9em;
+    }
+    .product-actions { /* This was for the buy now/add to basket buttons, now streamlined for PayPal */
+        flex-direction: column; /* Stack buttons vertically on small mobiles */
+        width: 100%;
+        max-width: 250px;
     }
 }

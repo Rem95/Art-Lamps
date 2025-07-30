@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="BBJJBURX2AEZ4"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Collection Details - Arts & Lamps</title>
@@ -9,19 +10,13 @@
 </head>
 <body>
 
-    <div id="snipcart" data-api-key="MzY1YjJjZGQtNmU2OS00MTY3LWIxZDYtNDQyNmNlOGI2MDNlNjM4ODg5NTE4ODM0OTE1NTc0"></div>
-
-    <div class="sticky-cart-wrapper">
-        <button class="snipcart-checkout cart-button sticky-cart-button" aria-label="Open shopping cart">
-            <i class="fas fa-shopping-bag"></i>
-            <span class="snipcart-total-items"></span>
-            <span class="snipcart-total-price"></span>
-        </button>
-    </div>
-
     <header>
         <div class="header-top-bar container">
-            <h1 class="site-logo"><a href="art.html" style="text-decoration: none; color: inherit;">Arts</a> & <a href="lamps.html" style="text-decoration: none; color: inherit;">Lamps</a></h1>
+            <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+            <script>
+              cartPaypal.Cart({ id: "pp-view-cart" })
+            </script>
+            <h1 class="site-logo"><a href="art.html"  style="text-decoration: none; color: inherit;">Arts</a> & <a href="lamps.html" style="text-decoration: none; color: inherit;">Lamps</a></h1>
             <div class="header-controls">
                 <button class="hamburger-menu" aria-label="Toggle navigation">&#9776;</button>
             </div>
@@ -41,56 +36,25 @@
     </header>
 
     <main class="container">
-        <p style="text-align: left; margin-top: 20px;">
-            <a href="art.html" class="button-explore back-to-collections-top">Back to Collections</a>
-        </p>
-
         <h2 class="gallery-title" id="collectionTitle"></h2>
         <div class="artwork-grid" id="imageGallery">
-            </div>
+        </div>
 
         <section class="product-details-section">
             <div class="product-details-card">
                 <div class="product-stock-quantity">
                     <div class="product-price">
-                        <span class="currency">€</span><span class="major-price" id="displayPriceMajor"></span><span class="minor-price" id="displayPriceMinor"></span>
-                    </div>
+                        </div>
                     <p class="stock-status">In Stock</p>
                     <div class="quantity-selector">
                         <label>Quantity: 1</label>
                     </div>
+                    <div id="paypalAddToCartContainer"></div>
 
-                    <div class="product-actions">
-                        <button class="add-to-basket-btn snipcart-add-item"
-                            data-item-id=""
-                            data-item-price=""
-                            data-item-url=""
-                            data-item-name=""
-                            data-item-image=""
-                            data-item-description="Unique artwork or handmade lamp."
-                            data-item-quantity="1"
-                            data-item-custom1-name="Gift note"
-                            data-item-custom1-value=""
-                            data-item-max-quantity="1"
-                            >
-                            Add to Basket
-                        </button>
-                        <button class="buy-now-btn snipcart-add-item"
-                            data-item-id=""
-                            data-item-price=""
-                            data-item-url=""
-                            data-item-name=""
-                            data-item-image=""
-                            data-item-description="Unique artwork or handmade lamp."
-                            data-item-quantity="1"
-                            data-item-custom1-name="Gift note"
-                            data-item-custom1-value=""
-                            data-item-max-quantity="1"
-                            data-snipcart-modal-opened="true"
-                        >
-                            Buy Now
-                        </button>
-                    </div>
+                    <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+                    <script>
+                      cartPaypal.Cart({ id: "pp-view-cart" })
+                    </script>
                 </div>
             </div>
 
@@ -101,14 +65,11 @@
                     </tr>
                 </thead>
                 <tbody id="productDetailsBody">
-                    </tbody>
+                </tbody>
             </table>
 
         </section>
-        <p style="text-align: center; margin-top: 30px;">
-            <a href="art.html" class="button-explore back-to-collections-bottom">Back to Collections</a>
-        </p>
-    </main>
+        </main>
 
     <footer>
         <div class="container footer-content">
@@ -133,23 +94,5 @@
     </div>
 
     <script src="script.js"></script>
-    <script>
-        // The Snipcart data attributes on the buttons in this HTML
-        // are dynamically set by script.js based on URL parameters.
-        // The script.js file now ensures the data-item-url points to the JSON files.
-        // No inline script needed here for initial data-item attributes.
-    </script>
-    <script>
- window.SnipcartSettings = {
-    publicApiKey: 'MzY1YjJjZGQtNmU2OS00MTY3LWIxZDYtNDQyNmNlOGI2MDNlNjM4ODg5NTE4ODM0OTE1NTc0',
-    loadStrategy: 'on-user-interaction',
-    currency: 'EUR',
-    modalStyle: "side",
-    // templatesUrl: "/snipcart-templates.html",
-};
-
-    // The CORRECTED Snipcart loader script from Snipcart's documentation
-    (function(){var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var m,g;(g=(m=window.SnipcartSettings).loadCSS)!=null||(m.loadCSS=!0);var y=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,f=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(f.forEach(function(t){return document.addEventListener(t,o)}),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],n=document.querySelector("#snipcart"),i=document.querySelector('src[src^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][src$="snipcart.js"]')),e=document.querySelector('link[href^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][href$="snipcart.css"]'));n||(n=document.createElement("div"),n.id="snipcart",n.setAttribute("hidden","true"),document.body.appendChild(n)),h(n),i||(i=document.createElement("script"),i.src="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.js"),i.async=!0,t.appendChild(i)),!e&&window.SnipcartSettings.loadCSS&&(e=document.createElement("link"),e.rel="stylesheet",e.type="text/css",e.href="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.css"),t.prepend(e)),f.forEach(function(v){return document.removeEventListener(v,o)})}function h(t){!y||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();</script>
-
 </body>
 </html>

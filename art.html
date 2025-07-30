@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="BBJJBURX2AEZ4"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Art Collections - Arts & Lamps</title>
@@ -9,18 +10,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-<div id="snipcart" data-api-key="MzY1YjJjZGQtNmU2OS00MTY3LWIxZDYtNDQyNmNlOGI2MDNlNjM4ODg5NTE4ODM0OTE1NTc0"></div>
 
-    <div class="sticky-cart-wrapper">
-        <button class="snipcart-checkout cart-button sticky-cart-button" aria-label="Open shopping cart">
-            <i class="fas fa-shopping-bag"></i>
-            <span class="snipcart-total-items"></span>
-            <span class="snipcart-total-price"></span>
-        </button>
-    </div>
+
 
     <header>
         <div class="header-top-bar container">
+            <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+<script>
+  cartPaypal.Cart({ id: "pp-view-cart" })
+</script>
             <h1 class="site-logo"><a href="art.html" style="text-decoration: none; color: inherit;">Arts</a> & <a href="lamps.html" style="text-decoration: none; color: inherit;">Lamps</a></h1>
             <div class="header-controls">
                 <button class="hamburger-menu" aria-label="Toggle navigation">&#9776;</button>
@@ -54,18 +52,9 @@
                         <img src="images/Art/Ballerina/Ballerina (4).jpg" alt="Ballerina Collection 4" class="slideshow-image">
                     </div>
                     <h3>Ballerina</h3>
-                    <p class="price-range">Price 39€</p>
+                    <p class="price-range">Price 50€</p>
                     <p class="item-description">Graceful ballet-inspired artwork, perfect for adding elegance to any room.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-ballerina"
-                        data-item-price="39.00"
-                        data-item-url="/products/art/ballerina.json"
-                        data-item-name="Ballerina"
-                        data-item-image="/images/Art/Ballerina/Ballerina (1).jpg"
-                        data-item-description="Graceful ballet-inspired artwork, perfect for adding elegance to any room."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                       
                     </button>
                 </a>
 
@@ -79,16 +68,7 @@
                     <h3>Disney princess</h3>
                     <p class="price-range"> Price 100€</p>
                     <p class="item-description">Enchanting artwork featuring beloved Disney princesses, bringing fantasy to life.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-disney-princess"
-                        data-item-price="100.00"
-                        data-item-url="/products/art/disney-princess.json"
-                        data-item-name="Disney princess"
-                        data-item-image="/images/Art/Disney princess/Disney princess (1).jpg"
-                        data-item-description="Enchanting artwork featuring beloved Disney princesses, bringing fantasy to life."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                       
                     </button>
                 </a>
 
@@ -100,16 +80,7 @@
                     <h3>Halloween</h3>
                     <p class="price-range">Price 90€</p>
                     <p class="item-description">Spooky and fun Halloween-themed artwork, perfect for seasonal decor.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-halloween"
-                        data-item-price="90.00"
-                        data-item-url="/products/art/halloween.json"
-                        data-item-name="Halloween"
-                        data-item-image="/images/Art/Halloween/Halloween (1).jpg"
-                        data-item-description="Spooky and fun Halloween-themed artwork, perfect for seasonal decor."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                     
                     </button>
                 </a>
 
@@ -123,16 +94,7 @@
                     <h3>Ischia</h3>
                     <p class="price-range">Price 79€</p>
                     <p class="item-description">Vibrant landscape artwork inspired by the beautiful island of Ischia.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-ischia"
-                        data-item-price="79.00"
-                        data-item-url="/products/art/ischia.json"
-                        data-item-name="Ischia"
-                        data-item-image="/images/Art/Ischia/Ischia (1).jpg"
-                        data-item-description="Vibrant landscape artwork inspired by the beautiful island of Ischia."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                      
                     </button>
                 </a>
 
@@ -144,16 +106,7 @@
                     <h3>Koi Fish</h3>
                     <p class="price-range">Price 145€</p>
                     <p class="item-description">Serene depiction of Koi fish, symbolizing good fortune and perseverance.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-koi-fish"
-                        data-item-price="145.00"
-                        data-item-url="/products/art/koi-fish.json"
-                        data-item-name="Koi Fish"
-                        data-item-image="/images/Art/Koi Fish/Koi Fish (1).jpg"
-                        data-item-description="Serene depiction of Koi fish, symbolizing good fortune and perseverance."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                   
                     </button>
                 </a>
 
@@ -165,16 +118,7 @@
                     <h3>Landscape</h3>
                     <p class="price-range">Price 50€</p>
                     <p class="item-description">Breathtaking landscape artwork capturing nature's beauty and tranquility.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-landscape"
-                        data-item-price="50.00"
-                        data-item-url="/products/art/landscape.json"
-                        data-item-name="Landscape"
-                        data-item-image="/images/Art/Landscape/Landscape (1).jpg"
-                        data-item-description="Breathtaking landscape artwork capturing nature's beauty and tranquility."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                    
                     </button>
                 </a>
 
@@ -186,16 +130,7 @@
                     <h3>Little Mermaid</h3>
                     <p class="price-range">Price 150€</p>
                     <p class="item-description">Magical artwork inspired by the classic tale of the Little Mermaid.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-little-mermaid"
-                        data-item-price="150.00"
-                        data-item-url="/products/art/little-mermaid.json"
-                        data-item-name="Little Mermaid"
-                        data-item-image="/images/Art/Little Mermaid/Little Mermaid (1).jpg"
-                        data-item-description="Magical artwork inspired by the classic tale of the Little Mermaid."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                  
                     </button>
                 </a>
 
@@ -206,16 +141,7 @@
                     <h3>Love at first sight</h3>
                     <p class="price-range">Price 90€</p>
                     <p class="item-description">Romantic artwork capturing the special moment of love at first sight.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-love-at-first-sight"
-                        data-item-price="90.00"
-                        data-item-url="/products/art/love-at-first-sight.json"
-                        data-item-name="Love at first sight"
-                        data-item-image="/images/Art/Love at first sight/Love at first sight (1).jpg"
-                        data-item-description="Romantic artwork capturing the special moment of love at first sight."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                    
                     </button>
                 </a>
 
@@ -225,18 +151,9 @@
                         <img src="images/Art/Love bound/Love bound (2).jpg" alt="Love bound Collection 2" class="slideshow-image">
                     </div>
                     <h3>Love bound</h3>
-                    <p class="price-range">Price 150€</p>
+                    <p class="price-range">Price 200€</p>
                     <p class="item-description">Deeply emotional artwork symbolizing unbreakable bonds of love.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-love-bound"
-                        data-item-price="150.00"
-                        data-item-url="/products/art/love-bound.json"
-                        data-item-name="Love bound"
-                        data-item-image="/images/Art/Love bound/Love bound (1).jpg"
-                        data-item-description="Deeply emotional artwork symbolizing unbreakable bonds of love."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                   
                     </button>
                 </a>
 
@@ -248,16 +165,7 @@
                     <h3>Love in Paris</h3>
                     <p class="price-range">Price 90€</p>
                     <p class="item-description">Charming artwork depicting the romantic allure of Paris.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-love-in-paris"
-                        data-item-price="90.00"
-                        data-item-url="/products/art/love-in-paris.json"
-                        data-item-name="Love in Paris"
-                        data-item-image="/images/Art/Love in Paris/Love in Paris (1).jpg"
-                        data-item-description="Charming artwork depicting the romantic allure of Paris."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                    
                     </button>
                 </a>
 
@@ -269,18 +177,9 @@
                         <img src="images/Art/Magic Koi/Magic Koi (4).jpg" alt="Magic Koi Collection 4" class="slideshow-image">
                     </div>
                     <h3>Magic Koi</h3>
-                    <p class="price-range">Price 1700€</p>
+                    <p class="price-range">Price 2500€</p>
                     <p class="item-description">Large, intricate artwork of mystical Koi, a focal point for any grand space.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-magic-koi"
-                        data-item-price="1700.00"
-                        data-item-url="/products/art/magic-koi.json"
-                        data-item-name="Magic Koi"
-                        data-item-image="/images/Art/Magic Koi/Magic Koi (1).jpg"
-                        data-item-description="Large, intricate artwork of mystical Koi, a focal point for any grand space."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                    
                     </button>
                 </a>
 
@@ -292,16 +191,7 @@
                     <h3>Maleficent</h3>
                     <p class="price-range">Price 55€</p>
                     <p class="item-description">Dark and captivating artwork inspired by the iconic character Maleficent.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-maleficent"
-                        data-item-price="55.00"
-                        data-item-url="/products/art/maleficent.json"
-                        data-item-name="Maleficent"
-                        data-item-image="/images/Art/Maleficent/Maleficent (1).jpg"
-                        data-item-description="Dark and captivating artwork inspired by the iconic character Maleficent."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                 
                     </button>
                 </a>
 
@@ -312,16 +202,7 @@
                     <h3>Night Out</h3>
                     <p class="price-range">Price 220€</p>
                     <p class="item-description">Dynamic artwork capturing the vibrant energy of a night out.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-night-out"
-                        data-item-price="220.00"
-                        data-item-url="/products/art/night-out.json"
-                        data-item-name="Night Out"
-                        data-item-image="/images/Art/Night Out/Night Out (1).jpg"
-                        data-item-description="Dynamic artwork capturing the vibrant energy of a night out."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                   
                     </button>
                 </a>
 
@@ -333,16 +214,7 @@
                     <h3>Sunflower</h3>
                     <p class="price-range">Price 50€</p>
                     <p class="item-description">Bright and cheerful sunflower artwork, radiating warmth and happiness.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-sunflower"
-                        data-item-price="50.00"
-                        data-item-url="/products/art/sunflower.json"
-                        data-item-name="Sunflower"
-                        data-item-image="/images/Art/Sunflower/Sunflower (1).jpg"
-                        data-item-description="Bright and cheerful sunflower artwork, radiating warmth and happiness."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                    
                     </button>
                 </a>
 
@@ -355,16 +227,7 @@
                     <h3>Tea Time</h3>
                     <p class="price-range">Price 79€</p>
                     <p class="item-description">Cozy and inviting artwork perfect for a relaxing tea-time ambiance.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-tea-time"
-                        data-item-price="79.00"
-                        data-item-url="/products/art/tea-time.json"
-                        data-item-name="Tea Time"
-                        data-item-image="/images/Art/Tea Time/Tea Time (1).jpg"
-                        data-item-description="Cozy and inviting artwork perfect for a relaxing tea-time ambiance."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                    
                     </button>
                 </a>
 
@@ -375,16 +238,7 @@
                     <h3>Under the sea</h3>
                     <p class="price-range">Price 200€</p>
                     <p class="item-description">Immersive artwork transporting you to the mysterious and beautiful world under the sea.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="art-under-the-sea"
-                        data-item-price="200.00"
-                        data-item-url="/products/art/under-the-sea.json"
-                        data-item-name="Under the sea"
-                        data-item-image="/images/Art/Under the sea/Under the sea (1).jpg"
-                        data-item-description="Immersive artwork transporting you to the mysterious and beautiful world under the sea."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                   
                     </button>
                 </a>
 
@@ -409,16 +263,5 @@
 
     <script src="script.js"></script>
     <script>
-window.SnipcartSettings = {
-    publicApiKey: 'MzY1YjJjZGQtNmU2OS00MTY3LWIxZDYtNDQyNmNlOGI2MDNlNjM4ODg5NTE4ODM0OTE1NTc0',
-    loadStrategy: 'on-user-interaction',
-    currency: 'EUR',
-    modalStyle: "side",
-    // templatesUrl: "/snipcart-templates.html",
-};
 
-    // The CORRECTED Snipcart loader script from Snipcart's documentation
-    (function(){var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var m,g;(g=(m=window.SnipcartSettings).loadCSS)!=null||(m.loadCSS=!0);var y=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,f=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(f.forEach(function(t){return document.addEventListener(t,o)}),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],n=document.querySelector("#snipcart"),i=document.querySelector('src[src^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][src$="snipcart.js"]')),e=document.querySelector('link[href^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][href$="snipcart.css"]'));n||(n=document.createElement("div"),n.id="snipcart",n.setAttribute("hidden","true"),document.body.appendChild(n)),h(n),i||(i=document.createElement("script"),i.src="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.js"),i.async=!0,t.appendChild(i)),!e&&window.SnipcartSettings.loadCSS&&(e=document.createElement("link"),e.rel="stylesheet",e.type="text/css",e.href="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.css"),t.prepend(e)),f.forEach(function(v){return document.removeEventListener(v,o)})}function h(t){!y||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();</script>
 
-</body>
-</html>

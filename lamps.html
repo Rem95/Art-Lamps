@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="BBJJBURX2AEZ4"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lamp Collections - Arts & Lamps</title>
@@ -10,18 +11,14 @@
 </head>
 <body>
 
-    <div id="snipcart" data-api-key="MzY1YjJjZGQtNmU2OS00MTY3LWIxZDYtNDQyNmNlOGI2MDNlNjM4ODg5NTE4ODM0OTE1NTc0"></div>
-
-    <div class="sticky-cart-wrapper">
-        <button class="snipcart-checkout cart-button sticky-cart-button" aria-label="Open shopping cart">
-            <i class="fas fa-shopping-bag"></i>
-            <span class="snipcart-total-items"></span>
-            <span class="snipcart-total-price"></span>
-        </button>
-    </div>
+ 
 
     <header>
         <div class="header-top-bar container">
+            <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
+<script>
+  cartPaypal.Cart({ id: "pp-view-cart" })
+</script>
             <h1 class="site-logo"><a href="art.html" style="text-decoration: none; color: inherit;">Arts</a> & <a href="lamps.html" style="text-decoration: none; color: inherit;">Lamps</a></h1>
             <div class="header-controls">
                 <button class="hamburger-menu" aria-label="Toggle navigation">&#9776;</button>
@@ -63,16 +60,7 @@
                     <h3>Bamboolamp</h3>
                     <p class="price-range">Price €249</p>
                     <p class="item-description">Handcrafted bamboo lamp, adding a natural and serene glow to your space.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="lamp-bamboolamp"
-                        data-item-price="249.00"
-                        data-item-url="/products/lamps/bamboolamp.json"
-                        data-item-name="Bamboolamp"
-                        data-item-image="/images/lamp/bamboolamp (1).jpg"
-                        data-item-description="Handcrafted bamboo lamp, adding a natural and serene glow to your space."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                   
                     </button>
                 </a>
 
@@ -86,16 +74,7 @@
                     <h3>MiniBar</h3>
                     <p class="price-range">Price €220</p>
                     <p class="item-description">Compact and stylish mini-bar with integrated lighting, perfect for entertaining.</p>
-                    <button class="snipcart-add-item add-to-cart-collection-btn"
-                        data-item-id="lamp-minibar"
-                        data-item-price="220.00"
-                        data-item-url="/products/lamps/minibar.json"
-                        data-item-name="MiniBar"
-                        data-item-image="/images/minibar/minibar (1).jpg"
-                        data-item-description="Compact and stylish mini-bar with integrated lighting, perfect for entertaining."
-                        data-item-quantity="1"
-                        data-item-max-quantity="1">
-                        Add to Cart
+                   
                     </button>
                 </a>
 
@@ -120,16 +99,3 @@
 
     <script src="script.js"></script>
     <script>
-  window.SnipcartSettings = {
-    publicApiKey: 'MzY1YjJjZGQtNmU2OS00MTY3LWIxZDYtNDQyNmNlOGI2MDNlNjM4ODg5NTE4ODM0OTE1NTc0',
-    loadStrategy: 'on-user-interaction',
-    currency: 'EUR',
-    modalStyle: "side",
-    // templatesUrl: "/snipcart-templates.html",
-};
-
-    // The CORRECTED Snipcart loader script from Snipcart's documentation
-    (function(){var c,d;(d=(c=window.SnipcartSettings).version)!=null||(c.version="3.0");var s,S;(S=(s=window.SnipcartSettings).timeoutDuration)!=null||(s.timeoutDuration=2750);var l,p;(p=(l=window.SnipcartSettings).domain)!=null||(l.domain="cdn.snipcart.com");var w,u;(u=(w=window.SnipcartSettings).protocol)!=null||(w.protocol="https");var m,g;(g=(m=window.SnipcartSettings).loadCSS)!=null||(m.loadCSS=!0);var y=window.SnipcartSettings.version.includes("v3.0.0-ci")||window.SnipcartSettings.version!="3.0"&&window.SnipcartSettings.version.localeCompare("3.4.0",void 0,{numeric:!0,sensitivity:"base"})===-1,f=["focus","mouseover","touchmove","scroll","keydown"];window.LoadSnipcart=o;document.readyState==="loading"?document.addEventListener("DOMContentLoaded",r):r();function r(){window.SnipcartSettings.loadStrategy?window.SnipcartSettings.loadStrategy==="on-user-interaction"&&(f.forEach(function(t){return document.addEventListener(t,o)}),setTimeout(o,window.SnipcartSettings.timeoutDuration)):o()}var a=!1;function o(){if(a)return;a=!0;let t=document.getElementsByTagName("head")[0],n=document.querySelector("#snipcart"),i=document.querySelector('src[src^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][src$="snipcart.js"]')),e=document.querySelector('link[href^="'.concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,'"][href$="snipcart.css"]'));n||(n=document.createElement("div"),n.id="snipcart",n.setAttribute("hidden","true"),document.body.appendChild(n)),h(n),i||(i=document.createElement("script"),i.src="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.js"),i.async=!0,t.appendChild(i)),!e&&window.SnipcartSettings.loadCSS&&(e=document.createElement("link"),e.rel="stylesheet",e.type="text/css",e.href="".concat(window.SnipcartSettings.protocol,"://").concat(window.SnipcartSettings.domain,"/themes/v").concat(window.SnipcartSettings.version,"/default/snipcart.css"),t.prepend(e)),f.forEach(function(v){return document.removeEventListener(v,o)})}function h(t){!y||(t.dataset.apiKey=window.SnipcartSettings.publicApiKey,window.SnipcartSettings.addProductBehavior&&(t.dataset.configAddProductBehavior=window.SnipcartSettings.addProductBehavior),window.SnipcartSettings.modalStyle&&(t.dataset.configModalStyle=window.SnipcartSettings.modalStyle),window.SnipcartSettings.currency&&(t.dataset.currency=window.SnipcartSettings.currency),window.SnipcartSettings.templatesUrl&&(t.dataset.templatesUrl=window.SnipcartSettings.templatesUrl))}})();</script>
-
-</body>
-</html>

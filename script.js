@@ -1,17 +1,14 @@
-// Note: The full Snipcart script block (window.SnipcartSettings and the self-executing function)
-// is now placed directly in your HTML files, so it's removed from here to avoid duplication.
+// script.js
 
 document.addEventListener('DOMContentLoaded', () => {
     // --- Hamburger Menu Logic ---
     const hamburgerMenu = document.querySelector('.hamburger-menu');
     const mainNav = document.querySelector('.main-nav');
-    // const headerCategories = document.querySelector('.header-categories'); // Uncomment if you want to toggle categories visibility with main nav
 
     if (hamburgerMenu && mainNav) {
         hamburgerMenu.addEventListener('click', () => {
             mainNav.classList.toggle('active');
             document.body.classList.toggle('menu-open'); // Toggle body class to prevent scroll
-            // if (headerCategories) { headerCategories.classList.toggle('active'); } // Uncomment if you toggle categories visibility
         });
 
         // Close menu if a nav link is clicked (for single-page navigation or convenience)
@@ -20,12 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (mainNav.classList.contains('active')) {
                     mainNav.classList.remove('active');
                     document.body.classList.remove('menu-open'); // Remove body class to restore scroll
-                    // if (headerCategories) { headerCategories.classList.remove('active'); } // Uncomment if you toggle categories visibility
                 }
             });
         });
     }
-
 
     // --- Slideshow Logic for Collection Cards (index.html, art.html, lamps.html) ---
     const collectionCards = document.querySelectorAll('.collection-card');
@@ -67,21 +62,22 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Dynamic Image Loading for collection-details.html ---
-    const urlParams = new URLSearchParams(window.location.search);
-    const collectionName = urlParams.get('name');
-    const collectionType = urlParams.get('type');
-    const collectionTitleElement = document.getElementById('collectionTitle');
-    const imageGalleryContainer = document.getElementById('imageGallery');
-    const productDetailsBody = document.getElementById('productDetailsBody'); // For the details table
+    // --- Product Data Definition (Consolidated from your existing data and index.html) ---
+    // Your PayPal Merchant ID is read from the <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="BBJJBURX2AEZ4"></script> in your HTML.
+    // We don't need a separate constant for it here for hosted buttons.
 
-    // Define art collection images data and example prices/details
-    const artCollectionImagesData = {
-        'Ballerina': {
-            images: ['Ballerina (1).jpg', 'Ballerina (2).jpg', 'Ballerina (3).jpg', 'Ballerina (4).jpg'],
-            price: 39.00,
+    const productsData = [
+        // --- ART COLLECTIONS ---
+        {
+            name: "Ballerina",
+            price: "39.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-BAL-001",
+            paypalButtonId: "JUHMYR8RBSW9S",
+            type: "art",
             basePath: 'images/Art/Ballerina/',
-            details: { // New details for the table
+            images: ['Ballerina (1).jpg', 'Ballerina (2).jpg', 'Ballerina (3).jpg', 'Ballerina (4).jpg'],
+            description: "Graceful ballet-inspired artwork, perfect for adding elegance to any room.",
+            details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-BAL-001",
                 "Dimensions": "12x15 cm",
@@ -89,10 +85,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Disney princess': {
-            images: ['Disney princess (1).jpg', 'Disney princess (2).jpg', 'Disney princess (3).jpg', 'Disney princess (4).jpg'],
-            price: 100.00,
+        {
+            name: "Disney princess",
+            price: "100.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-DIS-001",
+            paypalButtonId: "YTM0S6AE27MY",
+            type: "art",
             basePath: 'images/Art/Disney princess/',
+            images: ['Disney princess (1).jpg', 'Disney princess (2).jpg', 'Disney princess (3).jpg', 'Disney princess (4).jpg'],
+            description: "Enchanting artwork featuring beloved Disney princesses, bringing fantasy to life.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-DIS-001",
@@ -101,10 +102,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Halloween': {
-            images: ['Halloween (1).jpg', 'Halloween (2).jpg'],
-            price: 90.00,
+        {
+            name: "Halloween",
+            price: "90.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-HAL-001",
+            paypalButtonId: "XPZS8MH6RQX2N",
+            type: "art",
             basePath: 'images/Art/Halloween/',
+            images: ['Halloween (1).jpg', 'Halloween (2).jpg'],
+            description: "Spooky and fun Halloween-themed artwork, perfect for seasonal decor.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-HAL-001",
@@ -113,10 +119,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Ischia': {
-            images: ['Ischia (1).jpg', 'Ischia (2).jpg', 'Ischia (3).jpg', 'Ischia (4).jpg'],
-            price: 79.00,
+        {
+            name: "Ischia",
+            price: "79.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-ISC-001",
+            paypalButtonId: "5NEFSHU4X2SZS",
+            type: "art",
             basePath: 'images/Art/Ischia/',
+            images: ['Ischia (1).jpg', 'Ischia (2).jpg', 'Ischia (3).jpg', 'Ischia (4).jpg'],
+            description: "Vibrant landscape artwork inspired by the beautiful island of Ischia.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-ISC-001",
@@ -125,10 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Koi Fish': {
-            images: ['Koi Fish (1).jpg', 'Koi Fish (2).jpg'],
-            price: 145.00,
+        {
+            name: "Koi Fish",
+            price: "145.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-KOI-001",
+            paypalButtonId: "CG5DR5WZRP2WQ", // Confirmed ID
+            type: "art",
             basePath: 'images/Art/Koi Fish/',
+            images: ['Koi Fish (1).jpg', 'Koi Fish (2).jpg'],
+            description: "Serene depiction of Koi fish, symbolizing good fortune and perseverance.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-KOI-001",
@@ -137,10 +153,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Landscape': {
-            images: ['Landscape (1).jpg', 'Landscape (2).jpg'],
-            price: 50.00,
+        {
+            name: "Landscape",
+            price: "50.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-LAN-001",
+            paypalButtonId: "GHQPYUXVR66WW", // Confirmed ID
+            type: "art",
             basePath: 'images/Art/Landscape/',
+            images: ['Landscape (1).jpg', 'Landscape (2).jpg'],
+            description: "Breathtaking landscape artwork capturing nature's beauty and tranquility.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-LAN-001",
@@ -149,10 +170,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "N/A (Indoor Use)"
             }
         },
-        'Little Mermaid': {
-            images: ['Little Mermaid (1).jpg', 'Little Mermaid (2).jpg'],
-            price: 150.00,
+        {
+            name: "Little Mermaid",
+            price: "150.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-MER-001",
+            paypalButtonId: "HCK8YCBFNQCME", // Confirmed ID
+            type: "art",
             basePath: 'images/Art/Little Mermaid/',
+            images: ['Little Mermaid (1).jpg', 'Little Mermaid (2).jpg'],
+            description: "Magical artwork inspired by the classic tale of the Little Mermaid.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-MER-001",
@@ -161,10 +187,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Love at first sight': {
-            images: ['Love at first sight (1).jpg'],
-            price: 90.00,
+        {
+            name: "Love at first sight",
+            price: "90.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-LOV-001",
+            paypalButtonId: "RBYBNP4KMM3KJ", // Confirmed ID
+            type: "art",
             basePath: 'images/Art/Love at first sight/',
+            images: ['Love at first sight (1).jpg'],
+            description: "Romantic artwork capturing the special moment of love at first sight.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-LOV-001",
@@ -173,10 +204,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Love bound': {
-            images: ['Love bound (1).jpg', 'Love bound (2).jpg'],
-            price: 150.00,
+        {
+            name: "Love bound",
+            price: "200.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-BOU-001",
+            paypalButtonId: "H2LR2YB43RYEW", // Confirmed ID
+            type: "art",
             basePath: 'images/Art/Love bound/',
+            images: ['Love bound (1).jpg', 'Love bound (2).jpg'],
+            description: "Deeply emotional artwork symbolizing unbreakable bonds of love.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-BOU-001",
@@ -185,10 +221,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Love in Paris': {
-            images: ['Love in Paris (1).jpg', 'Love in Paris (2).jpg'],
-            price: 90.00,
+        {
+            name: "Love in Paris",
+            price: "90.00",
+            itemId: "ART-PAR-001",
+            paypalButtonId: "WQGC2ACRNNMWA", // Confirmed ID
+            type: "art",
             basePath: 'images/Art/Love in Paris/',
+            images: ['Love in Paris (1).jpg', 'Love in Paris (2).jpg'],
+            description: "Charming artwork depicting the romantic allure of Paris.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-PAR-001",
@@ -197,10 +238,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Magic Koi': {
-            images: ['Magic Koi (1).jpg', 'Magic Koi (2).jpg', 'Magic Koi (3).jpg', 'Magic Koi (4).jpg'],
-            price: 1700.00,
+        {
+            name: "Magic Koi",
+            price: "2500.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-MAG-001",
+            paypalButtonId: "8RHJF33AXV7F4", // Confirmed ID
+            type: "art",
             basePath: 'images/Art/Magic Koi/',
+            images: ['Magic Koi (1).jpg', 'Magic Koi (2).jpg', 'Magic Koi (3).jpg', 'Magic Koi (4).jpg'],
+            description: "Large, intricate artwork of mystical Koi, a focal point for any grand space.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-MAG-001",
@@ -209,10 +255,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Maleficent': {
-            images: ['Maleficent (1).jpg', 'Maleficent (2).jpg'],
-            price: 55.00,
+        {
+            name: "Maleficent",
+            price: "55.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-MAL-001",
+            paypalButtonId: "EVN9DUFHBFBJE", // Confirmed ID
+            type: "art",
             basePath: 'images/Art/Maleficent/',
+            images: ['Maleficent (1).jpg', 'Maleficent (2).jpg'],
+            description: "Dark and captivating artwork inspired by the iconic character Maleficent.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-MAL-001",
@@ -221,10 +272,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Night Out': {
-            images: ['Night Out (1).jpg'],
-            price: 220.00,
+        {
+            name: "Night Out",
+            price: "220.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-NIG-001",
+            paypalButtonId: "G8MKF2EZZPXW8", // Confirmed ID
+            type: "art",
             basePath: 'images/Art/Night Out/',
+            images: ['Night Out (1).jpg'],
+            description: "Dynamic artwork capturing the vibrant energy of a night out.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-NIG-001",
@@ -233,10 +289,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Sunflower': {
-            images: ['Sunflower (1).jpg', 'Sunflower (2).jpg'],
-            price:  50.00,
+        {
+            name: "Sunflower",
+            price: "50.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-SUN-001",
+            paypalButtonId: "ZD9FGT3C2PM7W", // Confirmed ID
+            type: "art",
             basePath: 'images/Art/Sunflower/',
+            images: ['Sunflower (1).jpg', 'Sunflower (2).jpg'],
+            description: "Bright and cheerful sunflower artwork, radiating warmth and happiness.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-SUN-001",
@@ -245,10 +306,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Tea Time': {
-            images: ['Tea Time (1).jpg', 'Tea Time (2).jpg', 'Tea Time (3).jpg'],
-            price: 79.00,
+        {
+            name: "Tea Time",
+            price: "79.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-TEA-001",
+            paypalButtonId: "HQ5ACHYQUJQFS", // Confirmed ID
+            type: "art",
             basePath: 'images/Art/Tea Time/',
+            images: ['Tea Time (1).jpg', 'Tea Time (2).jpg', 'Tea Time (3).jpg'],
+            description: "Cozy and inviting artwork perfect for a relaxing tea-time ambiance.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-TEA-001",
@@ -257,10 +323,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Protection class": "(Indoor Use)"
             }
         },
-        'Under the sea': {
-            images: ['Under the sea (1).jpg'],
-            price: 200.00,
+        {
+            name: "Under the sea",
+            price: "200.00", // Adjusted to string with .00 for consistency
+            itemId: "ART-UND-001",
+            paypalButtonId: "MFYQPVA8L9VQC", // Confirmed ID
+            type: "art",
             basePath: 'images/Art/Under the sea/',
+            images: ['Under the sea (1).jpg'],
+            description: "Immersive artwork transporting you to the mysterious and beautiful world under the sea.",
             details: {
                 "Brand": "Arts & Lamps",
                 "Item no.": "ART-SEA-001",
@@ -268,67 +339,82 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Material": "Acrylic on Canvas",
                 "Protection class": "(Indoor Use)"
             }
-        }
-    };
-
-    // Define lamp collection images data and example prices/details
-    const lampCollectionImagesData = {
-        'Bamboolamp': {
-            images: Array.from({ length: 10 }, (_, i) => `bamboolamp (${i + 1}).jpg`),
-            price: 249.00,
+        },
+        // --- LAMP COLLECTIONS ---
+        {
+            name: "Bamboolamp",
+            price: "249.00",
+            itemId: "LMP-BAM-001",
+            paypalButtonId: "VZGJCD6PTUH68", // Confirmed ID
+            type: "lamp",
             basePath: 'images/lamp/',
+            images: Array.from({ length: 10 }, (_, i) => `bamboolamp (${i + 1}).jpg`),
+            description: "Handcrafted bamboo lamp, adding a natural and serene glow to your space.",
             details: {
                 "Brand": "Arts & Lamps",
-                "Item no.": "Bamboo-001",
+                "Item no.": "LMP-BAM-001",
                 "Dimensions": "NA",
                 "Material": "Bamboo,Wood,Leaves,Bulb",
                 "Protection class": "(Indoor)",
-                "Light bulb(s)": "Bulb Inclded"
+                "Light bulb(s)": "Bulb Included"
             }
         },
-        'MiniBar': {
-            images: ['minibar (1).jpg', 'minibar (2).jpg', 'minibar (3).jpg', 'minibar (4).jpg'],
-            price: 220.00,
+        {
+            name: "MiniBar",
+            price: "220.00", // Adjusted to string with .00 for consistency
+            itemId: "LMP-MNB-001",
+            paypalButtonId: "DBFSVJSPMH3YW", // Confirmed ID
+            type: "lamp",
             basePath: 'images/minibar/',
+            images: ['minibar (1).jpg', 'minibar (2).jpg', 'minibar (3).jpg', 'minibar (4).jpg'],
+            description: "Compact and stylish mini-bar with integrated lighting, perfect for entertaining.",
             details: {
                 "Brand": "Arts & Lamps",
-                "Item no.": "Mini-001",
+                "Item no.": "LMP-MNB-001",
                 "Dimensions": "H: 100cm, W: 50cm",
                 "Material": "Wood, Lights",
                 "Protection class": "(Indoor)"
             }
         }
-    };
+    ];
 
+    // --- Dynamic Content Loading for collection-details.html and PayPal Button Integration ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const collectionName = urlParams.get('name');
+    const collectionType = urlParams.get('type');
+    const collectionTitleElement = document.getElementById('collectionTitle');
+    const imageGalleryContainer = document.getElementById('imageGallery');
+    const productDetailsBody = document.getElementById('productDetailsBody');
+    const productPriceElement = document.querySelector('.product-price');
+    const paypalAddToCartContainer = document.getElementById('paypalAddToCartContainer'); // The container for PayPal Add to Cart button
 
-    if (collectionName && collectionTitleElement && imageGalleryContainer) {
-        const displayCollectionTitle = collectionName.split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
+    // Only attempt to load details if on collection-details.html and parameters exist
+    if (window.location.pathname.includes('collection-details.html') && collectionName && collectionType) {
+        const currentProduct = productsData.find(product =>
+            product.name.toLowerCase() === collectionName.toLowerCase() &&
+            product.type === collectionType
+        );
 
-        collectionTitleElement.textContent = `${displayCollectionTitle} Collection`;
+        if (currentProduct) {
+            // Update Title
+            const displayCollectionTitle = currentProduct.name.split(' ')
+                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                .join(' ');
+            collectionTitleElement.textContent = `${displayCollectionTitle} Collection`;
 
-        let itemData = null; // Holds the specific product's data (images, price, path, details)
-
-        if (collectionType === 'lamp') {
-            itemData = lampCollectionImagesData[collectionName];
-        } else { // Default to art if no type or type is 'art'
-            itemData = artCollectionImagesData[collectionName];
-        }
-
-        if (itemData && itemData.images && itemData.images.length > 0) {
-            imageGalleryContainer.innerHTML = '';
-            itemData.images.forEach((imageFileName, index) => {
-                const imgPath = `${itemData.basePath}${imageFileName}`;
+            // Populate Image Gallery
+            imageGalleryContainer.innerHTML = ''; // Clear previous images
+            currentProduct.images.forEach((imgFileName, index) => {
+                const imgPath = `${currentProduct.basePath}${encodeURIComponent(imgFileName)}`; // Encode URI component for image names with special characters like () or spaces
                 const artworkItem = document.createElement('div');
                 artworkItem.classList.add('artwork-item');
 
                 const imgElement = document.createElement('img');
                 imgElement.src = imgPath;
-                imgElement.alt = `${collectionName} Image ${index + 1}`;
+                imgElement.alt = `${currentProduct.name} Image ${index + 1}`;
                 imgElement.setAttribute('data-fullsize', imgPath);
-                imgElement.setAttribute('data-collection', collectionName);
-                imgElement.setAttribute('data-filename', imageFileName);
+                imgElement.setAttribute('data-collection', currentProduct.name);
+                imgElement.setAttribute('data-filename', imgFileName);
 
                 imgElement.onerror = function() {
                     console.error(`Failed to load image: ${this.src}`);
@@ -341,94 +427,39 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             // Update "Back to" button based on collection type
-            const backButtonTop = document.querySelector('.back-to-collections-top'); // Select top button
-            const backButtonBottom = document.querySelector('.back-to-collections-bottom'); // Select bottom button
+            const backButtonTop = document.querySelector('.back-to-collections-top');
+            const backButtonBottom = document.querySelector('.back-to-collections-bottom');
 
             if (backButtonTop) {
-                if (collectionType === 'art') {
-                    backButtonTop.textContent = 'Back to Art Collections';
-                    backButtonTop.href = 'art.html';
-                } else if (collectionType === 'lamp') {
-                    backButtonTop.textContent = 'Back to Lamp Collections';
-                    backButtonTop.href = 'lamps.html';
-                }
+                backButtonTop.textContent = `Back to ${collectionType === 'art' ? 'Art' : 'Lamp'} Collections`;
+                backButtonTop.href = `${collectionType}.html`;
             }
             if (backButtonBottom) {
-                if (collectionType === 'art') {
-                    backButtonBottom.textContent = 'Back to Art Collections';
-                    backButtonBottom.href = 'art.html';
-                } else if (collectionType === 'lamp') {
-                    backButtonBottom.textContent = 'Back to Lamp Collections';
-                    backButtonBottom.href = 'lamps.html';
-                }
+                backButtonBottom.textContent = `Back to ${collectionType === 'art' ? 'Art' : 'Lamp'} Collections`;
+                backButtonBottom.href = `${collectionType}.html`;
             }
 
+            initializeImageLightbox(); // Re-initialize lightbox for new images
 
-            initializeImageLightbox();
-
-            // --- Snipcart Integration for collection-details.html ---
-            const mainProductImage = document.querySelector('#imageGallery .artwork-item img'); // Get the first image as the product image
-            const displayPriceMajor = document.getElementById('displayPriceMajor');
-            const displayPriceMinor = document.getElementById('displayPriceMinor');
-            const addToBasketBtn = document.querySelector('.add-to-basket-btn');
-            const buyNowBtn = document.querySelector('.buy-now-btn');
-
-            if (itemData.price && displayPriceMajor && displayPriceMinor && mainProductImage && addToBasketBtn && buyNowBtn) {
-                const priceString = itemData.price.toFixed(2); // e.g., 250.00
-                const [major, minor] = priceString.split('.');
-                displayPriceMajor.textContent = major;
-                displayPriceMinor.textContent = minor;
-
-                const itemId = `${collectionType}-${collectionName.replace(/\s+/g, '-').toLowerCase()}`; // Unique ID for Snipcart
-                const itemName = displayCollectionTitle; // Use the formatted name
-                const itemImage = itemData.basePath + itemData.images[0]; // Use the main image of the collection by correctly constructing the path
-
-                // NEW: Determine the JSON URL for validation for collection-details page buttons
-                let itemUrlForSnipcartValidation;
-                if (collectionType === 'lamp') {
-                    itemUrlForSnipcartValidation = `/products/lamps/${collectionName.replace(/\s+/g, '-').toLowerCase()}.json`;
-                } else { // Default to art
-                    itemUrlForSnipcartValidation = `/products/art/${collectionName.replace(/\s+/g, '-').toLowerCase()}.json`;
-                }
-
-                // Set Snipcart data attributes for both buttons
-                [addToBasketBtn, buyNowBtn].forEach(button => {
-                    button.setAttribute('data-item-id', itemId);
-                    button.setAttribute('data-item-price', itemData.price);
-                    button.setAttribute('data-item-url', itemUrlForSnipcartValidation); // Point to the JSON file
-                    button.setAttribute('data-item-name', itemName);
-                    button.setAttribute('data-item-image', itemImage);
-                    button.setAttribute('data-item-description', `Original ${collectionType} from ${displayCollectionTitle} collection.`); // Dynamic description
-                    button.setAttribute('data-item-quantity', '1'); // Fixed quantity to 1
-                    button.setAttribute('data-item-max-quantity', '1'); // Explicitly set max quantity here too
-                    button.setAttribute('data-item-custom1-name', "Gift note"); // Changed to "Gift note" here
-                    button.setAttribute('data-item-custom1-value', ""); // Default empty gift note
-                });
-            } else {
-                console.warn("Snipcart elements or itemData missing or incomplete on collection-details page. Hiding product details section.");
-                // Hide product details section if no data
-                const productDetailsSection = document.querySelector('.product-details-section');
-                if (productDetailsSection) {
-                    productDetailsSection.style.display = 'none';
-                }
+            // Display Price
+            if (productPriceElement) {
+                productPriceElement.innerHTML = `€${currentProduct.price} EUR`;
             }
 
-            // --- Populate Product Details Table ---
-            const productDetailsSection = document.querySelector('.product-details-section'); // Ensure this is available for hiding
-            if (productDetailsBody && itemData.details) {
+            // Populate Product Details Table
+            const productDetailsSection = document.querySelector('.product-details-section');
+            if (productDetailsBody && currentProduct.details) {
                 productDetailsBody.innerHTML = ''; // Clear existing content
-                for (const key in itemData.details) {
-                    if (Object.hasOwnProperty.call(itemData.details, key)) {
-                        const value = itemData.details[key];
+                for (const key in currentProduct.details) {
+                    if (Object.hasOwnProperty.call(currentProduct.details, key)) {
+                        const value = currentProduct.details[key];
                         const row = document.createElement('tr');
-                        // Use innerHTML for td to allow for HTML links (like reviews)
                         row.innerHTML = `<th>${key}</th><td>${value}</td>`;
                         productDetailsBody.appendChild(row);
                     }
                 }
-                 // Make sure product details section is visible if data is found
                 if (productDetailsSection) {
-                    productDetailsSection.style.display = 'flex'; // Or 'block' depending on its default styling
+                    productDetailsSection.style.display = 'flex'; // Ensure section is visible
                 }
             } else {
                 console.warn("Product details data missing or productDetailsBody element not found. Hiding table.");
@@ -437,14 +468,33 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             }
 
+            // --- Dynamically add PayPal "Add to Cart" button using PayPal's custom element ---
+            if (paypalAddToCartContainer && currentProduct.paypalButtonId) { // Check if paypalButtonId exists for this product
+                paypalAddToCartContainer.innerHTML = ''; // Clear existing content
 
-        } else if (imageGalleryContainer && window.location.pathname.includes('gallery.html')) {
-            document.getElementById('galleryCategoryTitle').textContent = "Our Full Gallery";
-            document.getElementById('galleryCategoryDescription').textContent = "Browse a selection of all our beautiful creations.";
+                const paypalButtonElement = document.createElement('paypal-add-to-cart-button');
+                paypalButtonElement.setAttribute('data-id', currentProduct.paypalButtonId); // Use the hosted button ID
+                paypalAddToCartContainer.appendChild(paypalButtonElement);
+
+                // Initialize the PayPal AddToCart button
+                // The cartPaypal.AddToCart function expects an object with 'id'
+                const scriptElement = document.createElement('script');
+                scriptElement.textContent = `
+                    cartPaypal.AddToCart({ id: '${currentProduct.paypalButtonId}' });
+                `;
+                paypalAddToCartContainer.appendChild(scriptElement);
+            } else {
+                console.warn(`PayPal Add to Cart button not displayed for '${currentProduct.name}' because no paypalButtonId was found.`);
+                if (paypalAddToCartContainer) {
+                    paypalAddToCartContainer.innerHTML = ''; // Ensure container is empty if no button
+                }
+            }
+
         } else {
-            console.warn("Collection name not found in URL or missing item data. Hiding product details section.");
-            imageGalleryContainer.innerHTML = `<p>No images found for the '${collectionName}' collection or collection not defined. Please check folder and file names and script.js data.</p>`;
-            // Hide product details section if no data
+            // Handle case where collection/product data is not found in `productsData`
+            console.warn(`Collection '${collectionName}' of type '${collectionType}' not found in productsData. Displaying error.`);
+            collectionTitleElement.textContent = "Collection Not Found";
+            imageGalleryContainer.innerHTML = '<p>Sorry, this collection could not be found or its data is incomplete.</p>';
             const productDetailsSection = document.querySelector('.product-details-section');
             if (productDetailsSection) {
                 productDetailsSection.style.display = 'none';
@@ -475,27 +525,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 const collection = img.getAttribute('data-collection');
                 const clickedFileName = img.getAttribute('data-filename');
 
-                const currentType = urlParams.get('type');
-                let dataSource = null; // Will point to artCollectionImagesData or lampCollectionImagesData
-                let basePath = '';
+                const currentType = urlParams.get('type'); // Get type from current URL
+                let currentProductData = productsData.find(p => p.name === collection && p.type === currentType); // Find the specific product
 
-                // Determine the correct dataSource and basePath based on type and collection
-                if (currentType === 'lamp') {
-                    dataSource = lampCollectionImagesData;
-                } else { // Default to art
-                    dataSource = artCollectionImagesData;
+                if (!currentProductData) {
+                    console.error("Product data not found for lightbox:", collection, "Type:", currentType);
+                    return;
                 }
 
-                // Get the base path from the itemData object
-                if (dataSource && dataSource[collection] && dataSource[collection].basePath) {
-                    basePath = dataSource[collection].basePath;
-                } else {
-                    console.error("Base path not found for collection:", collection);
-                    return; // Exit if base path is missing
-                }
-
-                currentLightboxCollectionImages = dataSource[collection].images.map(filename => `${basePath}${filename}`);
-                currentLightboxImageIndex = currentLightboxCollectionImages.findIndex(src => src.includes(clickedFileName));
+                const basePath = currentProductData.basePath;
+                currentLightboxCollectionImages = currentProductData.images.map(filename => `${basePath}${encodeURIComponent(filename)}`);
+                currentLightboxImageIndex = currentLightboxCollectionImages.findIndex(src => src.includes(encodeURIComponent(clickedFileName)));
 
                 showLightboxImage(currentLightboxImageIndex);
 
@@ -511,7 +551,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 currentLightboxImageIndex = currentLightboxCollectionImages.length - 1;
             } else if (index >= currentLightboxCollectionImages.length) {
                 currentLightboxImageIndex = 0;
-            } else {
+            }
+            // else, currentLightboxImageIndex is already updated
+            else {
                 currentLightboxImageIndex = index;
             }
 
@@ -552,7 +594,11 @@ document.addEventListener('DOMContentLoaded', () => {
         document.addEventListener('keydown', function(event) {
             if (lightbox.style.display === 'flex') {
                 if (event.key === "Escape") {
-                    closeLightbox();
+                    // Define closeLightbox() or use the direct close logic here
+                    lightbox.style.display = 'none';
+                    document.body.style.overflow = '';
+                    currentLightboxCollectionImages = [];
+                    currentLightboxImageIndex = 0;
                 } else if (event.key === "ArrowLeft") {
                     showLightboxImage(currentLightboxImageIndex - 1);
                 } else if (event.key === "ArrowRight") {
@@ -574,7 +620,6 @@ document.addEventListener('DOMContentLoaded', () => {
         let videos = [];
 
         if (!videoLightbox || !lightboxVideo || !closeButton || !prevButton || !nextButton || videoItems.length === 0) {
-            // console.warn(`Video Lightbox elements for ${galleryId} not found or no videos. Functionality will not be active.`);
             return;
         }
 
@@ -687,7 +732,6 @@ document.addEventListener('DOMContentLoaded', () => {
         setupVideoLightbox('lampVideoGallery');
     }
 
-
     // --- Sticky Header Scroll Effect ---
     const header = document.querySelector('header');
 
@@ -766,8 +810,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (response.ok) {
                     openModal();
                     form.reset();
-                    // Optional: show a small success message below form too
-                    // showFeedback('Your message has been sent successfully!', 'success');
                 } else {
                     const data = await response.json();
                     console.error('Formspree Error:', data);
@@ -800,4 +842,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Initialize PayPal Cart at the end of DOMContentLoaded
+    cartPaypal.Cart({ id: "pp-view-cart" });
 });
