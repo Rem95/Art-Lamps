@@ -1,0 +1,10 @@
+{
+  "id": "art-halloween",
+  "name": "Family Halloween",
+  "price": 90.00,
+  "url": "/products/art/halloween.json",
+  "description": "Spooky and fun Halloween-themed artwork, perfect for seasonal decor.",
+  "image": "/images/Art/Halloween/Halloween (1).jpg",
+  "maxQuantity": 1,
+  "categories": ["art", "painting", "holiday"]
+}

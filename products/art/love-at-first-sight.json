@@ -1,0 +1,10 @@
+{
+  "id": "art-love-at-first-sight",
+  "name": "Love at first sight",
+  "price": 90.00,
+  "url": "/products/art/love-at-first-sight.json",
+  "description": "Romantic artwork capturing the special moment of love at first sight.",
+  "image": "/images/Art/Love at first sight/Love at first sight (1).jpg",
+  "maxQuantity": 1,
+  "categories": ["art", "painting", "love"]
+}

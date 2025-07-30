@@ -1,0 +1,10 @@
+{
+  "id": "art-maleficent",
+  "name": "Maleficent",
+  "price": 55.00,
+  "url": "/products/art/maleficent.json",
+  "description": "Dark and captivating artwork inspired by the iconic character Maleficent.",
+  "image": "/images/Art/Maleficent/Maleficent (1).jpg",
+  "maxQuantity": 1,
+  "categories": ["art", "painting", "fantasy"]
+}

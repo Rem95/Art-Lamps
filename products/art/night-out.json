@@ -1,0 +1,10 @@
+{
+  "id": "art-night-out",
+  "name": "Night Out",
+  "price": 220.00,
+  "url": "/products/art/night-out.json",
+  "description": "Dynamic artwork capturing the vibrant energy of a night out.",
+  "image": "/images/Art/Night Out/Night Out (1).jpg",
+  "maxQuantity": 1,
+  "categories": ["art", "painting", "cityscape"]
+}
