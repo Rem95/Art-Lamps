@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- ART COLLECTIONS ---
         {
             name: "Ballerina",
-            price: "39.00", // Adjusted to string with .00 for consistency
+            price: "50", // Adjusted to string with .00 for consistency
             itemId: "ART-BAL-001",
             paypalButtonId: "JUHMYR8RBSW9S",
             type: "art",
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Disney princess",
-            price: "100.00", // Adjusted to string with .00 for consistency
+            price: "100", // Adjusted to string with .00 for consistency
             itemId: "ART-DIS-001",
             paypalButtonId: "YTMD95EAE27MY",
             type: "art",
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Halloween",
-            price: "90.00", // Adjusted to string with .00 for consistency
+            price: "90", // Adjusted to string with .00 for consistency
             itemId: "ART-HAL-001",
             paypalButtonId: "XPZS8MH6RQX2N",
             type: "art",
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Ischia",
-            price: "79.00", // Adjusted to string with .00 for consistency
+            price: "79", // Adjusted to string with .00 for consistency
             itemId: "ART-ISC-001",
             paypalButtonId: "5NEFSHU4X2SZS",
             type: "art",
@@ -138,7 +138,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Koi Fish",
-            price: "145.00", // Adjusted to string with .00 for consistency
+            price: "145", // Adjusted to string with .00 for consistency
             itemId: "ART-KOI-001",
             paypalButtonId: "CG5DR5WZRP2WQ", // Confirmed ID
             type: "art",
@@ -155,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Landscape",
-            price: "50.00", // Adjusted to string with .00 for consistency
+            price: "50", // Adjusted to string with .00 for consistency
             itemId: "ART-LAN-001",
             paypalButtonId: "GHQPYUXVR66WW", // Confirmed ID
             type: "art",
@@ -172,7 +172,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Little Mermaid",
-            price: "150.00", // Adjusted to string with .00 for consistency
+            price: "150", // Adjusted to string with .00 for consistency
             itemId: "ART-MER-001",
             paypalButtonId: "HCK8YCBFNQCME", // Confirmed ID
             type: "art",
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Love at first sight",
-            price: "90.00", // Adjusted to string with .00 for consistency
+            price: "90", // Adjusted to string with .00 for consistency
             itemId: "ART-LOV-001",
             paypalButtonId: "RBYBNP4KMM3KJ", // Confirmed ID
             type: "art",
@@ -206,7 +206,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Love bound",
-            price: "200.00", // Adjusted to string with .00 for consistency
+            price: "200", // Adjusted to string with .00 for consistency
             itemId: "ART-BOU-001",
             paypalButtonId: "H2LR2YB43RYEW", // Confirmed ID
             type: "art",
@@ -223,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Love in Paris",
-            price: "90.00",
+            price: "90",
             itemId: "ART-PAR-001",
             paypalButtonId: "WQGC2ACRNNMWA", // Confirmed ID
             type: "art",
@@ -240,7 +240,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Magic Koi",
-            price: "2500.00", // Adjusted to string with .00 for consistency
+            price: "2500", // Adjusted to string with .00 for consistency
             itemId: "ART-MAG-001",
             paypalButtonId: "8RHJF33AXV7F4", // Confirmed ID
             type: "art",
@@ -257,7 +257,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Maleficent",
-            price: "55.00", // Adjusted to string with .00 for consistency
+            price: "55", // Adjusted to string with .00 for consistency
             itemId: "ART-MAL-001",
             paypalButtonId: "EVN9DUFHBFBJE", // Confirmed ID
             type: "art",
@@ -274,7 +274,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Night Out",
-            price: "220.00", // Adjusted to string with .00 for consistency
+            price: "220", // Adjusted to string with .00 for consistency
             itemId: "ART-NIG-001",
             paypalButtonId: "G8MKF2EZZPXW8", // Confirmed ID
             type: "art",
@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Sunflower",
-            price: "50.00", // Adjusted to string with .00 for consistency
+            price: "50", // Adjusted to string with .00 for consistency
             itemId: "ART-SUN-001",
             paypalButtonId: "ZD9FGT3C2PM7W", // Confirmed ID
             type: "art",
@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Tea Time",
-            price: "79.00", // Adjusted to string with .00 for consistency
+            price: "79", // Adjusted to string with .00 for consistency
             itemId: "ART-TEA-001",
             paypalButtonId: "HQ5ACHYQUJQFS", // Confirmed ID
             type: "art",
@@ -325,7 +325,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "Under the sea",
-            price: "200.00", // Adjusted to string with .00 for consistency
+            price: "200", // Adjusted to string with .00 for consistency
             itemId: "ART-UND-001",
             paypalButtonId: "MFYQPVA8L9VQC", // Confirmed ID
             type: "art",
@@ -343,7 +343,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- LAMP COLLECTIONS ---
         {
             name: "Bamboolamp",
-            price: "249.00",
+            price: "249",
             itemId: "LMP-BAM-001",
             paypalButtonId: "VZGJCD6PTUH68", // Confirmed ID
             type: "lamp",
@@ -361,7 +361,7 @@ document.addEventListener('DOMContentLoaded', () => {
         },
         {
             name: "MiniBar",
-            price: "220.00", // Adjusted to string with .00 for consistency
+            price: "220", // Adjusted to string with .00 for consistency
             itemId: "LMP-MNB-001",
             paypalButtonId: "DBFSVJSPMH3YW", // Confirmed ID
             type: "lamp",
