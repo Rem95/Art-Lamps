@@ -1,0 +1,10 @@
+{
+  "id": "lamp-bamboolamp",
+  "name": "Bamboolamp",
+  "price": 249.00,
+  "url": "/products/lamps/bamboolamp.json",
+  "description": "Handcrafted bamboo lamp, adding a natural and serene glow to your space.",
+  "image": "/images/lamp/bamboolamp (1).jpg",
+  "maxQuantity": 1,
+  "categories": ["lamps", "lighting", "bamboo"]
+}

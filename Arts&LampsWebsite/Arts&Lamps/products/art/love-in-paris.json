@@ -1,0 +1,10 @@
+{
+  "id": "art-love-in-paris",
+  "name": "Love in Paris",
+  "price": 90.00,
+  "url": "/products/art/love-in-paris.json",
+  "description": "Charming artwork depicting the romantic allure of Paris.",
+  "image": "/images/Art/Love in Paris/Love in Paris (1).jpg",
+  "maxQuantity": 1,
+  "categories": ["art", "painting", "cityscape"]
+}

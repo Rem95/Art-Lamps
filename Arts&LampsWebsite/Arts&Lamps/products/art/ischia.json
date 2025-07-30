@@ -1,0 +1,10 @@
+{
+  "id": "art-ischia",
+  "name": "Ischia",
+  "price": 79.00,
+  "url": "/products/art/ischia.json",
+  "description": "Vibrant landscape artwork inspired by the beautiful island of Ischia.",
+  "image": "/images/Art/Ischia/Ischia (1).jpg",
+  "maxQuantity": 1,
+  "categories": ["art", "painting", "landscape"]
+}
