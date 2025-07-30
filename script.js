@@ -89,7 +89,7 @@ document.addEventListener('DOMContentLoaded', () => {
             name: "Disney princess",
             price: "100.00", // Adjusted to string with .00 for consistency
             itemId: "ART-DIS-001",
-            paypalButtonId: "YTM0S6AE27MY",
+            paypalButtonId: "YTMD95EAE27MY",
             type: "art",
             basePath: 'images/Art/Disney princess/',
             images: ['Disney princess (1).jpg', 'Disney princess (2).jpg', 'Disney princess (3).jpg', 'Disney princess (4).jpg'],
