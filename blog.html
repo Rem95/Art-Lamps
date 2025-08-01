@@ -1,79 +1,30 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta name="google-site-verification" content="rUnGy29cWOWlOB8eKOvk2y_CP67HH1cEQwqp_Ne58aQ" />
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arts & Lamps Blog</title>
+---
+layout: default
+title: Arts & Lamps Blog
+---
 
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="blog-styles.css">
+<main class="container">
+    <h1> Where faith finds form: a collection of religious passages and heartfelt stories, brought to life through beautiful sketches. </h1>
+    <h2>A tapestry of tales and passages, illuminated by the gentle glow of art and faith.</h2>
 
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <meta name="description" content="Read stories and see new art from our creative space.">
-    <meta name="keywords" content="blog, art stories, religious art, art blog, lamp design stories, handmade art">
-    <meta name="author" content="Your Name/Company Name">
-
-    <meta property="og:title" content="Arts & Lamps Blog - Stories & Art">
-    <meta property="og:description" content="Explore stories and new art pieces from the creators of Arts & Lamps.">
-    <meta property="og:image" content="https://www.yourwebsite.com/images/og-image.jpg">
-    <meta property="og:url" content="https://www.yourwebsite.com/blog.html">
-    <meta property="og:type" content="website">
-
-    <script src="https://www.paypalobjects.com/ncp/cart/cart.js" data-merchant-id="BBJJBURX2AEZ4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-</head>
-<body>
-    <header>
-        <div class="header-top-bar container">
-            <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
-            <script> cartPaypal.Cart({ id: "pp-view-cart" })
-            </script>
-            <h1 class="site-logo"><a href="art.html" style="text-decoration: none; color: inherit;">Arts</a> & <a href="lamps.html" style="text-decoration: none; color: inherit;">Lamps</a></h1>
-            <div class="header-controls">
-                <button class="hamburger-menu" aria-label="Toggle navigation">&#9776;</button>
-            </div>
-            <nav class="main-nav">
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about-us.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                    <li><a href="art.html">Art Collection</a></li>
-                    <li><a href="ArtVideos.html">Art Video</a></li>
-                    <li><a href="lamps.html">Lamps & Lighting</a></li>
-                    <li><a href="LampVideos.html">Lamps & Lighting Video</a></li>
-                    <li><a href="ComingSoon.html">Coming Soon</a></li>
-                    <li><a href="blog.html">Blog</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <main class="container">
-        <h1> Where faith finds form: a collection of religious passages and heartfelt stories, brought to life through beautiful sketches. </h1>
-        <h2>A tapestry of tales and passages, illuminated by the gentle glow of art and faith.</h2>
-
-        <!-- This is where the blog posts will be dynamically loaded -->
-        <div class="blog-posts-container">
-            <!-- Blog posts will be injected here by script.js -->
-            <h2 class="text-center text-gray-500">Loading blog posts...</h2>
-        </div>
-    </main>
-
-    <footer>
-        <div class="container footer-content">
-            <p>&copy; 2025 Arts & Lamps. All rights reserved.</p>
-            <div class="footer-links">
-                <a href="privacy-policy.html">Privacy Policy</a>
-                <a href="terms-of-service.html">Terms of Service</a>
-                <a href="shipping-returns.html">Shipping & Returns</a>
-            </div>
-            <div class="social-media">
-                <a href="https://www.facebook.com/profile.php?id=61578956126852" target="_blank" aria-label="Facebook"><img src="facebook.jpeg" alt="Facebook Icon"></a>
-                <a href="https://www.instagram.com/llw_fantasia/" target="_blank" aria-label="Instagram"><img src="instagram.jpeg" alt="Instagram Icon"></a>
-            </div>
-        </div>
-    </footer>
-    <script type="module" src="script.js"></script>
-</body>
-</html>
+    <div class="blog-posts-container">
+        {% if site.posts.size > 0 %}
+            {% for post in site.posts %}
+                <a href="{{ post.url | relative_url }}" class="blog-post-card">
+                    {% if post.image %}
+                        <img src="{{ post.image | relative_url }}" alt="{{ post.title }} Featured Image">
+                    {% else %}
+                        <img src="https://placehold.co/300x200/cccccc/333333?text=No+Image" alt="No Featured Image">
+                    {% endif %}
+                    <div class="blog-post-card-content">
+                        <h3>{{ post.title }}</h3>
+                        <p>{{ post.excerpt | strip_html | truncatewords: 25 }}</p>
+                        <div class="post-date">{{ post.date | date: "%B %d, %Y" }}</div>
+                    </div>
+                </a>
+            {% endfor %}
+        {% else %}
+            <h2 class="text-center text-gray-500">No blog posts found.</h2>
+        {% endif %}
+    </div>
+</main>
