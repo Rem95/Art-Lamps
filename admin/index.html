@@ -1,13 +1,18 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Content Manager</title>
-  <base href="/Art-Lamps/">
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js" data-cms-config-path="admin/config.yml"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Content Manager</title>
+    <!-- The main Decap CMS script. This must be loaded from a CDN. -->
+    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+    
+    <!-- This script tag tells the CMS where to find its configuration.
+         It has been updated to point to the correct path in the root directory. -->
+    <script data-cms-config-path="../config.yml"></script>
 </head>
 <body>
-  <div id="cms-root"></div>
+    <!-- The CMS will be rendered inside this div. This is required. -->
+    <div id="cms-root"></div>
 </body>
 </html>
