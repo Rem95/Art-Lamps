@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Content Manager</title>
-    <!-- The main Decap CMS script. This must be loaded from a CDN. -->
-    <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
 </head>
 <body>
-    <!-- The CMS will be rendered inside this div. This is required. -->
+    <!-- The CMS will be rendered inside this div. -->
     <div id="cms-root"></div>
-    
-    <!-- This script tag contains the configuration for Decap CMS directly. -->
+
+    <!-- The CMS script is loaded here from a CDN.
+         Note: This version is using a more specific tag to prevent any caching issues with updates. -->
+    <script src="https://unpkg.com/decap-cms@3.0.3/dist/decap-cms.js"></script>
+
     <script>
-        window.CMS_CONFIGURATION = {
+        // Directly define the configuration object
+        const config = {
             backend: {
                 name: 'github',
                 repo: 'rem95/Art-Lamps',
@@ -38,11 +40,8 @@
             ]
         };
 
-        if (window.CMS_CONFIGURATION) {
-            CMS.init({
-                config: window.CMS_CONFIGURATION
-            });
-        }
+        // Initialize the CMS using the configuration object
+        DecapCMS.init({ config: config });
     </script>
 </body>
 </html>
