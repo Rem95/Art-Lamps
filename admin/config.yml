@@ -1,0 +1,20 @@
+backend:
+  name: github
+  repo: rem95/Art-Lamps  # REPLACE WITH YOUR GITHUB USERNAME AND REPO NAME
+  branch: main  # Usually 'main' or 'master'
+  base_url: https://rem95.github.io
+
+media_folder: 'images/uploads'
+public_folder: '/images/uploads'
+
+collections:
+  - name: 'blog'
+    label: 'Religious Blog'
+    folder: '_posts'
+    create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    fields:
+      - {label: 'Title', name: 'title', widget: 'string', tagname: 'h2'}
+      - {label: 'Publish Date', name: 'date', widget: 'datetime'}
+      - {label: 'Featured Image', name: 'image', widget: 'image', required: false}
+      - {label: 'Body', name: 'body', widget: 'markdown'}
