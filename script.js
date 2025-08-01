@@ -10,7 +10,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // --- Firebase Initialization ---
     // Global variables provided by the environment
     const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-    const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
+    
+    // IMPORTANT: Replace these placeholder values with your actual Firebase project configuration.
+    const firebaseConfig = {
+      apiKey: "YOUR_API_KEY",
+      authDomain: "YOUR_AUTH_DOMAIN",
+      projectId: "YOUR_PROJECT_ID",
+      storageBucket: "YOUR_STORAGE_BUCKET",
+      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+      appId: "YOUR_APP_ID"
+    };
 
     const app = initializeApp(firebaseConfig);
     const db = getFirestore(app);
@@ -142,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-
+    
     // --- Contact Form Submission ---
     const contactForm = document.getElementById('contactForm');
     const thankYouModal = document.getElementById('thankYouModal');
@@ -212,6 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
     const comingSoonImage = document.getElementById('comingSoonImage');
     if (comingSoonImage) {
         comingSoonImage.addEventListener('click', function(event) {
@@ -221,8 +231,9 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => { window.location.href = 'contact.html'; }, 500);
         });
     }
-
-    if (typeof cartPaypal !== 'undefined') {
+    
+    // Check if cartPaypal exists before calling it
+    if (typeof cartPaypal !== 'undefined' && cartPaypal.Cart) {
         cartPaypal.Cart({ id: "pp-view-cart" });
     }
 });
