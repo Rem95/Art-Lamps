@@ -1,20 +1,43 @@
-backend:
-  name: github
-  repo: rem95/Art-Lamps
-  branch: main
-  base_url: https://rem95.github.io/Art-Lamps
-
-media_folder: 'images/uploads'
-public_folder: '/images/uploads'
-
-collections:
-  - name: 'blog'
-    label: 'Religious Blog'
-    folder: '_posts'
-    create: true
-    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
-    fields:
-      - {label: 'Title', name: 'title', widget: 'string', tagname: 'h2'}
-      - {label: 'Publish Date', name: 'date', widget: 'datetime'}
-      - {label: 'Featured Image', name: 'image', widget: 'image', required: false}
-      - {label: 'Body', name: 'body', widget: 'markdown'}
+{
+  "backend": {
+    "repo": "rem95/Art-Lamps", 
+    "name": "github", 
+    "branch": "main", 
+    "base_url": "https://rem95.github.io/Art-Lamps"
+  }, 
+  "public_folder": "/images/uploads", 
+  "collections": [
+    {
+      "slug": "{{year}}-{{month}}-{{day}}-{{slug}}", 
+      "name": "blog", 
+      "fields": [
+        {
+          "widget": "string", 
+          "name": "title", 
+          "tagname": "h2", 
+          "label": "Title"
+        }, 
+        {
+          "widget": "datetime", 
+          "name": "date", 
+          "label": "Publish Date"
+        }, 
+        {
+          "widget": "image", 
+          "required": false, 
+          "name": "image", 
+          "label": "Featured Image"
+        }, 
+        {
+          "widget": "markdown", 
+          "name": "body", 
+          "label": "Body"
+        }
+      ], 
+      "create": true, 
+      "folder": "_posts", 
+      "label": "Religious Blog"
+    }
+  ], 
+  "media_folder": "images/uploads"
+}
