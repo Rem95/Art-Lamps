@@ -1,8 +1,8 @@
 backend:
   name: github
-  repo: rem95/Art-Lamps  # REPLACE WITH YOUR GITHUB USERNAME AND REPO NAME
-  branch: main  # Usually 'main' or 'master'
-  base_url: https://rem95.github.io
+  repo: rem95/Art-Lamps
+  branch: main
+  base_url: https://rem95.github.io/Art-Lamps
 
 media_folder: 'images/uploads'
 public_folder: '/images/uploads'
