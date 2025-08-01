@@ -11,14 +11,14 @@ document.addEventListener('DOMContentLoaded', () => {
     // Global variables provided by the environment
     const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
     
-    // IMPORTANT: Replace these placeholder values with your actual Firebase project configuration.
+    // This is your actual Firebase project configuration.
     const firebaseConfig = {
-      apiKey: "YOUR_API_KEY",
-      authDomain: "YOUR_AUTH_DOMAIN",
-      projectId: "YOUR_PROJECT_ID",
-      storageBucket: "YOUR_STORAGE_BUCKET",
-      messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-      appId: "YOUR_APP_ID"
+      apiKey: "AIzaSyC_bP7Skb6w1oDEcDlcQ3w-0A7gPOII_pY",
+      authDomain: "artslamps-ca795.firebaseapp.com",
+      projectId: "artslamps-ca795",
+      storageBucket: "artslamps-ca795.firebasestorage.app",
+      messagingSenderId: "770503201539",
+      appId: "1:770503201539:web:50b428ab88f941e83f8f36"
     };
 
     const app = initializeApp(firebaseConfig);
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
-    
+
     // --- Contact Form Submission ---
     const contactForm = document.getElementById('contactForm');
     const thankYouModal = document.getElementById('thankYouModal');
@@ -231,8 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => { window.location.href = 'contact.html'; }, 500);
         });
     }
-    
-    // Check if cartPaypal exists before calling it
+
     if (typeof cartPaypal !== 'undefined' && cartPaypal.Cart) {
         cartPaypal.Cart({ id: "pp-view-cart" });
     }
