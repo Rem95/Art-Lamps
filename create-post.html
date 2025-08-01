@@ -41,8 +41,6 @@
             </div>
         </form>
     </div>
-
-    <!-- Firebase SDKs -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
@@ -52,25 +50,22 @@
         // Global variables provided by the environment
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         
-        // This is your actual Firebase project configuration.
+        // IMPORTANT: Replace these placeholder values with your actual Firebase project configuration.
         const firebaseConfig = {
-          apiKey: "AIzaSyC_bP7Skb6w1oDEcDlcQ3w-0A7gPOII_pY",
-          authDomain: "artslamps-ca795.firebaseapp.com",
-          projectId: "artslamps-ca795",
-          storageBucket: "artslamps-ca795.firebasestorage.app",
-          messagingSenderId: "770503201539",
-          appId: "1:770503201539:web:50b428ab88f941e83f8f36"
+          apiKey: "YOUR_API_KEY",
+          authDomain: "YOUR_AUTH_DOMAIN",
+          projectId: "YOUR_PROJECT_ID",
+          storageBucket: "YOUR_STORAGE_BUCKET",
+          messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+          appId: "YOUR_APP_ID"
         };
         
-        // Initialize Firebase services
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         const auth = getAuth(app);
         const storage = getStorage(app);
-        
         let userId;
 
-        // Function to show feedback messages to the user
         function showFeedback(message, type = 'success') {
             const feedbackMessage = document.getElementById('feedbackMessage');
             feedbackMessage.textContent = message;
@@ -83,14 +78,11 @@
             feedbackMessage.classList.remove('hidden');
         }
 
-        // Handle form submission
         document.getElementById('blogPostForm').addEventListener('submit', async (e) => {
             e.preventDefault();
-            
             const title = document.getElementById('postTitle').value;
             const description = document.getElementById('postDescription').value;
             const imageFile = document.getElementById('postImage').files[0];
-            
             const submitButton = document.getElementById('submitButton');
             const loadingIndicator = document.getElementById('loadingIndicator');
             
@@ -99,20 +91,13 @@
             showFeedback('Posting...', 'info');
 
             try {
-                // Sign in anonymously to get a user ID
                 const userCredential = await signInAnonymously(auth);
                 userId = userCredential.user.uid;
 
-                // Create a reference for the image in Firebase Storage
                 const storageRef = ref(storage, `blog_images/${userId}/${imageFile.name}`);
-                
-                // Upload the image
                 const uploadTaskSnapshot = await uploadBytes(storageRef, imageFile);
-                
-                // Get the URL of the uploaded image
                 const imageUrl = await getDownloadURL(uploadTaskSnapshot.ref);
 
-                // Save post data to Firestore. The collection path is for public data.
                 const docRef = await addDoc(collection(db, `artifacts/${appId}/public/data/blog_posts`), {
                     userId: userId,
                     title: title,
@@ -124,7 +109,6 @@
                 console.log("Document written with ID: ", docRef.id);
                 showFeedback('Post submitted successfully!');
                 document.getElementById('blogPostForm').reset();
-                
             } catch (error) {
                 console.error("Error adding document: ", error);
                 showFeedback('Failed to submit post. Please try again.', 'error');
