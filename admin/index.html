@@ -6,13 +6,43 @@
     <title>Content Manager</title>
     <!-- The main Decap CMS script. This must be loaded from a CDN. -->
     <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-    
-    <!-- This script tag tells the CMS where to find its configuration.
-         It has been updated to point to the correct path in the root directory. -->
-    <script data-cms-config-path="../config.yml"></script>
 </head>
 <body>
     <!-- The CMS will be rendered inside this div. This is required. -->
     <div id="cms-root"></div>
+    
+    <!-- This script tag contains the configuration for Decap CMS directly. -->
+    <script>
+        window.CMS_CONFIGURATION = {
+            backend: {
+                name: 'github',
+                repo: 'rem95/Art-Lamps',
+                branch: 'main'
+            },
+            media_folder: 'images/uploads',
+            public_folder: '/images/uploads',
+            collections: [
+                {
+                    name: 'blog',
+                    label: 'Religious Blog',
+                    folder: '_posts/blog',
+                    create: true,
+                    slug: '{{year}}-{{month}}-{{day}}-{{slug}}',
+                    fields: [
+                        {label: 'Title', name: 'title', widget: 'string', tagname: 'h2'},
+                        {label: 'Publish Date', name: 'date', widget: 'datetime'},
+                        {label: 'Featured Image', name: 'image', widget: 'image', required: false},
+                        {label: 'Body', name: 'body', widget: 'markdown'}
+                    ]
+                }
+            ]
+        };
+
+        if (window.CMS_CONFIGURATION) {
+            CMS.init({
+                config: window.CMS_CONFIGURATION
+            });
+        }
+    </script>
 </body>
 </html>
