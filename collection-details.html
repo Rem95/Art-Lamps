@@ -42,15 +42,15 @@
 
         <section class="product-details-section">
             <div class="product-details-card">
+                <div class="product-price">
+                </div>
                 <div class="product-stock-quantity">
-                    <div class="product-price">
-                        </div>
                     <p class="stock-status">In Stock</p>
                     <div class="quantity-selector">
                         <label>Quantity: 1</label>
                     </div>
-                    <div id="paypalAddToCartContainer"></div>
-
+                    <div id="paypalAddToCartContainer">
+                        </div>
                     <paypal-cart-button data-id="pp-view-cart"></paypal-cart-button>
                     <script>
                       cartPaypal.Cart({ id: "pp-view-cart" })

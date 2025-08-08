@@ -341,6 +341,26 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         },
         // --- LAMP COLLECTIONS ---
+        // New 'Italy' lamp added here
+        {
+            name: "Italy",
+            price: "120",
+            itemId: "LMP-ITA-001",
+            paypalButtonId: "6HQ5DSC9YL8DE",
+            type: "lamp",
+            // Corrected basePath based on your file structure
+            basePath: 'images/Italy/',
+            images: ['Italy (1).jpg', 'Italy (2).jpg', 'Italy (3).jpg', 'Italy (4).jpg', 'Italy (5).jpg', 'Italy (6).jpg', 'Italy (7).jpg', 'Italy (8).jpg', 'Italy (9).jpg', 'Italy (10).jpg'],
+            description: "A handcrafted lamp inspired by the natural textures and rustic charm of Italy.",
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "LMP-ITA-001",
+                "Dimensions": "15x15x15 cm",
+                "Material": "Wood, stone, bulb, seashells",
+                "Protection class": "(Indoor)",
+                "Light bulb(s)": "Bulb Included"
+            }
+        },
         {
             name: "Bamboolamp",
             price: "249",
