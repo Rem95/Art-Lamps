@@ -395,6 +395,24 @@ document.addEventListener('DOMContentLoaded', () => {
                 "Material": "Wood, Lights",
                 "Protection class": "(Indoor)"
             }
+        },
+
+          {
+            name: "Guitar",
+            price: "80", 
+            itemId: "GUI-MNB-001",
+            paypalButtonId: "FJPENDQBGC9VY", // Confirmed ID
+            type:"lamp",
+            basePath: 'images/Guitar/',
+            images: ['Guitar (1).jpg', 'Guitar (2).jpg', 'Guitar (3).jpg', 'Guitar (4).jpg', 'Guitar (5).jpg', 'Guitar (6).jpg', 'Guitar (7).jpg', 'Guitar (8).jpg' ],
+            description: "A repurposed guitar transformed into a shelf unit with built-in fairy lights. Perfect for music lovers.",
+            details: {
+                "Brand": "Arts & Lamps",
+                "Item no.": "GUI-MNB-001",
+                "Dimensions": "H: 80cm, W: 50cm",
+                "Material": "Wood, Lights",
+                "Protection class": "(Indoor)"
+            }
         }
     ];
 
