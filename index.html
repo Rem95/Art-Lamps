@@ -21,7 +21,7 @@
         }
         h1 { color: #333; margin-bottom: 20px; }
         p { color: #666; font-size: 1.1rem; line-height: 1.6; }
-        .new-url { font-weight: bold; color: #d4a373; } /* Gold color to match art theme */
+        .new-url { font-weight: bold; color: #d4a373; }
         
         .btn-redirect {
             display: inline-block;
@@ -38,37 +38,19 @@
             background-color: #555;
             transform: scale(1.05);
         }
-        .timer {
-            margin-top: 20px;
-            font-size: 0.9rem;
-            color: #999;
-        }
     </style>
 
     <div class="redirect-container">
         <h1>We've Moved!</h1>
-        <p>Arts & Lamps has a brand new home. You are being redirected to our new, improved shop at:</p>
+        <p>Arts & Lamps has a brand new home. Redirecting you now to:</p>
         <p class="new-url">www.artsandlamps.com</p>
         
-        <a href="https://www.artsandlamps.com" class="btn-redirect">Visit New Website</a>
-
-        <p class="timer">You will be redirected automatically in <span id="seconds">0</span> seconds...</p>
+        <a href="https://www.artsandlamps.com" class="btn-redirect">Click here if not redirected</a>
     </div>
 
     <script>
-        // Configuration
-        const newSite = "https://www.artsandlamps.com";
-        let seconds = 0;
-
-        // Update the countdown timer
-        const countdown = setInterval(() => {
-            seconds--;
-            document.getElementById('seconds').textContent = seconds;
-            if (seconds <= 0) {
-                clearInterval(countdown);
-                window.location.href = newSite;
-            }
-        }, 1000);
+        // Instant Redirect
+        window.location.href = "https://www.artsandlamps.com";
     </script>
 
 </body>
